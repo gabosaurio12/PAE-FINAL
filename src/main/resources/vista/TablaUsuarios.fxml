@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="uniairlines.controladores.TablaUsuariosController"
+            prefWidth="600" prefHeight="400">
+
+    <TableView fx:id="tablaUsuarios" prefWidth="580" prefHeight="320"
+               AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
+        <columns>
+            <TableColumn fx:id="colUsuario" text="Usuario" prefWidth="150"/>
+            <TableColumn fx:id="colTipo" text="Tipo" prefWidth="150"/>
+            <TableColumn fx:id="colNombre" text="Nombre" prefWidth="260"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="15" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10">
+        <Button fx:id="btnAgregarUsuario" text="Agregar" onAction="#agregarUsuario" prefWidth="100"/>
+        <Button fx:id="btnModificarUsuario" text="Modificar" onAction="#modificarUsuario" prefWidth="100"/>
+        <Button fx:id="btnEliminarUsuario" text="Eliminar" onAction="#eliminarUsuario" prefWidth="100"/>
+    </HBox>
+
+</AnchorPane>

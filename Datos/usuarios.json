@@ -1,0 +1,37 @@
+[
+  {
+    "usuario": "master",
+    "contrasena": "master123",
+    "tipo": "master",
+    "aerolinea": "Aero2",
+    "nombre": "seth"
+  },
+  {
+    "usuario": "asd",
+    "contrasena": "asd",
+    "tipo": "admin",
+    "aerolinea": "asd",
+    "nombre": "aasd"
+  },
+  {
+    "usuario": "zxc",
+    "contrasena": "zxc",
+    "tipo": "empleado",
+    "aerolinea": "asd",
+    "nombre": "zxc"
+  },
+  {
+    "usuario": "QWE",
+    "contrasena": "QWE",
+    "tipo": "admin",
+    "aerolinea": "ZXC",
+    "nombre": "QWE"
+  },
+  {
+    "usuario": "piloto1",
+    "contrasena": "pilo123",
+    "tipo": "empleado",
+    "aerolinea": "AeroMexica",
+    "nombre": "Román Guitiérrez"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "7a8a0304-cb6e-4d29-b184-7c5e7d682562",
+    "modelo": "ASDASD",
+    "capacidadTotal": 48,
+    "filas": 12,
+    "asientosPorFila": 4,
+    "peso": 123,
+    "tipo": "Ejecutivo",
+    "asientos": [
+      {
+        "fila": 1,
+        "columna": "A",
+        "estado": "Ejecutivo",
+        "precio": 0.0
+      }
+    ],
+    "estado": "Mantenimiento"
+  }
+]

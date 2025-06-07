@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="520.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLEditarPilotoController">
+   <children>
+      <Label fx:id="idLabel" layoutX="20" layoutY="20" text="Identificador:" />
+      <TextField fx:id="idTF" layoutX="150" layoutY="16" prefWidth="200" promptText="Identificador" />
+      <Label fx:id="nombreLabel" layoutX="20" layoutY="60" text="Nombre:" />
+      <TextField fx:id="nombreTF" layoutX="150" layoutY="56" prefWidth="200" promptText="Nombre" />
+      <Label fx:id="direccionLabel" layoutX="20" layoutY="100" text="Dirección:" />
+      <TextField fx:id="direccionTF" layoutX="150" layoutY="96" prefWidth="200" promptText="Dirección" />
+      <Label fx:id="telefonoLabel" layoutX="20" layoutY="140" text="Teléfono:" />
+      <TextField fx:id="telefonoTF" layoutX="150" layoutY="136" prefWidth="200" promptText="Teléfono" />
+      <Label fx:id="correoLabel" layoutX="20" layoutY="180" text="Correo:" />
+      <TextField fx:id="correoTF" layoutX="150" layoutY="176" prefWidth="200" promptText="Correo" />
+      <Label fx:id="fechaNacimientoLabel" layoutX="20" layoutY="220" text="Fecha de nacimiento:" />
+      <TextField fx:id="fechaNacimientoTF" layoutX="150" layoutY="216" prefWidth="200" promptText="dd/mm/aaaa" />
+      <Label fx:id="generoLabel" layoutX="20" layoutY="260" text="Género:" />
+      <Label fx:id="salarioLabel" layoutX="20.0" layoutY="302.0" text="Salario:" />
+      <TextField fx:id="salarioTF" layoutX="150.0" layoutY="298.0" prefWidth="200" promptText="Salario" />
+      <Label fx:id="tipoLicenciaLabel" layoutX="20.0" layoutY="342.0" text="Tipo de licencia:" />
+      <Button fx:id="botonGuardar" layoutX="150.0" layoutY="468.0" onAction="#guardarPiloto" prefWidth="100" style="-fx-background-color: #4CAF50;" text="Guardar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Label fx:id="fechaCertificacionLabel" layoutX="20.0" layoutY="381.0" text="Fecha de certificación:" />
+      <TextField fx:id="fechaCertificacionTF" layoutX="150.0" layoutY="377.0" prefWidth="200" promptText="dd/mm/aaaa" />
+      <Label fx:id="horasVueloLabel" layoutX="20.0" layoutY="421.0" text="Horas de vuelo:" />
+      <TextField fx:id="horasVueloTF" layoutX="150.0" layoutY="417.0" prefWidth="200" promptText="Horas de vuelo" />
+      <ChoiceBox fx:id="generoCB" layoutX="150.0" layoutY="256.0" prefHeight="26.0" prefWidth="200.0" />
+      <ChoiceBox fx:id="tipoLicenciaCB" layoutX="150.0" layoutY="338.0" prefHeight="26.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>

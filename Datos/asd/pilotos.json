@@ -1,0 +1,28 @@
+[
+  {
+    "tipoLicencia": "COMERCIAL",
+    "fechaCertificacion": "10/03/1980",
+    "numHorasVuelo": 10000,
+    "identificador": "pilo5",
+    "nombre": "MAVERICK",
+    "direccion": "Estados Unidos",
+    "telefono": "2288937649",
+    "correo": "maverick@gmail.com",
+    "fechaNacimiento": "14/07/1962",
+    "genero": "MASCULINO",
+    "salario": 120000.0
+  },
+  {
+    "tipoLicencia": "PRIVATA",
+    "fechaCertificacion": "20/12/1983",
+    "numHorasVuelo": 8000,
+    "identificador": "pilo6",
+    "nombre": "ICEMAN",
+    "direccion": "Estados Unidos",
+    "telefono": "2287634518",
+    "correo": "iceman@gmail.com",
+    "fechaNacimiento": "18/11/1960",
+    "genero": "MASCULINO",
+    "salario": 78000.0
+  }
+]

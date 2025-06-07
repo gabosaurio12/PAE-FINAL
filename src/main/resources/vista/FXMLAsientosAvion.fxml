@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="uniairlines.controladores.FXMLAsientosAvionController"
+      spacing="10" alignment="CENTER" prefWidth="450" prefHeight="500" style="-fx-padding: 15;">
+
+    <!-- Botones para seleccionar clase -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="btnTurista" text="Turista" />
+        <Button fx:id="btnVIP" text="VIP" />
+        <Button fx:id="btnEjecutivo" text="Ejecutivo" />
+    </HBox>
+
+    <!-- TextFields para precios -->
+    <HBox spacing="20" alignment="CENTER">
+        <VBox spacing="5" alignment="CENTER">
+            <Label text="Precio Turista:" />
+            <TextField fx:id="tfPrecioTurista" promptText="Ej. 500" prefWidth="80" />
+        </VBox>
+        <VBox spacing="5" alignment="CENTER">
+            <Label text="Precio VIP:" />
+            <TextField fx:id="tfPrecioVIP" promptText="Ej. 1000" prefWidth="80" />
+        </VBox>
+        <VBox spacing="5" alignment="CENTER">
+            <Label text="Precio Ejecutivo:" />
+            <TextField fx:id="tfPrecioEjecutivo" promptText="Ej. 1500" prefWidth="80" />
+        </VBox>
+    </HBox>
+
+    <!-- Grid para mostrar los asientos -->
+    <GridPane fx:id="gridAsientos" gridLinesVisible="true" />
+
+</VBox>

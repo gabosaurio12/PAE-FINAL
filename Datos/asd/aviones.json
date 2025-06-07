@@ -1,0 +1,74 @@
+[
+  {
+    "id": "60c0831a-32e7-4ad0-a59e-6cd3716213d9",
+    "modelo": "alfin jala",
+    "capacidadTotal": 40,
+    "filas": 10,
+    "asientosPorFila": 4,
+    "peso": 123,
+    "tipo": "Ejecutivo",
+    "asientos": [
+      {
+        "fila": 1,
+        "columna": "A",
+        "estado": "Ejecutivo",
+        "precio": 0.0
+      }
+    ],
+    "estado": "Mantenimiento"
+  },
+  {
+    "id": "98e196c6-db20-46f4-9e43-54b1fd5c7cf6",
+    "modelo": "asdasd",
+    "capacidadTotal": 80,
+    "filas": 20,
+    "asientosPorFila": 4,
+    "peso": 12,
+    "tipo": "Turista",
+    "asientos": [
+      {
+        "fila": 1,
+        "columna": "A",
+        "estado": "Ejecutivo",
+        "precio": 0.0
+      }
+    ],
+    "estado": "Mantenimiento"
+  },
+  {
+    "id": "1a289455-d80e-4cb9-aadc-ad681d1634ce",
+    "modelo": "QWE",
+    "capacidadTotal": 48,
+    "filas": 12,
+    "asientosPorFila": 4,
+    "peso": 123,
+    "tipo": "Ejecutivo",
+    "asientos": [
+      {
+        "fila": 1,
+        "columna": "A",
+        "estado": "Ejecutivo",
+        "precio": 0.0
+      }
+    ],
+    "estado": "Mantenimiento"
+  },
+  {
+    "id": "56d4ef9b-9a37-47d4-99fe-fe7b365e6f28",
+    "modelo": "FFFFFFFFFFFFF",
+    "capacidadTotal": 48,
+    "filas": 12,
+    "asientosPorFila": 4,
+    "peso": 1222,
+    "tipo": "Ejecutivo",
+    "asientos": [
+      {
+        "fila": 1,
+        "columna": "A",
+        "estado": "Ejecutivo",
+        "precio": 0.0
+      }
+    ],
+    "estado": "Mantenimiento"
+  }
+]

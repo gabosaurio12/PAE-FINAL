@@ -1,0 +1,41 @@
+[
+  {
+    "IATA": "asd",
+    "ICAO": "asd",
+    "nombre": "asd",
+    "callsign": "asd",
+    "nacionalidad": "asd",
+    "direccion": "asd",
+    "sitioOficial": "asd",
+    "contacto": {
+      "nombre": "asd",
+      "telefono": "asd"
+    }
+  },
+  {
+    "IATA": "ZXC",
+    "ICAO": "ZXC",
+    "nombre": "ZXC",
+    "callsign": "ZXC",
+    "nacionalidad": "ZXC",
+    "direccion": "ZXC",
+    "sitioOficial": "ZXC",
+    "contacto": {
+      "nombre": "ZXC",
+      "telefono": "ZXC"
+    }
+  },
+  {
+    "IATA": "JACOM",
+    "ICAO": "MOCAJ",
+    "nombre": "AeroMexica",
+    "callsign": "12CD",
+    "nacionalidad": "Mexico",
+    "direccion": "CDMX",
+    "sitioOficial": "aeormexica.com.mx",
+    "contacto": {
+      "nombre": "Manuel Máximo",
+      "telefono": "2289364712"
+    }
+  }
+]

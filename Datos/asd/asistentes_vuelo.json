@@ -1,0 +1,14 @@
+[
+  {
+    "numIdiomas": 6,
+    "numHorasAsistidas": 200000,
+    "identificador": "asis1",
+    "nombre": "Benito Bodoque",
+    "direccion": "Estados Unidos",
+    "telefono": "2287761908",
+    "correo": "benito@gmail.com",
+    "fechaNacimiento": "11/12/1960",
+    "genero": "MASCULINO",
+    "salario": 100000.0
+  }
+]

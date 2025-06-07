@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="400.0"
+            xmlns="http://javafx.com/javafx/23.0.1" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="uniairlines.controladores.FXMLFormularioAerolineaController">
+
+    <Label fx:id="lbIATA" layoutX="20" layoutY="20" text="IATA:" />
+    <TextField fx:id="tfIATA" layoutX="150" layoutY="16" prefWidth="200" promptText="Código IATA" />
+
+    <Label fx:id="lbICAO" layoutX="20" layoutY="60" text="ICAO:" />
+    <TextField fx:id="tfICAO" layoutX="150" layoutY="56" prefWidth="200" promptText="Código ICAO" />
+
+    <Label fx:id="lbNombre" layoutX="20" layoutY="100" text="Nombre:" />
+    <TextField fx:id="tfNombre" layoutX="150" layoutY="96" prefWidth="200" promptText="Nombre de la aerolínea" />
+
+    <Label fx:id="lbCallsign" layoutX="20" layoutY="140" text="Callsign:" />
+    <TextField fx:id="tfCallsign" layoutX="150" layoutY="136" prefWidth="200" promptText="Callsign" />
+
+    <Label fx:id="lbNacionalidad" layoutX="20" layoutY="180" text="Nacionalidad:" />
+    <TextField fx:id="tfNacionalidad" layoutX="150" layoutY="176" prefWidth="200" promptText="Nacionalidad" />
+
+    <Label fx:id="lbDireccion" layoutX="20" layoutY="220" text="Dirección:" />
+    <TextField fx:id="tfDireccion" layoutX="150" layoutY="216" prefWidth="200" promptText="Dirección" />
+
+    <Label fx:id="lbSitioOficial" layoutX="20" layoutY="260" text="Sitio Oficial:" />
+    <TextField fx:id="tfSitioOficial" layoutX="150" layoutY="256" prefWidth="200" promptText="Página web oficial" />
+
+    <!-- Contacto -->
+    <Label fx:id="lbContacto" layoutX="20" layoutY="300" text="Contacto:" style="-fx-font-weight: bold;" />
+
+    <Label fx:id="lbContactoNombre" layoutX="20" layoutY="340" text="Nombre:" />
+    <TextField fx:id="tfContactoNombre" layoutX="150" layoutY="336" prefWidth="200" promptText="Nombre del contacto" />
+
+    <Label fx:id="lbContactoTelefono" layoutX="20" layoutY="380" text="Teléfono:" />
+    <TextField fx:id="tfContactoTelefono" layoutX="150" layoutY="376" prefWidth="200" promptText="Teléfono del contacto" />
+
+    <Button fx:id="btnGuardar" layoutX="150" layoutY="430" prefWidth="100" text="Guardar" onAction="#guardarAerolinea" />
+
+</AnchorPane>
