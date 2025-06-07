@@ -12,23 +12,9 @@
         <Button fx:id="btnTurista" text="Turista" />
         <Button fx:id="btnVIP" text="VIP" />
         <Button fx:id="btnEjecutivo" text="Ejecutivo" />
+        <Button fx:id="btnGuardar" text="Guardar" />
     </HBox>
 
-    <!-- TextFields para precios -->
-    <HBox spacing="20" alignment="CENTER">
-        <VBox spacing="5" alignment="CENTER">
-            <Label text="Precio Turista:" />
-            <TextField fx:id="tfPrecioTurista" promptText="Ej. 500" prefWidth="80" />
-        </VBox>
-        <VBox spacing="5" alignment="CENTER">
-            <Label text="Precio VIP:" />
-            <TextField fx:id="tfPrecioVIP" promptText="Ej. 1000" prefWidth="80" />
-        </VBox>
-        <VBox spacing="5" alignment="CENTER">
-            <Label text="Precio Ejecutivo:" />
-            <TextField fx:id="tfPrecioEjecutivo" promptText="Ej. 1500" prefWidth="80" />
-        </VBox>
-    </HBox>
 
     <!-- Grid para mostrar los asientos -->
     <GridPane fx:id="gridAsientos" gridLinesVisible="true" />
