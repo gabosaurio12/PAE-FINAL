@@ -1,12 +1,20 @@
 package uniairlines.controladores;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import uniairlines.modelo.Aerolinea;
+import uniairlines.modelo.Avion;
+import uniairlines.modelo.pojo.Vuelo;
 
-public class FMXLInspeccionarVueloController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class FMXLAgendarVueloController implements Initializable {
     @FXML
     private TextField tfCodigoVuelo;
     @FXML
@@ -32,6 +40,21 @@ public class FMXLInspeccionarVueloController {
     @FXML
     private TextField tfPrecioPrimeraClase;
 
+    private ObservableList<Aerolinea> aerolineas;
+    private ObservableList<Avion> aviones;
+
+    public void initialize(URL url, ResourceBundle rb) {
+
+    }
+
+    public void configurarCombos() {
+
+    }
+
+    public void cargarAerolineas() {
+
+    }
+
     public void clicConfigurarTripulacion(ActionEvent actionEvent) {
     }
 
@@ -39,5 +62,11 @@ public class FMXLInspeccionarVueloController {
     }
 
     public void clicGuardar(ActionEvent actionEvent) {
+
+    }
+
+    public void validarDatos() {
+        Vuelo vueloCandidato = new Vuelo();
+        vueloCandidato.setCodigoVuelo(tfCodigoVuelo.getText());
     }
 }
