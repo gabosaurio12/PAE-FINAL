@@ -10,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import uniairlines.dao.VueloDAO;
 import uniairlines.excepcion.ArchivoException;
 import uniairlines.modelo.pojo.Vuelo;
@@ -42,6 +43,7 @@ public class FXMLTablaVuelosController implements Initializable {
     private TableColumn<Vuelo, String> colTiempoPartida;
 
     private ObservableList<Vuelo> vuelos;
+    private UtilGeneral util = new UtilGeneral();
     private final VueloDAO vueloDAO = new VueloDAO();
 
     @Override
@@ -71,6 +73,8 @@ public class FXMLTablaVuelosController implements Initializable {
     }
 
     public void clicRegresar(ActionEvent actionEvent) {
+        util.abrirFXML("/vista/FXMLPadmin.fxml", "Principal", FXMLPadminController.class);
+        ((Stage) tfBuscarPorCodigo.getScene().getWindow()).close();
     }
 
     public void clicInspeccionar(ActionEvent actionEvent) {
@@ -86,11 +90,5 @@ public class FXMLTablaVuelosController implements Initializable {
     }
 
     public void clicImprimir(ActionEvent actionEvent) {
-    }
-
-    public void clicCancelar(ActionEvent actionEvent) {
-    }
-
-    public void clicGuardar(ActionEvent actionEvent) {
     }
 }
