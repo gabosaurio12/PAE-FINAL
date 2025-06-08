@@ -20,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import uniairlines.modelo.Usuario;
+import uniairlines.util.UtilGeneral;
 
 /**
  *
@@ -41,15 +42,15 @@ public class FXMLPempleadoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
      lbAerolineaStatic = lbAerolinea;
-    }    
-    
-       public static void inicializarDatos(Usuario usuarioAutenticado) {
+    }
+        private final UtilGeneral util = new UtilGeneral();
+        public static void inicializarDatos(Usuario usuarioAutenticado) {
         if (lbAerolineaStatic != null) {
             lbAerolineaStatic.setText(usuarioAutenticado.getAerolinea());
             seleccionada = usuarioAutenticado.getAerolinea();
         }
     }
-    /*
+
     @FXML
     private void lbAerolinea(MouseEvent event) {
     }
@@ -84,5 +85,10 @@ public class FXMLPempleadoController implements Initializable {
 
     public void gestionarVentasBoletos(ActionEvent actionEvent) {
     }
-    */
+
+    public void cerrarSesion(ActionEvent actionEvent) {
+        util.abrirFXML("/vista/FXMLLogin.fxml", "INICIO DE SESIÓN", FXMLLoginController.class);
+        Stage stage = (Stage) lbAerolinea.getScene().getWindow();
+        stage.close();
+    }
 }

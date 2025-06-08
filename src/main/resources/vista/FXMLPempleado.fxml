@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -8,8 +10,34 @@
 
 <AnchorPane id="AnchorPane" fx:id="Aerolinea" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLPempleadoController">
    <children>
-      <Label fx:id="lbAerolinea" layoutX="40.0" layoutY="39.0" onDragDetected="#lbAerolinea" text="Aerolinea" />
-      <Button fx:id="botonClientes" layoutX="340.0" layoutY="125.0" mnemonicParsing="false" onAction="#gestionarClientes" text="Clientes" />
-      <Button fx:id="botonVentas" layoutX="343.0" layoutY="175.0" mnemonicParsing="false" onAction="#gestionarVentasBoletos" text="Ventas" />
+      <Label fx:id="lbAerolinea" layoutX="40.0" layoutY="39.0" onDragDetected="#lbAerolinea" text="UniAir">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="24.0" />
+         </font></Label>
+      <VBox layoutX="486.0" layoutY="69.0" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Button fx:id="botonClientes" mnemonicParsing="false" onAction="#gestionarClientes" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #4CAF50;" text="Clientes" textFill="WHITE">
+               <VBox.margin>
+                  <Insets right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="botonVentas" mnemonicParsing="false" onAction="#gestionarVentasBoletos" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #2196F3;" text="Ventas" textFill="WHITE">
+               <VBox.margin>
+                  <Insets right="5.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Button fx:id="botonCerrarSesion" contentDisplay="RIGHT" layoutX="487.0" layoutY="32.0" mnemonicParsing="false" onAction="#cerrarSesion" style="-fx-background-color: #9E9E9E;" text="Cerrar sesión" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
