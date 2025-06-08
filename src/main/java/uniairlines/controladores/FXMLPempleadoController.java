@@ -19,30 +19,22 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import uniairlines.UNIAIRLINES;
 import uniairlines.modelo.Usuario;
-import uniairlines.modelo.pojo.boleto.Cliente;
-import uniairlines.util.ResultadoFXML;
-import uniairlines.util.utilgeneral;
 
 /**
  *
  * @author cuent
  */
 public class FXMLPempleadoController implements Initializable {
-    private final String RUTA_FXML_REGISTRAR_CLIENTE = "resources/vista/FXMLRegistrarClientes.fxml";
-    private final String RUTA_FXML_CONSULTAR_CLIENTES = "resources/vista/FXMLConsultarClientes.fxml";
-
-    private final utilgeneral util = new utilgeneral();
 
     @FXML
     private AnchorPane Aerolinea;
     @FXML
     private Label lbAerolinea;
-    @FXML
+    
     private static String seleccionada;
     
-    private static Label lbAerolineaStatic;
+     private static Label lbAerolineaStatic;
     /**
      * Initializes the controller class.
      */
@@ -60,16 +52,36 @@ public class FXMLPempleadoController implements Initializable {
 
     @FXML
     private void lbAerolinea(MouseEvent event) {
-
     }
 
-    @FXML
-    public void buttonConsultarLista(ActionEvent actionEvent) {
-        utilgeneral.crearEscenarioSimple(RUTA_FXML_CONSULTAR_CLIENTES, "Consultar Clientes");
+    public void gestionarClientes(ActionEvent actionEvent) {
+        irTablaClientes();
     }
 
-    @FXML
-    public void buttonRegistrarCliente(ActionEvent actionEvent) {
-        utilgeneral.crearEscenarioSimple(RUTA_FXML_REGISTRAR_CLIENTE, "Registrar Cliente");
+    private void irTablaClientes(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLTablaClientes.fxml"));
+            Parent vista = loader.load();
+
+
+            FXMLTablaClientesController controlador = loader.getController();
+
+
+            Stage escenarioAdmin = new Stage();
+            Scene escena = new Scene(vista);
+
+            escenarioAdmin.setScene(escena);
+            escenarioAdmin.setTitle("ADMINISTRACIÓN DE Clientes  ");
+            escenarioAdmin.initModality(Modality.APPLICATION_MODAL);
+            escenarioAdmin.centerOnScreen();
+            escenarioAdmin.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public void gestionarVentasBoletos(ActionEvent actionEvent) {
     }
 }

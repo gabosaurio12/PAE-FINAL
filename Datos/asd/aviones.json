@@ -11,19 +11,19 @@
       {
         "fila": 1,
         "columna": "A",
-        "clase": "Ejecutivo",
-        "estado": "Libre",
-        "precio": 0.0
-      },
-      {
-        "fila": 1,
-        "columna": "B",
         "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 1,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 1,
         "columna": "C",
         "clase": "Turista",
         "estado": "Libre",
@@ -32,26 +32,26 @@
       {
         "fila": 1,
         "columna": "D",
-        "clase": "VIP",
-        "estado": "Libre",
-        "precio": 0.0
-      },
-      {
-        "fila": 2,
-        "columna": "A",
-        "clase": "Ejecutivo",
-        "estado": "Libre",
-        "precio": 0.0
-      },
-      {
-        "fila": 2,
-        "columna": "B",
         "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 2,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 2,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 2,
         "columna": "C",
         "clase": "Turista",
         "estado": "Libre",
@@ -60,26 +60,26 @@
       {
         "fila": 2,
         "columna": "D",
-        "clase": "VIP",
-        "estado": "Libre",
-        "precio": 0.0
-      },
-      {
-        "fila": 3,
-        "columna": "A",
-        "clase": "Ejecutivo",
-        "estado": "Libre",
-        "precio": 0.0
-      },
-      {
-        "fila": 3,
-        "columna": "B",
         "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 3,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 3,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 3,
         "columna": "C",
         "clase": "Turista",
         "estado": "Libre",
@@ -88,26 +88,26 @@
       {
         "fila": 3,
         "columna": "D",
-        "clase": "VIP",
-        "estado": "Libre",
-        "precio": 0.0
-      },
-      {
-        "fila": 4,
-        "columna": "A",
-        "clase": "Ejecutivo",
-        "estado": "Libre",
-        "precio": 0.0
-      },
-      {
-        "fila": 4,
-        "columna": "B",
         "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 4,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 4,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 4,
         "columna": "C",
         "clase": "Turista",
         "estado": "Libre",
@@ -116,26 +116,26 @@
       {
         "fila": 4,
         "columna": "D",
-        "clase": "VIP",
-        "estado": "Libre",
-        "precio": 0.0
-      },
-      {
-        "fila": 5,
-        "columna": "A",
-        "clase": "Ejecutivo",
-        "estado": "Libre",
-        "precio": 0.0
-      },
-      {
-        "fila": 5,
-        "columna": "B",
         "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 5,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 5,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 5,
         "columna": "C",
         "clase": "Turista",
         "estado": "Libre",
@@ -144,26 +144,26 @@
       {
         "fila": 5,
         "columna": "D",
-        "clase": "VIP",
-        "estado": "Libre",
-        "precio": 0.0
-      },
-      {
-        "fila": 6,
-        "columna": "A",
-        "clase": "Ejecutivo",
-        "estado": "Libre",
-        "precio": 0.0
-      },
-      {
-        "fila": 6,
-        "columna": "B",
         "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 6,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 6,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 6,
         "columna": "C",
         "clase": "Turista",
         "estado": "Libre",
@@ -172,14 +172,14 @@
       {
         "fila": 6,
         "columna": "D",
-        "clase": "VIP",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 7,
         "columna": "A",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
@@ -200,14 +200,14 @@
       {
         "fila": 7,
         "columna": "D",
-        "clase": "VIP",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 8,
         "columna": "A",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
@@ -228,14 +228,14 @@
       {
         "fila": 8,
         "columna": "D",
-        "clase": "VIP",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 9,
         "columna": "A",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
@@ -256,14 +256,14 @@
       {
         "fila": 9,
         "columna": "D",
-        "clase": "VIP",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 10,
         "columna": "A",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
@@ -284,7 +284,7 @@
       {
         "fila": 10,
         "columna": "D",
-        "clase": "VIP",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       }
@@ -751,112 +751,112 @@
       {
         "fila": 17,
         "columna": "A",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 17,
         "columna": "B",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 17,
         "columna": "C",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 17,
         "columna": "D",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 18,
         "columna": "A",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 18,
         "columna": "B",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 18,
         "columna": "C",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 18,
         "columna": "D",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 19,
         "columna": "A",
-        "clase": "VIP",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 19,
         "columna": "B",
-        "clase": "VIP",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 19,
         "columna": "C",
-        "clase": "VIP",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 19,
         "columna": "D",
-        "clase": "VIP",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 20,
         "columna": "A",
-        "clase": "VIP",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 20,
         "columna": "B",
-        "clase": "VIP",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 20,
         "columna": "C",
-        "clase": "VIP",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 20,
         "columna": "D",
-        "clase": "VIP",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       }

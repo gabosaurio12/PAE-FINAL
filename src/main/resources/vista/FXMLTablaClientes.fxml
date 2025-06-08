@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLTablaClientesController">
+   <children>
+       <Label layoutX="10" layoutY="10" style="-fx-font-size: 20px;" text="Lista de Clientes" />
+   
+       <TableView fx:id="tablaClientes" layoutX="10" layoutY="50" prefHeight="380" prefWidth="680">
+           <columns>
+               <TableColumn fx:id="nombre" prefWidth="100" text="Nombre" />
+               <TableColumn fx:id="apellidoP" prefWidth="150" text="Apellido Paterno" />
+               <TableColumn fx:id="apellidoM" prefWidth="100" text="Apellido Materno" />
+               <TableColumn fx:id="nacionalidad" prefWidth="100" text="Nacionalidad" />
+               <TableColumn fx:id="fechaNacimiento" prefWidth="100" text="Fecha Nacimiento" />
+           </columns>
+       </TableView>
+   
+       <HBox layoutX="400" layoutY="440" prefHeight="40" prefWidth="290" spacing="10" style="-fx-padding: 5;">
+      <children>
+              <Button onAction="#agregarCliente" prefWidth="80" text="Agregar" />
+              <Button onAction="#modificarCliente" prefWidth="80" text="Modificar" />
+              <Button onAction="#eliminarCliente" prefWidth="80" text="Eliminar" />
+      </children>
+       </HBox>
+   </children>
+</AnchorPane>

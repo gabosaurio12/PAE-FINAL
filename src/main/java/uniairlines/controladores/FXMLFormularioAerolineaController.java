@@ -55,7 +55,7 @@ public class FXMLFormularioAerolineaController {
     @FXML
     private void guardarAerolinea() throws ArchivoException {
          AerolineaDAO A = new AerolineaDAO();
-        if(!esEdicion == true){
+        if(!esEdicion){
  
         if (tfIATA.getText().isEmpty() || tfNombre.getText().isEmpty()) {
             mostrarAlerta("Campos obligatorios", "Por favor, rellena los campos IATA y Nombre.");
@@ -68,7 +68,7 @@ public class FXMLFormularioAerolineaController {
         A.guardar(nueva);
         }
         
-        if(esEdicion == true){
+        if(esEdicion){
             
         Aerolinea aerolineaeditar = crearaerolineatf();
         A.actualizar(aerolineaeditar); 
