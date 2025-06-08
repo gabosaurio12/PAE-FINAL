@@ -119,5 +119,12 @@ public class FXMLPadminController implements Initializable {
             e.printStackTrace();
         }
     }
-}
 
+    public void gestionarVuelos(ActionEvent actionEvent) {
+        util.abrirFXML(
+                "/vista/FXMLTablaVuelos.fxml",
+                "Vuelos", FXMLTablaVuelosController.class);
+        Stage stage = (Stage) lbAerolinea.getScene().getWindow();
+        stage.close();
+    }
+}

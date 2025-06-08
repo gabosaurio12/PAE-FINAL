@@ -1,0 +1,102 @@
+[
+    {
+        "codigoVuelo" : "MX740",
+        "aerolinea" : "AeroMexica",
+        "codigoAvion" : "XA2901",
+        "numPasajeros" : 278,
+        "salida" : {
+                "pais" : "Mexico",
+                "ciudad" : "Guadalajara",
+                "numPuertas" : 12
+        },
+        "destino" : {
+                "pais": "USA",
+                "ciudad" : "Houston",
+                "numPuertas" : 14
+        },
+        "fechaSalida" : "2025-05-11 14:30",
+        "fechaLlegada" : "2025-05-11 16:45",
+        "minutosDeVueloEstimados" : 135,
+        "puertaSalida": 7,
+        "puertaLlegada" : 11,
+        "precioTurista" : 4500,
+        "precioNegocios" : 6700,
+        "precioPrimeraClase" : 10000,
+        "piloto" : {
+                "tipoLicencia": "CAPITAN_DE_AEROLINEA",
+                "fechaCertificacion": "10/03/1980",
+                "numHorasVuelo": 10000,
+                "identificador": "pilo5",
+                "nombre": "MAVERICK",
+                "direccion": "Estados Unidos",
+                "telefono": "2288937649",
+                "correo": "maverick@gmail.com",
+                "fechaNacimiento": "14/07/1962",
+                "genero": "MASCULINO",
+                "salario": 120000.0
+        },
+        "copiloto" : {
+                "tipoLicencia": "COMERCIAL",
+                "fechaCertificacion": "22/07/1999",
+                "numHorasVuelo": 10000,
+                "identificador": "pilo3",
+                "nombre": "Trigger",
+                "direccion": "Osea, 444",
+                "telefono": "7740534077",
+                "correo": "trigger@acemail.com",
+                "fechaNacimiento": "04/04/1984",
+                "genero": "MASCULINO",
+                "salario": 100000.0
+        },
+        "asistentes" : [
+            {
+                "numIdiomas": 2,
+                "numHorasAsistidas": 200000,
+                "identificador": "asis2",
+                "nombre": "Juan Carlos",
+                "direccion": "Mexico",
+                "telefono": "2287261958",
+                "correo": "carlos@hotmail.com",
+                "fechaNacimiento": "18/11/2002",
+                "genero": "MASCULINO",
+                "salario": 100000.0
+            },
+            {
+                "numIdiomas": 4,
+                "numHorasAsistidas": 200000,
+                "identificador": "asis911",
+                "nombre": "Salahm Bombmehet",
+                "direccion": "Arabia Saudita",
+                "telefono": "5547760902",
+                "correo": "salahallah@ciamail.com",
+                "fechaNacimiento": "11/09/2001",
+                "genero": "MASCULINO",
+                "salario": 91100.0
+            },
+            {
+                "numIdiomas": 6,
+                "numHorasAsistidas": 200000,
+                "identificador": "asis7",
+                "nombre": "Jimena Menester",
+                "direccion": "Colombia",
+                "telefono": "2284098761",
+                "correo": "jmenester@yahoo.com",
+                "fechaNacimiento": "22/06/1995",
+                "genero": "FEMENINO",
+                "salario": 125000.0
+            },
+            {
+                "numIdiomas": 5,
+                "numHorasAsistidas": 200000,
+                "identificador": "asis14",
+                "nombre": "Raul Estrada",
+                "direccion": "Mexico",
+                "telefono": "2256098711",
+                "correo": "raul@pistoleros.com",
+                "fechaNacimiento": "30/01/1998",
+                "genero": "MASCULINO",
+                "salario": 80000.0
+            }
+        ]
+    }
+]
