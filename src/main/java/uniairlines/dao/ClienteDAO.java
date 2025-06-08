@@ -1,88 +1,83 @@
 package uniairlines.dao;
 
 import com.google.gson.reflect.TypeToken;
+import java.io.File;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import uniairlines.excepcion.ArchivoException;
 import uniairlines.modelo.pojo.boleto.Cliente;
 import uniairlines.util.ArchivoUtil;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
 public class ClienteDAO {
-    private static final String BASE_CARPETAS = "Datos/";
 
-    public List<Cliente> listar(String nombreAerolinea) throws ArchivoException {
-        String rutaClientes = BASE_CARPETAS + nombreAerolinea + "/clientes.json";
-        File archivo = new File(rutaClientes);
+    private static final String RUTA = "Datos/clientes.json";
+
+    public List<Cliente> listar() throws ArchivoException {
+        File archivo = new File(RUTA);
         if (!archivo.exists() || archivo.length() == 0) {
             return new ArrayList<>();
         }
-        return ArchivoUtil.leerJson(rutaClientes, new TypeToken<List<Cliente>>() {}.getType());
+        Type tipoLista = new TypeToken<List<Cliente>>() {}.getType();
+        return ArchivoUtil.leerJson(RUTA, tipoLista);
     }
 
-    public void agregar(Cliente cliente, String nombreAerolinea) throws ArchivoException {
-        if (existe(cliente.getNombre(), nombreAerolinea)) {
-            throw new ArchivoException("Ya existe un cliente con el nombre: " + cliente.getNombre());
-        }
-        List<Cliente> lista = listar(nombreAerolinea);
-        lista.add(cliente);
-        String rutaClientes = BASE_CARPETAS + nombreAerolinea + "/clientes.json";
-        ArchivoUtil.escribirJson(rutaClientes, lista);
-    }
+    public void guardar(Cliente nuevoCliente) throws ArchivoException {
+        List<Cliente> lista = listar();
 
-    public void modificar(Cliente clienteActualizado, String nombreAerolinea) throws ArchivoException {
-        List<Cliente> lista = listar(nombreAerolinea);
-        boolean encontrado = false;
-
-        for (int i = 0; i < lista.size(); i++) {
-            Cliente c = lista.get(i);
-            if (c.getNombre().equals(clienteActualizado.getNombre())) {
-                c.setApellidoP(clienteActualizado.getApellidoP());
-                c.setApellidoM(clienteActualizado.getApellidoM());
-                c.setNacionalidad(clienteActualizado.getNacionalidad());
-                c.setFechaNacimiento(clienteActualizado.getFechaNacimiento());
-                encontrado = true;
-                break;
-            }
-        }
-
-        if (!encontrado) {
-            throw new ArchivoException("Cliente no encontrado: " + clienteActualizado.getNombre());
-        }
-
-        String rutaClientes = BASE_CARPETAS + nombreAerolinea + "/clientes.json";
-        ArchivoUtil.escribirJson(rutaClientes, lista);
-    }
-
-    public void eliminar(String nombreCliente, String nombreAerolinea) throws ArchivoException {
-        List<Cliente> lista = listar(nombreAerolinea);
-        boolean encontrado = false;
-
-        for (int i = 0; i < lista.size(); i++) {
-            Cliente c = lista.get(i);
-            if (c.getNombre().equals(nombreCliente)) {
-                lista.remove(i);
-                encontrado = true;
-                break;
-            }
-        }
-
-        if (!encontrado) {
-            throw new ArchivoException("Cliente no encontrado: " + nombreCliente);
-        }
-
-        String rutaClientes = BASE_CARPETAS + nombreAerolinea + "/clientes.json";
-        ArchivoUtil.escribirJson(rutaClientes, lista);
-    }
-
-    public boolean existe(String nombreCliente, String nombreAerolinea) throws ArchivoException {
-        List<Cliente> lista = listar(nombreAerolinea);
+        // Puedes validar duplicados por nombre + apellidos si deseas
         for (Cliente c : lista) {
-            if (c.getNombre().equals(nombreCliente)) {
-                return true;
+            if (c.getNombre().equalsIgnoreCase(nuevoCliente.getNombre())
+                    && c.getApellidoP().equalsIgnoreCase(nuevoCliente.getApellidoP())
+                    && c.getApellidoM().equalsIgnoreCase(nuevoCliente.getApellidoM())) {
+                throw new ArchivoException("El cliente ya existe: " + nuevoCliente.getNombre());
             }
         }
-        return false;
+
+        lista.add(nuevoCliente);
+        ArchivoUtil.escribirJson(RUTA, lista);
+    }
+
+    public void actualizar(Cliente clienteActualizado, String nombreOriginal, String apellidoPOriginal) throws ArchivoException {
+        List<Cliente> lista = listar();
+        boolean encontrado = false;
+
+        for (int i = 0; i < lista.size(); i++) {
+            Cliente c = lista.get(i);
+            if (c.getNombre().equalsIgnoreCase(nombreOriginal)
+                    && c.getApellidoP().equalsIgnoreCase(apellidoPOriginal)) {
+                lista.set(i, clienteActualizado);
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (!encontrado) {
+            throw new ArchivoException("No se encontró el cliente para actualizar.");
+        }
+
+        ArchivoUtil.escribirJson(RUTA, lista);
+    }
+
+    public void eliminar(Cliente cliente) throws ArchivoException {
+        List<Cliente> lista = listar();
+        boolean eliminado = lista.removeIf(c ->
+                c.getNombre().equalsIgnoreCase(cliente.getNombre())
+                        && c.getApellidoP().equalsIgnoreCase(cliente.getApellidoP())
+        );
+
+        if (!eliminado) {
+            throw new ArchivoException("No se encontró el cliente para eliminar.");
+        }
+
+        ArchivoUtil.escribirJson(RUTA, lista);
+    }
+
+    public List<Cliente> buscarPorNacionalidad(String nacionalidad) throws ArchivoException {
+        return listar().stream()
+                .filter(c -> c.getNacionalidad().equalsIgnoreCase(nacionalidad))
+                .collect(Collectors.toList());
     }
 }
+
