@@ -29,7 +29,10 @@
          <children>
             <TextField fx:id="tfContraseña" layoutX="7.0" layoutY="75.0" prefHeight="31.0" prefWidth="186.0" />
             <TextField fx:id="tfUsuario" layoutX="7.0" layoutY="28.0" prefHeight="31.0" prefWidth="186.0" />
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="142.0" mnemonicParsing="false" onAction="#btnIniciarSesion" prefHeight="31.0" prefWidth="186.0" text="Iniciar Sesion" />
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="142.0" mnemonicParsing="false" onAction="#btnIniciarSesion" prefHeight="31.0" prefWidth="186.0" style="-fx-background-color: #2196F3FF;" text="Iniciar Sesion" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font></Button>
          </children>
       </Pane>
    </children>
