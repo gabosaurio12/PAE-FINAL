@@ -115,16 +115,6 @@ public class FXMLPmasterController {
 
             tablaAerolineas.setItems(listaFiltrada);
 
-            tablaAerolineas.setRowFactory(tv -> {
-                TableRow<Aerolinea> row = new TableRow<>();
-                row.setOnMouseClicked(event -> {
-                    if (event.getClickCount() == 2 && !row.isEmpty()) {
-                        Aerolinea aerolineaSeleccionada = row.getItem();
-                        UtilGeneral.mostrarAlertaSimple(AlertType.ERROR, "Error", "No se pudo cargar la lista de aerolíneas.");
-                    }
-                });
-                return row;
-            });
 
 
         } catch (ArchivoException e) {
