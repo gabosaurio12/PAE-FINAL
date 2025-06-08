@@ -10,6 +10,7 @@ package uniairlines.modelo.pojo.boleto;
  */
 public class Cliente {
     private String nombre;
+    private String aerolinea;
     private String apellidoP;
     private String apellidoM;
     private String nacionalidad;
@@ -18,8 +19,9 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(String nombre, String apellidoP, String apellidoM, String nacionalidad, String fechaNacimiento) {
+    public Cliente(String nombre, String aerolinea, String apellidoP, String apellidoM, String nacionalidad, String fechaNacimiento) {
         this.nombre = nombre;
+        this.aerolinea = aerolinea;
         this.apellidoP = apellidoP;
         this.apellidoM = apellidoM;
         this.nacionalidad = nacionalidad;
@@ -33,6 +35,10 @@ public class Cliente {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public String getAerolinea() { return aerolinea; }
+
+    public void setAerolinea(String aerolinea) { this.aerolinea = aerolinea; }
 
     public String getApellidoP() {
         return apellidoP;
