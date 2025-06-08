@@ -1,5 +1,6 @@
 package uniairlines.controladores;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,7 +28,10 @@ import uniairlines.dao.AvionDAO;
 import uniairlines.excepcion.ArchivoException;
 import uniairlines.modelo.Asiento;
 import uniairlines.modelo.Avion;
-import uniairlines.util.UtilGeneral;
+import uniairlines.util.CSVUtil;
+import uniairlines.util.PDFUtil;
+import uniairlines.util.XLSXUtil;
+
 
 public class FXMLTablaAvionesController implements Initializable {
 
@@ -54,7 +58,7 @@ public class FXMLTablaAvionesController implements Initializable {
         colEstado.setCellValueFactory(new PropertyValueFactory<>("estado"));
         colPeso.setCellValueFactory(new PropertyValueFactory<>("peso"));
         tablaAviones.setRowFactory(tv -> {
-        
+
         TableRow<Avion> row = new TableRow<>();
         row.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
@@ -91,8 +95,8 @@ public class FXMLTablaAvionesController implements Initializable {
         String id = obtenerIdAvionSeleccionado();
         Avion completo = avionDAO.buscarPorId("asd",id);
         abrirFormularioAvion(completo,true);
-        
-        
+
+
     }
 
 
@@ -111,27 +115,28 @@ public class FXMLTablaAvionesController implements Initializable {
             if (!esEdicion){
            controlador.setAvion(null,esEdicion);
             }if(esEdicion){
-           controlador.setAvion(avion,esEdicion); 
+           controlador.setAvion(avion,esEdicion);
             }
             stage.showAndWait();
 
-            // Recargar tabla después de cerrar el formulario
+
             cargarAviones();
         } catch (IOException e) {
+            //noinspection CallToPrintStackTrace
             e.printStackTrace();
             mostrarAlerta("Error al abrir formulario: " + e.getMessage());
         }
     }
 
     private void mostrarAlerta(String mensaje) {
-        UtilGeneral.mostrarAlertaSimple(AlertType.ERROR, "?", "llego aca");
+
         Alert alert = new Alert(Alert.AlertType.WARNING, mensaje, ButtonType.OK);
         alert.showAndWait();
     }
 
     @FXML
     private void eliminarAvion(ActionEvent event) {
-    
+
     String id = obtenerIdAvionSeleccionado();
         try {
             avionDAO.eliminar("asd", id);
@@ -140,19 +145,18 @@ public class FXMLTablaAvionesController implements Initializable {
             Logger.getLogger(FXMLTablaAvionesController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private String obtenerIdAvionSeleccionado() {
     Avion avionSeleccionado = tablaAviones.getSelectionModel().getSelectedItem();
     if (avionSeleccionado != null) {
         String idAvion = avionSeleccionado.getId(); // O avionSeleccionado.getIdAvion() si ese es el nombre del método
-        System.out.println("ID del avión seleccionado: " + idAvion);
          return idAvion;
     } else {
         Alert alerta = new Alert(AlertType.WARNING, "No se ha seleccionado ningún avión.", ButtonType.OK);
         alerta.showAndWait();
         return "hola";
     }
-  
+
 }
 
     private void mostrarVentanaAsientos(Avion avionSeleccionado) {
@@ -189,7 +193,7 @@ public class FXMLTablaAvionesController implements Initializable {
 
                 try {
                     avionDAO.modificar(hola, asientosActualizados, aerolineaSeleccionada);
-                    mostrarAlerta("Avión actualizado correctamente.");
+
                 } catch (ArchivoException e) {
                     mostrarAlerta("Error al actualizar avión: " + e.getMessage());
                 }
@@ -197,13 +201,6 @@ public class FXMLTablaAvionesController implements Initializable {
                 cargarAviones();
 
 
-
-
-                // Ejemplo: imprimir la lista
-                System.out.println("== Lista de asientos actualizados ==");
-                for (Asiento a : asientosActualizados) {
-                    System.out.println(a.getFila() + a.getColumna() + " Clase: " + a.getClase() + " Estado: " + a.getEstado() + " Precio: " + a.getPrecio());
-                }
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -214,7 +211,62 @@ public class FXMLTablaAvionesController implements Initializable {
         }
     }
 
+    @FXML
+    private void Cancelar(ActionEvent event) {
+        // Cierra la ventana actual
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    public void btnPDF(ActionEvent actionEvent) {
+        try {
+            List<Avion> aviones = tablaAviones.getItems();
+            PDFUtil pdfUtil = new PDFUtil();
+            String path = "Documentos/"+ aerolineaSeleccionada;
+            File dir = new File(path);
+            if (!dir.exists()) dir.mkdirs();
+            path = path.concat(aerolineaSeleccionada + "_Aviones.pdf");
+            pdfUtil.generarPDFAviones(path, aviones);
+        } catch (Exception e) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR, "Error al crear PDF: " + e.getMessage(), ButtonType.OK);
+            alerta.showAndWait();
+        }
+    }
+
+    @FXML
+    public void btnCSV(ActionEvent actionEvent) {
+        try {
+            List<Avion> aviones = tablaAviones.getItems();
+            CSVUtil csvUtil = new CSVUtil();
+            String path = "Documentos/" + aerolineaSeleccionada;
+            File dir = new File(path);
+            if (!dir.exists()) dir.mkdirs();
+            path = path.concat("/" + aerolineaSeleccionada + "_Aviones.csv");
+            csvUtil.generarCSVAviones(path, aviones);
+
+        } catch (Exception e) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR, "Error al crear CSV: " + e.getMessage(), ButtonType.OK);
+            alerta.showAndWait();
+        }
+    }
+
+    @FXML
+    public void btnXLSX(ActionEvent actionEvent){
+        try {
+            List<Avion> aviones = tablaAviones.getItems();
+            XLSXUtil xlsxUtil = new XLSXUtil();
+            String path = "Documentos/" + aerolineaSeleccionada;
+            File dir = new File(path);
+            if (!dir.exists()) dir.mkdirs();
+            path = path.concat("/" + aerolineaSeleccionada + "_Aviones.xlsx");
+            xlsxUtil.generarXLSXAviones(path, aviones);
 
 
+        } catch (Exception e) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR, "Error al crear XLSX: " + e.getMessage(), ButtonType.OK);
+            alerta.showAndWait();
+        }
+    }
 
 }

@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import uniairlines.modelo.Asiento;
 
@@ -20,34 +22,35 @@ public class FXMLAsientosAvionController implements Initializable {
 
     private List<Asiento> asientos;
 
-
     private String claseSeleccionada = "Turista"; // Valor por defecto
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         btnTurista.setOnAction(e -> claseSeleccionada = "Turista");
         btnVIP.setOnAction(e -> claseSeleccionada = "VIP");
         btnEjecutivo.setOnAction(e -> claseSeleccionada = "Ejecutivo");
 
-
         btnGuardar.setOnAction(e -> {
             List<Asiento> copia = generarCopiaDeAsientos();
 
-            // Ejemplo: imprimir la lista por consola
-            System.out.println("=== ASIENTOS GUARDADOS ===");
-            for (Asiento a : copia) {
-                System.out.println("Fila: " + a.getFila() +
-                        ", Columna: " + a.getColumna() +
-                        ", Clase: " + a.getClase() +
-                        ", Estado: " + a.getEstado() +
-                        ", Precio: " + a.getPrecio());
-            }
-            System.out.println("==========================");
+            // Aquí tu lógica de guardado o procesamiento
+            // ...
+
+            mostrarAlerta("Avión actualizado correctamente.");
+
+            // Cerrar la ventana actual
+            btnGuardar.getScene().getWindow().hide();
         });
     }
 
-    // Método para recibir los asientos y mostrarlos
+    private void mostrarAlerta(String mensaje) {
+        Alert alerta = new Alert(AlertType.INFORMATION);
+        alerta.setTitle("Información");
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensaje);
+        alerta.showAndWait();
+    }
+
     public void setAsientos(List<Asiento> asientos) {
         this.asientos = asientos;
         mostrarAsientos();
@@ -60,15 +63,11 @@ public class FXMLAsientosAvionController implements Initializable {
             Button btn = new Button(asiento.getFila() + asiento.getColumna());
             btn.setPrefSize(40, 40);
 
-
             btn.setStyle("-fx-font-size: 10px; -fx-background-color: " + obtenerColor(asiento) + ";");
-
 
             btn.setOnAction(e -> {
                 if (!"Ocupado".equalsIgnoreCase(asiento.getEstado())) {
                     asiento.setClase(claseSeleccionada);
-
-
                     btn.setStyle("-fx-font-size: 10px; -fx-background-color: " + obtenerColor(asiento) + ";");
                 }
             });
@@ -77,7 +76,6 @@ public class FXMLAsientosAvionController implements Initializable {
         }
     }
 
-    // Método auxiliar para obtener color según estado y clase
     private String obtenerColor(Asiento asiento) {
         if ("Ocupado".equalsIgnoreCase(asiento.getEstado())) {
             return "darkred";
@@ -97,12 +95,10 @@ public class FXMLAsientosAvionController implements Initializable {
         }
     }
 
-    // Método para obtener la lista actualizada con precios y clases cambiadas
     public List<Asiento> getAsientosActualizados() {
         return asientos;
     }
 
-    // Método para generar una copia nueva de la lista de asientos
     public List<Asiento> generarCopiaDeAsientos() {
         List<Asiento> copia = new ArrayList<>();
         for (Asiento a : asientos) {

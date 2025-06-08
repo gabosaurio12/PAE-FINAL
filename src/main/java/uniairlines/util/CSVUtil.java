@@ -1,6 +1,7 @@
 package uniairlines.util;
 
 import com.opencsv.CSVWriter;
+import uniairlines.modelo.Avion;
 import uniairlines.modelo.pojo.boleto.Cliente;
 import uniairlines.modelo.pojo.empleados.AsistenteVuelo;
 import uniairlines.modelo.pojo.empleados.Piloto;
@@ -59,6 +60,34 @@ public class CSVUtil {
         } catch (IOException e) {
             UtilGeneral.createAlert("Error", "Error al crear CSV");
             System.err.println("Error al crear CSV: " + e.getMessage());
+        }
+    }
+
+    public void generarCSVAviones(String path, List<Avion> aviones) {
+        try (CSVWriter writer = new CSVWriter(new FileWriter(path))) {
+            String[] encabezado = {
+                    "ID",
+                    "Modelo",
+                    "Capacidad Total",
+                    "Filas",
+                    "Asientos por Fila",
+                    "Peso (kg)",
+                    "Tipo",
+                    "Estado",
+                    "Número de Asientos"
+            };
+            writer.writeNext(encabezado);
+
+            for (Avion avion : aviones) {
+                String[] avionCSV = avion.formatoCSV();
+                writer.writeNext(avionCSV);
+            }
+
+            UtilGeneral.createAlert("Éxito", "Se creó con éxito el CSV de aviones");
+
+        } catch (IOException e) {
+            UtilGeneral.createAlert("Error", "Error al crear CSV de aviones");
+            System.err.println("Error al crear CSV de aviones: " + e.getMessage());
         }
     }
 }

@@ -57,4 +57,48 @@ public class Avion {
     
     public double getPeso() {return peso;}
     public void setPeso(int peso) {this.peso = peso;}
+
+    public String formatoPDF() {
+        return "ID: " + getId() + "\n" +
+                "Modelo: " + getModelo() + "\n" +
+                "Capacidad total: " + getCapacidadTotal() + "\n" +
+                "Filas: " + getFilas() + "\n" +
+                "Asientos por fila: " + getAsientosPorFila() + "\n" +
+                "Peso: " + getPeso() + " kg\n" +
+                "Tipo: " + getTipo() + "\n" +
+                "Estado: " + getEstado() + "\n" +
+                "Número de asientos configurados: " +
+                (getAsientos() != null ? getAsientos().size() : 0) + "\n";
+    }
+
+    public String[] formatoCSV() {
+        return new String[] {
+                getId(),
+                getModelo(),
+                String.valueOf(getCapacidadTotal()),
+                String.valueOf(getFilas()),
+                String.valueOf(getAsientosPorFila()),
+                String.valueOf(getPeso()),
+                getTipo(),
+                getEstado(),
+                String.valueOf(getAsientos() != null ? getAsientos().size() : 0)
+        };
+    }
+
+    public String[] formatoXLSX() {
+        return new String[] {
+                "ID: " + getId(),
+                "Modelo: " + getModelo(),
+                "Capacidad total: " + getCapacidadTotal(),
+                "Filas: " + getFilas(),
+                "Asientos por fila: " + getAsientosPorFila(),
+                "Peso: " + getPeso() + " kg",
+                "Tipo: " + getTipo(),
+                "Estado: " + getEstado(),
+                "Número de asientos configurados: " + (getAsientos() != null ? getAsientos().size() : 0)
+        };
+    }
+
+
+
 }
