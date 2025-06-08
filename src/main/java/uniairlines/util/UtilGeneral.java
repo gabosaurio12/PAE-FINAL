@@ -50,6 +50,14 @@ public class UtilGeneral {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    public static void mostrarAlerta(String title, String message, Alert.AlertType tipo) {
+        Alert alert = new Alert(tipo);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     
     public <T> T abrirFXML(String rutaFXML, String titulo, Class<T> claseControlador) {
         try {

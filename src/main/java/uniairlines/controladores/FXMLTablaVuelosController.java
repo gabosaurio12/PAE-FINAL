@@ -1,19 +1,25 @@
 package uniairlines.controladores;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import uniairlines.dao.VueloDAO;
 import uniairlines.excepcion.ArchivoException;
 import uniairlines.modelo.pojo.Vuelo;
 import uniairlines.modelo.pojo.aerolinea.Aeropuerto;
+import uniairlines.util.UtilGeneral;
 
-import java.time.LocalDateTime;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class FXMLTablaVuelosController {
+public class FXMLTablaVuelosController implements Initializable {
     @FXML
     private TextField tfBuscarPorCodigo;
     @FXML
@@ -27,39 +33,42 @@ public class FXMLTablaVuelosController {
     @FXML
     private TableColumn<Vuelo, Integer> colPasajeros;
     @FXML
-    private TableColumn<Aeropuerto, String> colDestino;
+    private TableColumn<Vuelo, Aeropuerto> colDestino;
     @FXML
-    private TableColumn<Vuelo, LocalDateTime> colTiempoLlegada;
+    private TableColumn<Vuelo, String> colTiempoLlegada;
     @FXML
-    private TableColumn<Aeropuerto, String> colOrigen;
+    private TableColumn<Vuelo, Aeropuerto> colOrigen;
     @FXML
-    private TableColumn<Vuelo, LocalDateTime> colTiempoPartida;
+    private TableColumn<Vuelo, String> colTiempoPartida;
 
     private ObservableList<Vuelo> vuelos;
-    //TODO private final VueloDAO vueloDAO = new VueloDAO();
+    private final VueloDAO vueloDAO = new VueloDAO();
 
-    @FXML
-    private void initialize() {
+    @Override
+    public void initialize(URL url, ResourceBundle resources) {
+        configurarTabla();
+        cargarVuelos();
+    }
+
+    private void configurarTabla() {
         colCodigoVuelo.setCellValueFactory(new PropertyValueFactory<>("codigoVuelo"));
         colAerolinea.setCellValueFactory(new PropertyValueFactory<>("aerolinea"));
-        colAvion.setCellValueFactory(new PropertyValueFactory<>("modeloAvion"));
+        colAvion.setCellValueFactory(new PropertyValueFactory<>("codigoAvion"));
+        colPasajeros.setCellValueFactory(new PropertyValueFactory<>("numPasajeros"));
         colDestino.setCellValueFactory(new PropertyValueFactory<>("destino"));
         colTiempoLlegada.setCellValueFactory(new PropertyValueFactory<>("fechaLlegada"));
         colOrigen.setCellValueFactory(new PropertyValueFactory<>("salida"));
         colTiempoPartida.setCellValueFactory(new PropertyValueFactory<>("fechaSalida"));
-        //TODO cargarVuelos();
     }
 
-    /*TODO
     private void cargarVuelos() {
         try {
-
-
+            vuelos = FXCollections.observableArrayList(vueloDAO.recuperarVuelos());
+            tablaVuelos.setItems(vuelos);
         } catch (ArchivoException aex) {
-
+            UtilGeneral.mostrarAlerta("Error", String.format("%s \n %s", aex.getMessage(), aex.getCause()), Alert.AlertType.ERROR);
         }
     }
-    */
 
     public void clicRegresar(ActionEvent actionEvent) {
     }

@@ -102,7 +102,6 @@ public class FXMLPadminController implements Initializable {
         stage.close();
     }
 
-    @FXML
     public void btnAerolineas(ActionEvent actionEvent) {
         try {
             Stage escenarioBase = (Stage) lbAerolinea.getScene().getWindow();

@@ -4,7 +4,6 @@
  */
 package uniairlines.modelo.pojo;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import uniairlines.modelo.pojo.aerolinea.Aeropuerto;
@@ -18,12 +17,12 @@ import uniairlines.modelo.pojo.empleados.Piloto;
 public class Vuelo {
     private String codigoVuelo;
     private String aerolinea;
-    private String modeloAvion;
+    private String codigoAvion;
     private Integer numPasajeros;
     private Aeropuerto salida;
     private Aeropuerto destino;
-    private LocalDateTime fechaSalida;
-    private LocalDateTime fechaLlegada;
+    private String fechaSalida;
+    private String fechaLlegada;
     private Integer minutosDeVueloEstimados;
     private Integer puertaSalida;
     private Integer puertaLlegada;
@@ -53,12 +52,12 @@ public class Vuelo {
         this.aerolinea = aerolinea;
     }
 
-    public String getModeloAvion() {
-        return modeloAvion;
+    public String getCodigoAvion() {
+        return codigoAvion;
     }
 
-    public void setModeloAvion(String modeloAvion) {
-        this.modeloAvion = modeloAvion;
+    public void setCodigoAvion(String codigoAvion) {
+        this.codigoAvion = codigoAvion;
     }
 
     public Integer getNumPasajeros() {
@@ -85,19 +84,19 @@ public class Vuelo {
         this.destino = destino;
     }
 
-    public LocalDateTime getFechaSalida() {
+    public String getFechaSalida() {
         return fechaSalida;
     }
 
-    public void setFechaSalida(LocalDateTime fechaSalida) {
+    public void setFechaSalida(String fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
 
-    public LocalDateTime getFechaLlegada() {
+    public String getFechaLlegada() {
         return fechaLlegada;
     }
 
-    public void setFechaLlegada(LocalDateTime fechaLlegada) {
+    public void setFechaLlegada(String fechaLlegada) {
         this.fechaLlegada = fechaLlegada;
     }
 
