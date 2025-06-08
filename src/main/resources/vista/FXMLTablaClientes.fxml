@@ -7,9 +7,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="480.0" prefWidth="714.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLTablaClientesController">
+<AnchorPane prefHeight="480.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLTablaClientesController">
    <children>
-       <Label layoutX="10" layoutY="10" style="-fx-font-size: 20px;" text="Lista de Clientes" />
+       <Label layoutX="10" layoutY="10" prefHeight="30.0" prefWidth="157.0" style="-fx-font-size: 20px;" text="Lista de Clientes">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
    
        <TableView fx:id="tablaClientes" layoutX="23.0" layoutY="50.0" prefHeight="380" prefWidth="608.0">
            <columns>
@@ -23,24 +26,33 @@
    
        <HBox layoutX="400" layoutY="440" prefHeight="40" prefWidth="290" spacing="10" style="-fx-padding: 5;">
       <children>
-              <Button onAction="#agregarCliente" prefWidth="80" text="Agregar" />
-              <Button onAction="#modificarCliente" prefWidth="80" text="Modificar" />
-              <Button onAction="#eliminarCliente" prefWidth="80" text="Eliminar" />
+              <Button onAction="#agregarCliente" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: #4CAF50;" text="Registrar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+              <Button onAction="#modificarCliente" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #2196F3;" text="Editar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+              <Button onAction="#eliminarCliente" prefHeight="31.0" prefWidth="91.0" style="-fx-background-color: #F44336;" text="Eliminar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
       </children>
        </HBox>
-      <Button layoutX="648.0" layoutY="105.0" mnemonicParsing="false" onAction="#exportarPDF" text="PDF">
+      <Button layoutX="648.0" layoutY="105.0" mnemonicParsing="false" onAction="#exportarPDF" style="-fx-background-color: #7a98b2;" text="PDF" textFill="WHITE">
          <font>
-            <Font size="13.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="648.0" layoutY="158.0" mnemonicParsing="false" onAction="#exportarCSV" text="CSV">
+      <Button layoutX="648.0" layoutY="158.0" mnemonicParsing="false" onAction="#exportarCSV" style="-fx-background-color: #7a98b2;" text="CSV" textFill="WHITE">
          <font>
-            <Font size="13.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="645.0" layoutY="211.0" mnemonicParsing="false" onAction="#exportarXLSX" text="XLSX">
+      <Button layoutX="645.0" layoutY="211.0" mnemonicParsing="false" onAction="#exportarXLSX" style="-fx-background-color: #7a98b2;" text="XLSX" textFill="WHITE">
          <font>
-            <Font size="13.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
       </Button>
    </children>

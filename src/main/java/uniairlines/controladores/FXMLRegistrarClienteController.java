@@ -2,9 +2,14 @@ package uniairlines.controladores;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import uniairlines.modelo.pojo.boleto.Cliente;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class FXMLRegistrarClienteController {
 
@@ -17,9 +22,10 @@ public class FXMLRegistrarClienteController {
     @FXML
     private TextField nacionalidadTF;
     @FXML
-    private TextField fechaNacimientoTF;
+    private DatePicker fechaNacimientoDP;
 
     private Cliente cliente;
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public void inicializarCliente(Cliente clienteExistente) {
         if (clienteExistente != null) {
@@ -35,19 +41,27 @@ public class FXMLRegistrarClienteController {
             apellidoPTF.setText(cliente.getApellidoP());
             apellidoMTF.setText(cliente.getApellidoM());
             nacionalidadTF.setText(cliente.getNacionalidad());
-            fechaNacimientoTF.setText(cliente.getFechaNacimiento());
+
+            try {
+                LocalDate fecha = LocalDate.parse(cliente.getFechaNacimiento(), formatter);
+                fechaNacimientoDP.setValue(fecha);
+            } catch (DateTimeParseException e) {
+                fechaNacimientoDP.setValue(null);
+            }
         }
     }
 
     @FXML
     private void guardarCliente() {
         if (camposValidos()) {
+            String fechaFormateada = fechaNacimientoDP.getValue().format(formatter);
+
             cliente = new Cliente(
                     nombreTF.getText().trim(),
                     apellidoPTF.getText().trim(),
                     apellidoMTF.getText().trim(),
                     nacionalidadTF.getText().trim(),
-                    fechaNacimientoTF.getText().trim()
+                    fechaFormateada
             );
             cerrarVentana();
         }
@@ -64,7 +78,7 @@ public class FXMLRegistrarClienteController {
                 apellidoPTF.getText().trim().isEmpty() ||
                 apellidoMTF.getText().trim().isEmpty() ||
                 nacionalidadTF.getText().trim().isEmpty() ||
-                fechaNacimientoTF.getText().trim().isEmpty()) {
+                fechaNacimientoDP.getValue() == null) {
             mostrarAlerta("Campos vacíos", "Por favor, llena todos los campos.");
             return false;
         }
