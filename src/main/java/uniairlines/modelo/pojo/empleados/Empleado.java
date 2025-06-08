@@ -95,7 +95,31 @@ public class Empleado {
     public void setSalario(Double salario) {
         this.salario = salario;
     }
-    
+
+    public String formatoPDF() {
+        return "ID: " + identificador + "\n" +
+                "Nombre: " + nombre + "\n" +
+                "Dirección: " + direccion + "\n" +
+                "Teléfono: " + telefono + "\n" +
+                "Correo: " + correo + "\n" +
+                "Fecha de nacimiento: " + fechaNacimiento + "\n" +
+                "Género: " + genero + "\n" +
+                "Salario: " + salario + "\n";
+    }
+
+    public String[] formatoCSV() {
+        return new String[] {
+                identificador,
+                nombre,
+                direccion,
+                telefono,
+                correo,
+                fechaNacimiento,
+                genero,
+                String.valueOf(salario)
+        };
+    }
+
     public boolean validarCorreo() {
         String[] correoPartes = correo.split("@");
         return correoPartes.length == 2;

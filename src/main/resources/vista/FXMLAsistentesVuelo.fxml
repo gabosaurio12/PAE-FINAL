@@ -48,5 +48,20 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
+      <Button layoutX="701.0" layoutY="293.0" mnemonicParsing="false" onAction="#exportarPDF" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #7a98b2;" text="PDF" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="701.0" layoutY="333.0" mnemonicParsing="false" onAction="#exportarCSV" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #7a98b2;" text="CSV" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="701.0" layoutY="372.0" mnemonicParsing="false" onAction="#exportarXLSX" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #7a98b2;" text="XLSX" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

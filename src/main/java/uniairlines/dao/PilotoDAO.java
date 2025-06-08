@@ -17,8 +17,7 @@ public class PilotoDAO {
         if (!archivo.exists() || archivo.length() == 0) {
             return new ArrayList<>();
         }
-        List<Piloto> pilotos = ArchivoUtil.leerJson(rutaPilotos, new TypeToken<List<Piloto>>() {}.getType());
-        return pilotos;
+        return ArchivoUtil.leerJson(rutaPilotos, new TypeToken<List<Piloto>>() {}.getType());
     }
     
     public void guardarPiloto(Piloto piloto, String aerolinea) throws ArchivoException {

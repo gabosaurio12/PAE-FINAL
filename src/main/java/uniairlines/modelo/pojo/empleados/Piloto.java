@@ -4,6 +4,7 @@
  */
 package uniairlines.modelo.pojo.empleados;
 
+
 /**
  *
  * @author abelh
@@ -54,7 +55,31 @@ public class Piloto extends Empleado {
     public void setNumHorasVuelo(Integer numHorasVuelo) {
         this.numHorasVuelo = numHorasVuelo;
     }
-    
+
+    public String formatoPDF() {
+        return super.formatoPDF() +
+                "Tipo de licencia: " + tipoLicencia + "\n" +
+                "Fecha de certificación: " + fechaCertificacion + "\n" +
+                "Horas de vuelo: " + numHorasVuelo + "\n";
+    }
+
+    @Override
+    public String[] formatoCSV() {
+        String[] csv = super.formatoCSV();
+
+        String[] propios = {
+                String.valueOf(tipoLicencia),
+                fechaCertificacion,
+                String.valueOf(numHorasVuelo)
+        };
+
+        String[] resultado = new String[csv.length + propios.length];
+        System.arraycopy(csv, 0, resultado, 0, csv.length);
+        System.arraycopy(propios, 0, resultado, csv.length, propios.length);
+
+        return resultado;
+    }
+
     @Override
     public boolean validarFecha() {
         String[] fecha = fechaCertificacion.split("/");

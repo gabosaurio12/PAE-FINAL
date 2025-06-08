@@ -36,7 +36,28 @@ public class AsistenteVuelo extends Empleado {
     public void setNumHorasAsistidas(Integer numHorasAsistidas) {
         this.numHorasAsistidas = numHorasAsistidas;
     }
-    
+
+    public String formatoPDF() {
+       return formatoPDF() +
+               "Número de idiomas: " + numIdiomas + "\n" +
+               "Horas de vuelo asistidas: " + numHorasAsistidas + "\n";
+    }
+
+    public String[] formatoCSV() {
+        String[] csv = super.formatoCSV();
+
+        String[] propios = {
+                String.valueOf(numIdiomas),
+                String.valueOf(numHorasAsistidas)
+        };
+
+        String[] resultado = new String[csv.length + propios.length];
+        System.arraycopy(csv, 0, resultado, 0, csv.length);
+        System.arraycopy(propios, 0, resultado, csv.length, propios.length);
+
+        return resultado;
+    }
+
     @Override
     public boolean validarDatos() {
         return super.validarDatos() &&
