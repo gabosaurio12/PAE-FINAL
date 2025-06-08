@@ -2,6 +2,7 @@ package uniairlines.util;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import uniairlines.modelo.pojo.boleto.Cliente;
 import uniairlines.modelo.pojo.empleados.AsistenteVuelo;
 import uniairlines.modelo.pojo.empleados.Piloto;
 
@@ -86,6 +87,48 @@ public class XLSXUtil {
             for (int i = 0; i < encabezados.length; i++) {
                 sheet.autoSizeColumn(i);
             }
+            try (FileOutputStream fos = new FileOutputStream(path)) {
+                workbook.write(fos);
+            }
+            util.createAlert("Éxito", "Se creó con éxito el XLSX");
+
+        } catch (IOException e) {
+            util.createAlert("Error", "Hubo un error al crear el XLSX");
+            System.err.println("Error al crear XLSX: " + e.getMessage());
+        }
+    }
+
+    public void generarXLSXClientes(String path, List<Cliente> clientes) {
+        try (Workbook workbook = new XSSFWorkbook()) {
+            Sheet sheet = workbook.createSheet("Datos");
+
+            Row filaEncabezado = sheet.createRow(0);
+            String[] encabezados = {"Nombre", "Dirección", "Teléfono",
+                    "Correo", "Fecha de nacimiento"};
+
+            for (int i = 0; i < encabezados.length; i++) {
+                Cell celda = filaEncabezado.createCell(i);
+                celda.setCellValue(encabezados[i]);
+                CellStyle estilo = workbook.createCellStyle();
+                Font font = workbook.createFont();
+                font.setBold(true);
+                estilo.setFont(font);
+                celda.setCellStyle(estilo);
+            }
+
+            int filaIndex = 1;
+            for (Cliente cliente : clientes) {
+                Row fila = sheet.createRow(filaIndex++);
+                String[] datos = cliente.formatoCSV();
+                for (int i = 0; i < datos.length; i++) {
+                    fila.createCell(i).setCellValue(datos[i]);
+                }
+            }
+
+            for (int i = 0; i < encabezados.length; i++) {
+                sheet.autoSizeColumn(i);
+            }
+
             try (FileOutputStream fos = new FileOutputStream(path)) {
                 workbook.write(fos);
             }

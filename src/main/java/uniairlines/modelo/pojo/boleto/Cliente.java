@@ -65,6 +65,23 @@ public class Cliente {
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-    
-    
+
+    public String[] formatoCSV() {
+        return new String[]{
+                getNombre(),
+                getApellidoP(),
+                getApellidoM(),
+                getNacionalidad(),
+                getFechaNacimiento() != null ? getFechaNacimiento().toString() : ""
+        };
+    }
+
+    public String formatoPDF() {
+        return "Nombre: " + getNombre() + "\n" +
+                "Apellido paterno: " + getApellidoP() + "\n" +
+                "Apellido materno: " + getApellidoM() + "\n" +
+                "Nacionalidad: " + getNacionalidad() + "\n" +
+                "Fecha de nacimiento: " +
+                (getFechaNacimiento() != null ? getFechaNacimiento().toString() : "No especificada") + "\n\n";
+    }
 }

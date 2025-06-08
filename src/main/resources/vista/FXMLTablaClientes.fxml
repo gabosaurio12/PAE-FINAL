@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLTablaClientesController">
+<AnchorPane prefHeight="480.0" prefWidth="714.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLTablaClientesController">
    <children>
        <Label layoutX="10" layoutY="10" style="-fx-font-size: 20px;" text="Lista de Clientes" />
    
-       <TableView fx:id="tablaClientes" layoutX="10" layoutY="50" prefHeight="380" prefWidth="680">
+       <TableView fx:id="tablaClientes" layoutX="23.0" layoutY="50.0" prefHeight="380" prefWidth="608.0">
            <columns>
                <TableColumn fx:id="nombre" prefWidth="100" text="Nombre" />
                <TableColumn fx:id="apellidoP" prefWidth="150" text="Apellido Paterno" />
-               <TableColumn fx:id="apellidoM" prefWidth="100" text="Apellido Materno" />
-               <TableColumn fx:id="nacionalidad" prefWidth="100" text="Nacionalidad" />
-               <TableColumn fx:id="fechaNacimiento" prefWidth="100" text="Fecha Nacimiento" />
+               <TableColumn fx:id="apellidoM" prefWidth="126.0" text="Apellido Materno" />
+               <TableColumn fx:id="nacionalidad" prefWidth="105.0" text="Nacionalidad" />
+               <TableColumn fx:id="fechaNacimiento" prefWidth="125.0" text="Fecha Nacimiento" />
            </columns>
        </TableView>
    
@@ -27,5 +28,20 @@
               <Button onAction="#eliminarCliente" prefWidth="80" text="Eliminar" />
       </children>
        </HBox>
+      <Button layoutX="648.0" layoutY="105.0" mnemonicParsing="false" onAction="#exportarPDF" text="PDF">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="648.0" layoutY="158.0" mnemonicParsing="false" onAction="#exportarCSV" text="CSV">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="645.0" layoutY="211.0" mnemonicParsing="false" onAction="#exportarXLSX" text="XLSX">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

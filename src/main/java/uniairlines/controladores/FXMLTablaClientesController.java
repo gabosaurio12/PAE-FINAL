@@ -2,6 +2,7 @@ package uniairlines.controladores;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,24 +14,23 @@ import javafx.stage.Stage;
 import uniairlines.dao.ClienteDAO;
 import uniairlines.excepcion.ArchivoException;
 import uniairlines.modelo.pojo.boleto.Cliente;
+import uniairlines.util.CSVUtil;
+import uniairlines.util.PDFUtil;
+import uniairlines.util.XLSXUtil;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 public class FXMLTablaClientesController {
 
-    @FXML
-    private TableView<Cliente> tablaClientes;
-    @FXML
-    private TableColumn<Cliente, String> nombre;
-    @FXML
-    private TableColumn<Cliente, String> apellidoP;
-    @FXML
-    private TableColumn<Cliente, String> apellidoM;
-    @FXML
-    private TableColumn<Cliente, String> nacionalidad;
-    @FXML
-    private TableColumn<Cliente, String> fechaNacimiento;
+    @FXML private TableView<Cliente> tablaClientes;
+    @FXML private TableColumn<Cliente, String> nombre;
+    @FXML private TableColumn<Cliente, String> apellidoP;
+    @FXML private TableColumn<Cliente, String> apellidoM;
+    @FXML private TableColumn<Cliente, String> nacionalidad;
+    @FXML private TableColumn<Cliente, String> fechaNacimiento;
 
     private ObservableList<Cliente> listaClientes;
     private final ClienteDAO clienteDAO = new ClienteDAO();
@@ -138,5 +138,53 @@ public class FXMLTablaClientesController {
         alerta.setHeaderText(null);
         alerta.setContentText(mensaje);
         alerta.showAndWait();
+    }
+
+    @FXML
+    public void exportarPDF(ActionEvent actionEvent) {
+        try {
+            List<Cliente> clientes = clienteDAO.listar();
+            PDFUtil pdfUtil = new PDFUtil();
+            String path = "Documentos/Clientes/";
+            File dir = new File(path);
+            if (!dir.exists()) dir.mkdirs();
+            path = path.concat("Clientes.pdf");
+            pdfUtil.generarPDFClientes(path, clientes);
+            mostrarAlerta("Éxito", "PDF generado correctamente en " + path, Alert.AlertType.INFORMATION);
+        } catch (ArchivoException e) {
+            mostrarAlerta("Error", "Error al exportar PDF: " + e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
+    @FXML
+    public void exportarCSV(ActionEvent actionEvent) {
+        try {
+            List<Cliente> clientes = clienteDAO.listar();
+            CSVUtil csvUtil = new CSVUtil();
+            String path = "Documentos/Clientes/";
+            File dir = new File(path);
+            if (!dir.exists()) dir.mkdirs();
+            path = path.concat("Clientes.csv");
+            csvUtil.generarCSVClientes(path, clientes);
+            mostrarAlerta("Éxito", "CSV generado correctamente en " + path, Alert.AlertType.INFORMATION);
+        } catch (Exception e) {
+            mostrarAlerta("Error", "Error al exportar CSV: " + e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
+    @FXML
+    public void exportarXLSX(ActionEvent actionEvent) {
+        try {
+            List<Cliente> clientes = clienteDAO.listar();
+            XLSXUtil xlsxUtil = new XLSXUtil();
+            String path = "Documentos/Clientes/";
+            File dir = new File(path);
+            if (!dir.exists()) dir.mkdirs();
+            path = path.concat("Clientes.xlsx");
+            xlsxUtil.generarXLSXClientes(path, clientes);
+            mostrarAlerta("Éxito", "XLSX generado correctamente en " + path, Alert.AlertType.INFORMATION);
+        } catch (ArchivoException e) {
+            mostrarAlerta("Error", "Error al exportar XLSX: " + e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 }
