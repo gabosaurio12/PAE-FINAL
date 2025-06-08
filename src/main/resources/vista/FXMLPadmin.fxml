@@ -12,13 +12,14 @@
             <Font name="Book Antiqua" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="botonAviones" layoutX="441.0" layoutY="60.0" mnemonicParsing="false" onAction="#btnAviones" text="Aviones" />
-      <Button fx:id="botonPilotos" layoutX="441.0" layoutY="130.0" mnemonicParsing="false" onAction="#gestionarPilotos" prefHeight="26.0" prefWidth="59.0" text="Pilotos" />
-      <Button fx:id="botonAsistentesVuelo" layoutX="406.0" layoutY="200.0" mnemonicParsing="false" onAction="#gestionarAsistentesVuelo" prefHeight="26.0" prefWidth="129.0" text="Asistentes de vuelo" />
+      <Button fx:id="botonAviones" layoutX="447.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnAviones" text="Aviones" />
+      <Button fx:id="botonPilotos" layoutX="446.0" layoutY="83.0" mnemonicParsing="false" onAction="#gestionarPilotos" prefHeight="26.0" prefWidth="59.0" text="Pilotos" />
+      <Button fx:id="botonAsistentesVuelo" layoutX="411.0" layoutY="138.0" mnemonicParsing="false" onAction="#gestionarAsistentesVuelo" prefHeight="26.0" prefWidth="129.0" text="Asistentes de vuelo" />
       <Button fx:id="botonCerrarSesion" layoutX="427.0" layoutY="333.0" mnemonicParsing="false" onAction="#cerrarSesion" style="-fx-background-color: #9E9E9E;" text="Cerrar sesión" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
+      <Button layoutX="433.0" layoutY="187.0" mnemonicParsing="false" onAction="#btnAerolineas" text="AEROLINEAS" />
    </children>
 </AnchorPane>

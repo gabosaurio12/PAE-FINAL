@@ -1,6 +1,7 @@
 package uniairlines.util;
 
 import com.opencsv.CSVWriter;
+import uniairlines.modelo.Aerolinea;
 import uniairlines.modelo.Avion;
 import uniairlines.modelo.pojo.boleto.Cliente;
 import uniairlines.modelo.pojo.empleados.AsistenteVuelo;
@@ -90,4 +91,32 @@ public class CSVUtil {
             System.err.println("Error al crear CSV de aviones: " + e.getMessage());
         }
     }
+    public void generarCSVAerolineas(String path, List<Aerolinea> aerolineas) {
+        try (CSVWriter writer = new CSVWriter(new FileWriter(path))) {
+            String[] encabezado = {
+                    "Nombre",
+                    "IATA",
+                    "ICAO",
+                    "Callsign",
+                    "Nacionalidad",
+                    "Dirección",
+                    "Sitio Oficial",
+                    "Nombre de Contacto",
+                    "Teléfono de Contacto"
+            };
+            writer.writeNext(encabezado);
+
+            for (Aerolinea aerolinea : aerolineas) {
+                String[] aerolineaCSV = aerolinea.formatoCSV();
+                writer.writeNext(aerolineaCSV);
+            }
+
+            UtilGeneral.createAlert("Éxito", "Se creó con éxito el CSV de aerolíneas");
+
+        } catch (IOException e) {
+            UtilGeneral.createAlert("Error", "Error al crear CSV de aerolíneas");
+            System.err.println("Error al crear CSV de aerolíneas: " + e.getMessage());
+        }
+    }
+
 }

@@ -97,6 +97,48 @@ public class Aerolinea {
         this.contacto = contacto;
     }
 
+
+    public String formatoPDF() {
+        return String.format(
+                "Nombre: %s\nIATA: %s\nICAO: %s\nCallsign: %s\nNacionalidad: %s\nDirección: %s\nSitio Oficial: %s\nContacto: %s - %s\n",
+                getNombre(), getIATA(), getICAO(), getCallsign(), getNacionalidad(),
+                getDireccion(), getSitioOficial(),
+                getContacto().getNombre(), getContacto().getTelefono()
+        );
+    }
+
+    public String[] formatoCSV() {
+        return new String[] {
+                getNombre(),
+                getIATA(),
+                getICAO(),
+                getCallsign(),
+                getNacionalidad(),
+                getDireccion(),
+                getSitioOficial(),
+                getContacto().getNombre(),
+                getContacto().getTelefono()
+        };
+    }
+
+    public String[] formatoXLSX() {
+        return new String[] {
+                "Nombre: " + getNombre(),
+                "IATA: " + getIATA(),
+                "ICAO: " + getICAO(),
+                "Callsign: " + getCallsign(),
+                "Nacionalidad: " + getNacionalidad(),
+                "Dirección: " + getDireccion(),
+                "Sitio Oficial: " + getSitioOficial(),
+                "Contacto Nombre: " + getContacto().getNombre(),
+                "Contacto Teléfono: " + getContacto().getTelefono()
+        };
+    }
+
+
+
+
+
     @Override
     public String toString() {
         return "Aerolinea{" +

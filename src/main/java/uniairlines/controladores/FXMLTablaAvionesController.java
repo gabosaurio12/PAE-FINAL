@@ -213,7 +213,7 @@ public class FXMLTablaAvionesController implements Initializable {
 
     @FXML
     private void Cancelar(ActionEvent event) {
-        // Cierra la ventana actual
+
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.close();
     }

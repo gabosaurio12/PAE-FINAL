@@ -6,11 +6,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="511.0" prefWidth="1159.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLPmasterController">
+<AnchorPane prefHeight="510.0" prefWidth="1159.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLPmasterController">
 
     <TextField fx:id="tfFiltro" layoutX="14" layoutY="14" prefWidth="200" promptText="Filtrar aerolíneas..." />
 
-    <TableView fx:id="tablaAerolineas" layoutX="14" layoutY="50" prefHeight="350" prefWidth="1018.0">
+    <TableView fx:id="tablaAerolineas" layoutX="14.0" layoutY="72.0" prefHeight="350" prefWidth="1014.0">
 
         <columns>
             <TableColumn fx:id="colIATA" prefWidth="60" text="IATA" />
@@ -26,10 +26,14 @@
 
     </TableView>
 
-<Button fx:id="btnAgregarAerolinea" layoutX="428.0" layoutY="410.0" onAction="#btnAgregarAerolinea" text="Agregar" />
-<Button fx:id="btnModificarAerolinea" layoutX="770.0" layoutY="410.0" onAction="#btnModificarAerolinea" text="Modificar" />
-<Button fx:id="btnEliminarAerolinea" layoutX="678.0" layoutY="410.0" onAction="#btnEliminarAerolinea" text="Eliminar" />
-<Button fx:id="btnAdministrarCuentas" layoutX="518.0" layoutY="410.0" onAction="#btnAdministrarCuentas" text="Administrar cuentas" />
+<Button fx:id="btnAgregarAerolinea" layoutX="54.0" layoutY="450.0" onAction="#btnAgregarAerolinea" text="Agregar" />
+<Button fx:id="btnModificarAerolinea" layoutX="322.0" layoutY="450.0" onAction="#btnModificarAerolinea" text="Modificar" />
+<Button fx:id="btnEliminarAerolinea" layoutX="253.0" layoutY="450.0" onAction="#btnEliminarAerolinea" text="Eliminar" />
+<Button fx:id="btnAdministrarCuentas" layoutX="125.0" layoutY="450.0" onAction="#btnAdministrarCuentas" text="Administrar cuentas" />
+   <Button layoutX="401.0" layoutY="450.0" mnemonicParsing="false" onAction="#btnSalir" text="Salir" />
+   <Button layoutX="628.0" layoutY="450.0" mnemonicParsing="false" onAction="#btnPDF" text="PDF" />
+   <Button layoutX="676.0" layoutY="450.0" mnemonicParsing="false" onAction="#btnXLSX" text="XLSX" />
+   <Button layoutX="729.0" layoutY="450.0" mnemonicParsing="false" onAction="#btnCSV" text="CSV" />
 
 
 </AnchorPane>

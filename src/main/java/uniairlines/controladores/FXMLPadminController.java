@@ -101,5 +101,23 @@ public class FXMLPadminController implements Initializable {
         Stage stage = (Stage) lbAerolinea.getScene().getWindow();
         stage.close();
     }
+
+    @FXML
+    public void btnAerolineas(ActionEvent actionEvent) {
+        try {
+            Stage escenarioBase = (Stage) lbAerolinea.getScene().getWindow();
+            FXMLLoader cargador = new FXMLLoader(getClass().getResource("/vista/FXMLPmaster.fxml"));
+            Parent vista = cargador.load();
+
+            // FXMLPmasterController.inicializarDatos(usuarioAutenticado);
+
+            Scene escenaPrincipal = new Scene(vista);
+            escenarioBase.setScene(escenaPrincipal);
+            escenarioBase.setTitle("PANTALLA PRINCIPAL AEROLINEAS: ");
+            escenarioBase.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
