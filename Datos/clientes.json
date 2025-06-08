@@ -1,0 +1,44 @@
+[
+  {
+    "nombre": "Rosita",
+    "apellidoP": "Vélez",
+    "apellidoM": "Segovia",
+    "nacionalidad": "Mexicana",
+    "fechaNacimiento": "05/03/2008"
+  },
+  {
+    "nombre": "Joaquín",
+    "apellidoP": "Vélez",
+    "apellidoM": "Segovia",
+    "nacionalidad": "Mexicano",
+    "fechaNacimiento": "02/11/2004"
+  },
+  {
+    "nombre": "Martina",
+    "apellidoP": "Velasco",
+    "apellidoM": "Arellano",
+    "nacionalidad": "Mexicana",
+    "fechaNacimiento": "05/12/2001"
+  },
+  {
+    "nombre": "Gerardo",
+    "apellidoP": "Martínez",
+    "apellidoM": "Gutiérrez",
+    "nacionalidad": "Mexicano",
+    "fechaNacimiento": "05/06/1996"
+  },
+  {
+    "nombre": "Miguel",
+    "apellidoP": "Sánchez",
+    "apellidoM": "Santomé",
+    "nacionalidad": "Uruguayo",
+    "fechaNacimiento": "31/05/1979"
+  },
+  {
+    "nombre": "Laura",
+    "apellidoP": "Díaz",
+    "apellidoM": "Verde",
+    "nacionalidad": "Uruguaya",
+    "fechaNacimiento": "10/04/1982"
+  }
+]
