@@ -1,5 +1,6 @@
 package uniairlines.controladores;
 
+import java.io.File;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -8,15 +9,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import uniairlines.dao.PilotoDAO;
 import uniairlines.excepcion.ArchivoException;
-import uniairlines.util.utilgeneral;
+import uniairlines.util.*;
 import uniairlines.modelo.pojo.empleados.Piloto;
-import uniairlines.util.ResultadoFXML;
 
 public class FXMLPilotosController {
     private final utilgeneral util = new utilgeneral();
     private String aerolineaSeleccionada;
     
-    @FXML private TableView tablaPilotos;
+    @FXML private TableView<Piloto> tablaPilotos;
     @FXML private TableColumn<Piloto, String> colID;
     @FXML private TableColumn<Piloto, String> colNombre;
     @FXML private TableColumn<Piloto, String> colSalario;
@@ -56,14 +56,17 @@ public class FXMLPilotosController {
         colCorreo.setCellValueFactory(new PropertyValueFactory<>("correo"));
         colFechaNacimiento.setCellValueFactory(new PropertyValueFactory<>("fechaNacimiento"));
         
+        refrezcarTabla();
+    }
+
+    public void refrezcarTabla() {
         List<Piloto> pilotos = null;
         try {
             PilotoDAO daoPilotos = new PilotoDAO();
             pilotos = daoPilotos.getTodosLosPilotos(aerolineaSeleccionada);
         } catch (ArchivoException e) {
-            System.err.println("Error al cargar pilotos " + e.getMessage());
+            System.err.println("Error al cargar pilotos: " + e.getMessage());
         }
-        
         tablaPilotos.getItems().setAll(pilotos);
     }
     
@@ -79,12 +82,12 @@ public class FXMLPilotosController {
             
             controlador.init(aerolineaSeleccionada);
             stage.showAndWait();
-            initComponentes(aerolineaSeleccionada);
+            refrezcarTabla();
         }
     }
     
     public void editarPiloto() {
-        Piloto piloto = (Piloto) tablaPilotos.getSelectionModel().getSelectedItem();
+        Piloto piloto = tablaPilotos.getSelectionModel().getSelectedItem();
         if (piloto != null) {
             ResultadoFXML<FXMLEditarPilotoController> resultado = util.abrirFXMLModal(
                 "/vista/FXMLEditarPiloto.fxml",
@@ -97,7 +100,7 @@ public class FXMLPilotosController {
 
                 controlador.init(aerolineaSeleccionada, piloto);
                 stage.showAndWait();
-                initComponentes(aerolineaSeleccionada);
+                refrezcarTabla();
             }
         } else {
             util.createAlert("Alerta!", "Debes elegir un piloto antes de editarlo");
@@ -107,7 +110,7 @@ public class FXMLPilotosController {
     
     
     public void eliminarPiloto() {
-        Piloto piloto = (Piloto) tablaPilotos.getSelectionModel().getSelectedItem();
+        Piloto piloto = tablaPilotos.getSelectionModel().getSelectedItem();
         if (piloto != null) {
             PilotoDAO dao = new PilotoDAO();
             try {
@@ -117,9 +120,57 @@ public class FXMLPilotosController {
                 util.createAlert("Error", "Error al eliminar piloto");
                 System.err.println("Error al eliminar piloto: " + ex.getMessage());
             }
-            initComponentes(aerolineaSeleccionada);
+            refrezcarTabla();
         } else {
             util.createAlert("Alerta!", "Debes elegir un piloto antes de editarlo");
+        }
+    }
+
+    public void exportarPDF() {
+        try {
+            List<Piloto> pilotos = new PilotoDAO().getTodosLosPilotos(aerolineaSeleccionada);
+            PDFUtil pdfUtil = new PDFUtil();
+            String path = "Documentos/" + aerolineaSeleccionada + "/";
+            File dir = new File(path);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            path = path.concat(aerolineaSeleccionada).concat("_Pilotos.pdf");
+            pdfUtil.generarPDFPilotos(path, pilotos);
+        } catch (ArchivoException e) {
+            System.err.println("Error al buscar pilotos: " + e.getMessage());
+        }
+    }
+
+    public void exportarCSV() {
+        try {
+            List<Piloto> pilotos = new PilotoDAO().getTodosLosPilotos(aerolineaSeleccionada);
+            CSVUtil csvUtil = new CSVUtil();
+            String path = "Documentos/" + aerolineaSeleccionada + "/";
+            File dir = new File(path);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            path = path.concat(aerolineaSeleccionada).concat("_Pilotos.csv");
+            csvUtil.generarCSVPilotos(path, pilotos);
+        } catch (ArchivoException e) {
+            System.err.println("Error al buscar pilotos: " + e.getMessage());
+        }
+    }
+
+    public void exportarXLSX() {
+        try {
+            List<Piloto> pilotos = new PilotoDAO().getTodosLosPilotos(aerolineaSeleccionada);
+            XLSXUtil xlsxUtil = new XLSXUtil();
+            String path = "Documentos/" + aerolineaSeleccionada + "/";
+            File dir = new File(path);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            path = path.concat(aerolineaSeleccionada).concat("_Pilotos.xlsx");
+            xlsxUtil.generarXLSXPilotos(path, pilotos);
+        } catch (ArchivoException e) {
+            System.err.println("Error al buscar pilotos: " + e.getMessage());
         }
     }
 }

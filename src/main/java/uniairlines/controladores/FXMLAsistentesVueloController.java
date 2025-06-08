@@ -1,5 +1,6 @@
 package uniairlines.controladores;
 
+import java.io.File;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -9,21 +10,19 @@ import javafx.stage.Stage;
 import uniairlines.dao.AsistenteVueloDAO;
 import uniairlines.excepcion.ArchivoException;
 import uniairlines.modelo.pojo.empleados.AsistenteVuelo;
-import uniairlines.util.ResultadoFXML;
-import uniairlines.util.utilgeneral;
+import uniairlines.util.*;
 
 public class FXMLAsistentesVueloController {
     private final utilgeneral util = new utilgeneral();
     private String aerolineaSeleccionada;
     
-    @FXML private TableView tablaAsistentesVuelo;
+    @FXML private TableView<AsistenteVuelo> tablaAsistentesVuelo;
     @FXML private TableColumn<AsistenteVuelo, String> colID;
     @FXML private TableColumn<AsistenteVuelo, String> colNombre;
     @FXML private TableColumn<AsistenteVuelo, String> colSalario;
     @FXML private TableColumn<AsistenteVuelo, String> colGenero;
     @FXML private TableColumn<AsistenteVuelo, String> colIdiomas;
     @FXML private TableColumn<AsistenteVuelo, String> colHorasAsistidas;
-    @FXML private TableColumn<AsistenteVuelo, String> colFechaCertificacion;
     @FXML private TableColumn<AsistenteVuelo, String> colDireccion;
     @FXML private TableColumn<AsistenteVuelo, String> colTelefono;
     @FXML private TableColumn<AsistenteVuelo, String> colCorreo;
@@ -84,7 +83,7 @@ public class FXMLAsistentesVueloController {
     }
     
     public void editarAsistenteVuelo() {
-        AsistenteVuelo asistente = (AsistenteVuelo) tablaAsistentesVuelo.getSelectionModel().getSelectedItem();
+        AsistenteVuelo asistente = tablaAsistentesVuelo.getSelectionModel().getSelectedItem();
         if (asistente != null) {
             ResultadoFXML<FXMLEditarAsistenteVueloController> resultado = util.abrirFXMLModal(
                 "/uniairlines/vista/FXMLEditarAsistenteVuelo.fxml", "Editar Piloto",
@@ -107,7 +106,7 @@ public class FXMLAsistentesVueloController {
     
     
     public void eliminarAsistenteVuelo() {
-        AsistenteVuelo asistente = (AsistenteVuelo) tablaAsistentesVuelo.getSelectionModel().getSelectedItem();
+        AsistenteVuelo asistente = tablaAsistentesVuelo.getSelectionModel().getSelectedItem();
         if (asistente != null) {
             AsistenteVueloDAO daoAsistentes = new AsistenteVueloDAO();
             try {
@@ -120,6 +119,56 @@ public class FXMLAsistentesVueloController {
             initComponentes(aerolineaSeleccionada);
         } else {
             util.createAlert("Alerta!", "Debes elegir un piloto antes de editarlo");
+        }
+    }
+
+    public void exportarPDF() {
+        try {
+            List<AsistenteVuelo> asistentes = new AsistenteVueloDAO().getTodosLosAsistentesVuelo(aerolineaSeleccionada);
+            PDFUtil pdfUtil = new PDFUtil();
+            String path = "Documentos/" + aerolineaSeleccionada + "/";
+            File dir = new File(path);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            path = path.concat(aerolineaSeleccionada).concat("_Asistentes_Vuelo.pdf");
+            pdfUtil.generarPDFAsistentesVuelo(path, asistentes);
+        } catch (ArchivoException e) {
+            System.err.println("Error al buscar asistentes de vuelo: " + e.getMessage());
+        }
+    }
+
+    public void exportarCSV() {
+        try {
+            List<AsistenteVuelo> asistentes = new AsistenteVueloDAO().getTodosLosAsistentesVuelo(aerolineaSeleccionada);
+            CSVUtil csvUtil = new CSVUtil();
+            String path = "Documentos/" + aerolineaSeleccionada + "/";
+            File dir = new File(path);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            path = path.concat(aerolineaSeleccionada).concat("_Asistentes_Vuelo.csv");
+            csvUtil.generarCSVAsistentesVuelo(path, asistentes);
+        } catch (ArchivoException e) {
+            System.err.println("Error al buscar asistentes de vuelo: " + e.getMessage());
+
+        }
+    }
+
+    public void exportarXLSX() {
+        try {
+            List<AsistenteVuelo> asistentes = new AsistenteVueloDAO().getTodosLosAsistentesVuelo(aerolineaSeleccionada);
+            XLSXUtil xlsxUtil = new XLSXUtil();
+            String path = "Documentos/" + aerolineaSeleccionada + "/";
+            File dir = new File(path);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            path = path.concat(aerolineaSeleccionada).concat("_Asistentes_Vuelo.xlsx");
+            xlsxUtil.generarXLSXAsistentesVuelo(path, asistentes);
+        } catch (ArchivoException e) {
+            System.err.println("Error al buscar asistentes de vuelo: " + e.getMessage());
+
         }
     }
 }
