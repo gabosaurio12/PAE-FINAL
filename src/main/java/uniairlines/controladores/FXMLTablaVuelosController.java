@@ -78,6 +78,7 @@ public class FXMLTablaVuelosController implements Initializable {
     }
 
     public void clicInspeccionar(ActionEvent actionEvent) {
+
     }
 
     public void clicAgregar(ActionEvent actionEvent) {
@@ -90,5 +91,6 @@ public class FXMLTablaVuelosController implements Initializable {
     }
 
     public void clicImprimir(ActionEvent actionEvent) {
+
     }
 }

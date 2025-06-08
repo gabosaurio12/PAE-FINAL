@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="442.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FMXLInspeccionarVueloController">
+   <children>
+      <BorderPane prefHeight="442.0" prefWidth="656.0">
+         <top>
+            <VBox prefHeight="62.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Agendar Vuelo">
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Arial Black" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="Registre los Datos del Vuelo">
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </top>
+         <right>
+            <VBox alignment="TOP_CENTER" prefHeight="340.0" prefWidth="211.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="tfPrecioTurista" promptText="Precio Boleto Turista">
+                     <VBox.margin>
+                        <Insets bottom="10.0" right="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="tfPrecioNegocios" promptText="Precio Boleto Negocios">
+                     <VBox.margin>
+                        <Insets bottom="10.0" right="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="tfPrecioPrimeraClase" promptText="Precio Primera Clase">
+                     <VBox.margin>
+                        <Insets bottom="20.0" right="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#clicConfigurarTripulacion" style="-fx-background-color: #505050;" text="Configurar Tripulación" textFill="WHITE" />
+               </children>
+            </VBox>
+         </right>
+         <bottom>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="40.0" prefWidth="600.0" BorderPane.alignment="BOTTOM_RIGHT">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#clicCancelar" text="Cancelar">
+                     <HBox.margin>
+                        <Insets bottom="5.0" right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#clicGuardar" style="-fx-background-color: #505050;" text="Guardar" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets bottom="5.0" right="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <VBox prefHeight="340.0" prefWidth="430.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="tfCodigoVuelo" maxWidth="-Infinity" prefHeight="31.0" prefWidth="400.0" promptText="Código de Vuelo">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <ComboBox fx:id="comboAerolinea" prefHeight="31.0" prefWidth="400.0" promptText="Aerolinea">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="comboAvion" prefHeight="31.0" prefWidth="400.0" promptText="Avión">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="comboPuertoSalida" prefHeight="31.0" prefWidth="400.0" promptText="Aeropuerto de Salida">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="comboPuertoLlegada" prefHeight="31.0" prefWidth="400.0" promptText="Aeropuerto de Llegada">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <HBox prefHeight="52.0" prefWidth="445.0">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="195.0">
+                           <children>
+                              <Label text="Puerta de Salida">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Slider fx:id="sliderPuertaSalida" maxWidth="-Infinity" prefHeight="18.0" prefWidth="400.0">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="5.0" />
+                                 </VBox.margin>
+                              </Slider>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="64.0" prefWidth="190.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="212.0" text="Puerta de Llegada">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Slider fx:id="sliderPuertaLlegada" maxWidth="-Infinity" prefHeight="18.0" prefWidth="303.0">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="5.0" />
+                                 </VBox.margin>
+                              </Slider>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="36.0" prefWidth="500.0">
+                     <children>
+                        <TextField fx:id="tfFechaHoraSalida" promptText="Fecha y Hora de Salida">
+                           <HBox.margin>
+                              <Insets left="5.0" right="25.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <TextField fx:id="tfFechaHoraLlegada" promptText="Fecha y Hora de Llegada" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
