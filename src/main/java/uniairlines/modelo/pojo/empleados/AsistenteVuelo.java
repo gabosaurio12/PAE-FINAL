@@ -38,7 +38,7 @@ public class AsistenteVuelo extends Empleado {
     }
 
     public String formatoPDF() {
-       return formatoPDF() +
+       return super.formatoPDF() +
                "Número de idiomas: " + numIdiomas + "\n" +
                "Horas de vuelo asistidas: " + numHorasAsistidas + "\n";
     }
