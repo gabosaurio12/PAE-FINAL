@@ -49,7 +49,7 @@ public class FXMLPempleadoController implements Initializable {
             seleccionada = usuarioAutenticado.getAerolinea();
         }
     }
-
+    /*
     @FXML
     private void lbAerolinea(MouseEvent event) {
     }
@@ -84,4 +84,5 @@ public class FXMLPempleadoController implements Initializable {
 
     public void gestionarVentasBoletos(ActionEvent actionEvent) {
     }
+    */
 }

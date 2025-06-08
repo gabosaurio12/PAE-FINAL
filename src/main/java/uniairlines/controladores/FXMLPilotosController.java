@@ -13,7 +13,7 @@ import uniairlines.util.*;
 import uniairlines.modelo.pojo.empleados.Piloto;
 
 public class FXMLPilotosController {
-    private final utilgeneral util = new utilgeneral();
+    private final UtilGeneral util = new UtilGeneral();
     private String aerolineaSeleccionada;
     
     @FXML private TableView<Piloto> tablaPilotos;
@@ -103,7 +103,7 @@ public class FXMLPilotosController {
                 refrezcarTabla();
             }
         } else {
-            util.createAlert("Alerta!", "Debes elegir un piloto antes de editarlo");
+            UtilGeneral.createAlert("Alerta!", "Debes elegir un piloto antes de editarlo");
         }
         
     }
@@ -115,14 +115,14 @@ public class FXMLPilotosController {
             PilotoDAO dao = new PilotoDAO();
             try {
                 dao.eliminarPiloto(piloto, aerolineaSeleccionada);
-                util.createAlert("Eliminación", "Se eliminó el piloto correctamente!");
+                UtilGeneral.createAlert("Eliminación", "Se eliminó el piloto correctamente!");
             } catch (ArchivoException ex) {
-                util.createAlert("Error", "Error al eliminar piloto");
+                UtilGeneral.createAlert("Error", "Error al eliminar piloto");
                 System.err.println("Error al eliminar piloto: " + ex.getMessage());
             }
             refrezcarTabla();
         } else {
-            util.createAlert("Alerta!", "Debes elegir un piloto antes de editarlo");
+            UtilGeneral.createAlert("Alerta!", "Debes elegir un piloto antes de editarlo");
         }
     }
 

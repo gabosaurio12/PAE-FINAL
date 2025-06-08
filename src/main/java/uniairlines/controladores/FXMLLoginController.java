@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 import uniairlines.UNIAIRLINES;
 import uniairlines.dao.UsuarioDAO;
 import uniairlines.modelo.Usuario;
-import uniairlines.util.utilgeneral;
+import uniairlines.util.UtilGeneral;
 
 /**
  * FXML Controller class
@@ -69,11 +69,11 @@ public class FXMLLoginController implements Initializable {
         Usuario usuarioAutenticado = UsuarioDAO.verificarUsuario(usuario, contraseña);
 
         if (usuarioAutenticado != null) {
-            utilgeneral.mostrarAlertaSimple(Alert.AlertType.WARNING,"Credenciales correctas", "Bienvenido " + usuarioAutenticado.getNombre());
+            UtilGeneral.mostrarAlertaSimple(Alert.AlertType.WARNING,"Credenciales correctas", "Bienvenido " + usuarioAutenticado.getNombre());
             irPantallaPrincipal(usuarioAutenticado);
             
         } else {
-            utilgeneral.mostrarAlertaSimple(Alert.AlertType.WARNING,"Credenciales incorrectas", "Usuario y/o contraseña incorrectos. Por favor, verifique las credenciales.");
+            UtilGeneral.mostrarAlertaSimple(Alert.AlertType.WARNING,"Credenciales incorrectas", "Usuario y/o contraseña incorrectos. Por favor, verifique las credenciales.");
         }
     }
      
@@ -132,7 +132,7 @@ public class FXMLLoginController implements Initializable {
                 break;
 
             default:
-                utilgeneral.mostrarAlertaSimple(Alert.AlertType.WARNING,"Credenciales de hacker", "que tu hiciste loco pa llegar aca?. Por favor, verifique las credenciales.");;
+                UtilGeneral.mostrarAlertaSimple(Alert.AlertType.WARNING,"Credenciales de hacker", "que tu hiciste loco pa llegar aca?. Por favor, verifique las credenciales.");;
                 break;
         }
     }

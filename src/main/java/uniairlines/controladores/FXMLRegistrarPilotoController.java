@@ -10,11 +10,9 @@ import uniairlines.dao.PilotoDAO;
 import uniairlines.excepcion.ArchivoException;
 import uniairlines.modelo.pojo.empleados.LicenciaAeronautica;
 import uniairlines.modelo.pojo.empleados.Piloto;
-import uniairlines.util.utilgeneral;
+import uniairlines.util.UtilGeneral;
 
 public class FXMLRegistrarPilotoController {
-    
-    private final utilgeneral util = new utilgeneral();
     private String aerolineaSeleccionada;
     
     @FXML private TextField idTF;
@@ -57,7 +55,7 @@ public class FXMLRegistrarPilotoController {
             piloto.setNumHorasVuelo(Integer.valueOf(horasVueloTF.getText()));
         } catch(NumberFormatException ex) {
             System.err.println("Error en campos numéricos" + ex.getMessage());
-            util.createAlert("Campos Inválidos", "Los campos de Número de idiomas y Salario deben ser numéricos");
+            UtilGeneral.createAlert("Campos Inválidos", "Los campos de Número de idiomas y Salario deben ser numéricos");
             return false;
         }
         
@@ -70,15 +68,15 @@ public class FXMLRegistrarPilotoController {
             PilotoDAO dao = new PilotoDAO();
             try {
                 dao.guardarPiloto(piloto, aerolineaSeleccionada);
-                util.createAlert("Registro", "Se guardó el piloto con éxito!");
+                UtilGeneral.createAlert("Registro", "Se guardó el piloto con éxito!");
             } catch (ArchivoException ex) {
-                util.createAlert("Error", "No se guardó el piloto por un error en el JSON");
+                UtilGeneral.createAlert("Error", "No se guardó el piloto por un error en el JSON");
                 System.err.println("Error al guardar piloto" + ex.getMessage());
             }
             Stage stage = (Stage) idTF.getScene().getWindow();
             stage.close();
         } else {
-            util.createAlert("Campos inválidos", "Hay campos inválidos, por favor corrígalos");
+            UtilGeneral.createAlert("Campos inválidos", "Hay campos inválidos, por favor corrígalos");
         }
     }
 }

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="655.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLTablaVuelosController">
+   <children>
+      <BorderPane prefHeight="655.0" prefWidth="1200.0">
+         <top>
+            <VBox prefHeight="68.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Control de Vuelos">
+                           <font>
+                              <Font name="Arial Bold" size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" right="500.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#clicRegresar" text="Regresar">
+                           <HBox.margin>
+                              <Insets left="388.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="tfBuscarPorCodigo" prefHeight="31.0" prefWidth="254.0" promptText="Buscar por código...">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" onAction="#clicInspeccionar" text="Inspeccionar">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#clicAgregar" style="-fx-background-color: #37ff70;" text="Agregar" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#clicActualizar" style="-fx-background-color: #68a8fb;" text="Actualizar" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#clicEliminar" style="-fx-background-color: #ff5147;" text="Eliminar" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="17.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="370.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#clicImprimir" text="Imprimir Tabla" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </top>
+         <bottom>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="53.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button cancelButton="true" mnemonicParsing="false" onAction="#clicCancelar" text="Cancelar">
+                     <HBox.margin>
+                        <Insets bottom="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#clicGuardar" style="-fx-background-color: #000000;" text="Guardar" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="15.0" right="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <TableView fx:id="tablaVuelos" prefHeight="364.0" prefWidth="1128.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="colCodigoVuelo" prefWidth="127.0" text="Código de Vuelo" />
+                <TableColumn fx:id="colAerolinea" minWidth="0.0" prefWidth="169.0" text="Aerolinea" />
+                  <TableColumn fx:id="colAvion" minWidth="1.0" prefWidth="156.0" text="Avión" />
+                  <TableColumn fx:id="colPasajeros" prefWidth="119.0" text="Num. Pasajeros" />
+                  <TableColumn fx:id="colDestino" prefWidth="163.0" text="Destino" />
+                  <TableColumn fx:id="colTiempoLlegada" minWidth="0.0" prefWidth="153.0" text="Tiempo de Llegada" />
+                  <TableColumn fx:id="colOrigen" prefWidth="164.0" text="Origen" />
+                  <TableColumn fx:id="colTiempoPartida" prefWidth="138.0" text="Tiempo de Partida" />
+              </columns>
+               <BorderPane.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </BorderPane.margin>
+            </TableView>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

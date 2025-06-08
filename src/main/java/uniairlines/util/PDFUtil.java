@@ -11,7 +11,6 @@ import uniairlines.modelo.pojo.empleados.Piloto;
 import java.util.List;
 
 public class PDFUtil {
-    private final utilgeneral util = new utilgeneral();
 
     public void generarPDFPilotos(String path, List<Piloto> pilotos) {
         try {
@@ -23,9 +22,9 @@ public class PDFUtil {
                 document.add(new Paragraph(parrafo));
             }
             document.close();
-            util.createAlert("Creción de PDF", "Se creó con éxito el PDF");
+            UtilGeneral.createAlert("Creción de PDF", "Se creó con éxito el PDF");
         } catch (Exception e) {
-            util.createAlert("Error", "Error al crear PDF");
+            UtilGeneral.createAlert("Error", "Error al crear PDF");
             System.err.println("Error al crear PDF: " + e.getMessage());
         }
     }
@@ -40,9 +39,9 @@ public class PDFUtil {
                 document.add(new Paragraph(parrafo));
             }
             document.close();
-            util.createAlert("Creción de PDF", "Se creó con éxito el PDF");
+            UtilGeneral.createAlert("Creción de PDF", "Se creó con éxito el PDF");
         } catch (Exception e) {
-            util.createAlert("Error", "Error al crear PDF");
+            UtilGeneral.createAlert("Error", "Error al crear PDF");
             System.err.println("Error al crear PDF: " + e.getMessage());
         }
     }
@@ -57,9 +56,9 @@ public class PDFUtil {
                 document.add(new Paragraph(parrafo));
             }
             document.close();
-            util.createAlert("Creación de PDF", "Se creó con éxito el PDF");
+            UtilGeneral.createAlert("Creación de PDF", "Se creó con éxito el PDF");
         } catch (Exception e) {
-            util.createAlert("Error", "Error al crear PDF");
+            UtilGeneral.createAlert("Error", "Error al crear PDF");
             System.err.println("Error al crear PDF: " + e.getMessage());
         }
     }

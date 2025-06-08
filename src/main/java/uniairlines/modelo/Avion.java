@@ -17,8 +17,6 @@ public class Avion {
 
     public Avion() {
         this.id = UUID.randomUUID().toString();
-
-        
     }
 
     public Avion(String modelo,int Peso) {

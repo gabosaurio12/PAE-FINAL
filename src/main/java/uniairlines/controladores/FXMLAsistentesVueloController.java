@@ -13,7 +13,7 @@ import uniairlines.modelo.pojo.empleados.AsistenteVuelo;
 import uniairlines.util.*;
 
 public class FXMLAsistentesVueloController {
-    private final utilgeneral util = new utilgeneral();
+    private UtilGeneral util = new UtilGeneral();
     private String aerolineaSeleccionada;
     
     @FXML private TableView<AsistenteVuelo> tablaAsistentesVuelo;
@@ -59,7 +59,7 @@ public class FXMLAsistentesVueloController {
             AsistenteVueloDAO daoAsistentes = new AsistenteVueloDAO();
             asistentes = daoAsistentes.getTodosLosAsistentesVuelo(aerolineaSeleccionada);
         } catch (ArchivoException e) {
-            util.createAlert("Error", "Hubo un error al cargar los asistentes de vuelo");
+            UtilGeneral.createAlert("Error", "Hubo un error al cargar los asistentes de vuelo");
             System.err.println("Error al cargar asistentes de vuelo " + e.getMessage());
         }
         
@@ -99,7 +99,7 @@ public class FXMLAsistentesVueloController {
                 initComponentes(aerolineaSeleccionada);
             }
         } else {
-            util.createAlert("Alerta!", "Debes elegir un asistente de vuelo antes de editarlo");
+            UtilGeneral.createAlert("Alerta!", "Debes elegir un asistente de vuelo antes de editarlo");
         }
         
     }
@@ -111,14 +111,14 @@ public class FXMLAsistentesVueloController {
             AsistenteVueloDAO daoAsistentes = new AsistenteVueloDAO();
             try {
                 daoAsistentes.eliminarAsistenteVuelo(asistente, aerolineaSeleccionada);
-                util.createAlert("Eliminación", "Se eliminó el asistente de vuelo correctamente!");
+                UtilGeneral.createAlert("Eliminación", "Se eliminó el asistente de vuelo correctamente!");
             } catch (ArchivoException ex) {
-                util.createAlert("Error", "Error al eliminar asistente de vuelo");
+                UtilGeneral.createAlert("Error", "Error al eliminar asistente de vuelo");
                 System.err.println("Error al eliminar piloto: " + ex.getMessage());
             }
             initComponentes(aerolineaSeleccionada);
         } else {
-            util.createAlert("Alerta!", "Debes elegir un piloto antes de editarlo");
+            UtilGeneral.createAlert("Alerta!", "Debes elegir un piloto antes de editarlo");
         }
     }
 

@@ -6,6 +6,7 @@ package uniairlines.modelo.pojo;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
 import uniairlines.modelo.pojo.aerolinea.Aeropuerto;
 import uniairlines.modelo.pojo.empleados.AsistenteVuelo;
 import uniairlines.modelo.pojo.empleados.Piloto;
@@ -16,6 +17,8 @@ import uniairlines.modelo.pojo.empleados.Piloto;
  */
 public class Vuelo {
     private String codigoVuelo;
+    private String aerolinea;
+    private String modeloAvion;
     private Integer numPasajeros;
     private Aeropuerto salida;
     private Aeropuerto destino;
@@ -40,6 +43,22 @@ public class Vuelo {
 
     public void setCodigoVuelo(String codigoVuelo) {
         this.codigoVuelo = codigoVuelo;
+    }
+
+    public String getAerolinea() {
+        return aerolinea;
+    }
+
+    public void setAerolinea(String aerolinea) {
+        this.aerolinea = aerolinea;
+    }
+
+    public String getModeloAvion() {
+        return modeloAvion;
+    }
+
+    public void setModeloAvion(String modeloAvion) {
+        this.modeloAvion = modeloAvion;
     }
 
     public Integer getNumPasajeros() {

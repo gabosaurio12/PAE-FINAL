@@ -19,7 +19,7 @@ import javafx.stage.Window;
  *
  * @author cuent
  */
-public class utilgeneral {
+public class UtilGeneral {
     
     public static Optional<ButtonType> mostrarAlertaSimple(Alert.AlertType tipo,
         String titulo, String contenido) {
@@ -43,7 +43,7 @@ public class utilgeneral {
         return (alertaConfirmacion.showAndWait().get()) ==ButtonType.OK;
     }
     
-    public void createAlert(String title, String message) {
+    public static void createAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);

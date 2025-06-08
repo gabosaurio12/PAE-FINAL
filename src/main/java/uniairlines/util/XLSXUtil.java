@@ -11,9 +11,6 @@ import java.io.IOException;
 import java.util.List;
 
 public class XLSXUtil {
-
-    private final utilgeneral util = new utilgeneral();
-
     public void generarXLSXPilotos(String path, List<Piloto> pilotos) {
         try (Workbook workbook = new XSSFWorkbook()) {
             Sheet sheet = workbook.createSheet("Datos");
@@ -48,10 +45,10 @@ public class XLSXUtil {
             try (FileOutputStream fos = new FileOutputStream(path)) {
                 workbook.write(fos);
             }
-            util.createAlert("Éxito", "Se creó con éxito el XLSX");
+            UtilGeneral.createAlert("Éxito", "Se creó con éxito el XLSX");
 
         } catch (IOException e) {
-            util.createAlert("Error", "Hubo un error al crear el XLSX");
+            UtilGeneral.createAlert("Error", "Hubo un error al crear el XLSX");
             System.err.println("Error al crear XLSX: " + e.getMessage());
         }
     }
@@ -90,10 +87,10 @@ public class XLSXUtil {
             try (FileOutputStream fos = new FileOutputStream(path)) {
                 workbook.write(fos);
             }
-            util.createAlert("Éxito", "Se creó con éxito el XLSX");
+            UtilGeneral.createAlert("Éxito", "Se creó con éxito el XLSX");
 
         } catch (IOException e) {
-            util.createAlert("Error", "Hubo un error al crear el XLSX");
+            UtilGeneral.createAlert("Error", "Hubo un error al crear el XLSX");
             System.err.println("Error al crear XLSX: " + e.getMessage());
         }
     }
@@ -132,10 +129,10 @@ public class XLSXUtil {
             try (FileOutputStream fos = new FileOutputStream(path)) {
                 workbook.write(fos);
             }
-            util.createAlert("Éxito", "Se creó con éxito el XLSX");
+            UtilGeneral.createAlert("Éxito", "Se creó con éxito el XLSX");
 
         } catch (IOException e) {
-            util.createAlert("Error", "Hubo un error al crear el XLSX");
+            UtilGeneral.createAlert("Error", "Hubo un error al crear el XLSX");
             System.err.println("Error al crear XLSX: " + e.getMessage());
         }
     }

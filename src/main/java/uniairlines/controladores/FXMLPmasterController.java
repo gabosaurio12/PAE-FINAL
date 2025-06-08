@@ -24,7 +24,7 @@ import javafx.stage.Modality;
 import uniairlines.dao.AerolineaDAO;
 import uniairlines.dao.UsuarioDAO;
 import uniairlines.modelo.Usuario;
-import uniairlines.util.utilgeneral;
+import uniairlines.util.UtilGeneral;
 
 public class FXMLPmasterController {
 
@@ -103,7 +103,7 @@ public class FXMLPmasterController {
     row.setOnMouseClicked(event -> {
         if (event.getClickCount() == 2 && !row.isEmpty()) {
             Aerolinea aerolineaSeleccionada = row.getItem();
-            utilgeneral.mostrarAlertaSimple(AlertType.ERROR, "Error", "No se pudo cargar la lista de aerolíneas.");
+            UtilGeneral.mostrarAlertaSimple(AlertType.ERROR, "Error", "No se pudo cargar la lista de aerolíneas.");
         }
     });
     return row;
@@ -111,7 +111,7 @@ public class FXMLPmasterController {
 
 
         } catch (ArchivoException e) {
-            utilgeneral.mostrarAlertaSimple(AlertType.ERROR, "Error", "No se pudo cargar la lista de aerolíneas.");
+            UtilGeneral.mostrarAlertaSimple(AlertType.ERROR, "Error", "No se pudo cargar la lista de aerolíneas.");
         }
     }
     
@@ -155,7 +155,7 @@ public class FXMLPmasterController {
     Aerolinea seleccionada = tablaAerolineas.getSelectionModel().getSelectedItem();
     
     if (seleccionada == null) {
-        utilgeneral.mostrarAlertaSimple(AlertType.WARNING, "Sin selección", "Por favor, seleccione una aerolínea para eliminar.");
+        UtilGeneral.mostrarAlertaSimple(AlertType.WARNING, "Sin selección", "Por favor, seleccione una aerolínea para eliminar.");
         return;
     }
 
@@ -179,9 +179,9 @@ public class FXMLPmasterController {
                 o.eliminar(seleccionada);
                 listaAerolineas.remove(seleccionada);
                 ArchivoUtil.escribirJson(RUTA_JSON, listaAerolineas);
-                utilgeneral.mostrarAlertaSimple(AlertType.INFORMATION, "Eliminado", "La aerolínea ha sido eliminada.");
+                UtilGeneral.mostrarAlertaSimple(AlertType.INFORMATION, "Eliminado", "La aerolínea ha sido eliminada.");
             } catch (ArchivoException ex) {
-                utilgeneral.mostrarAlertaSimple(AlertType.ERROR, "Error", "No se pudo eliminar la aerolínea.");
+                UtilGeneral.mostrarAlertaSimple(AlertType.ERROR, "Error", "No se pudo eliminar la aerolínea.");
             }
         }
     });
@@ -191,7 +191,7 @@ public class FXMLPmasterController {
   private void administrarCuentas() {
     Aerolinea seleccionada = tablaAerolineas.getSelectionModel().getSelectedItem();
     if (seleccionada == null) {
-        utilgeneral.mostrarAlertaSimple(AlertType.WARNING, "Sin selección", "Por favor, seleccione una aerolínea para modificar.");
+        UtilGeneral.mostrarAlertaSimple(AlertType.WARNING, "Sin selección", "Por favor, seleccione una aerolínea para modificar.");
         return;
     }
 
@@ -242,14 +242,14 @@ public class FXMLPmasterController {
         tablaAerolineas.setItems(listaFiltrada);
 
     } catch (IOException | ArchivoException ex) {
-        utilgeneral.mostrarAlertaSimple(AlertType.ERROR, "Error", "No se pudo abrir el formulario para agregar aerolínea.");
+        UtilGeneral.mostrarAlertaSimple(AlertType.ERROR, "Error", "No se pudo abrir el formulario para agregar aerolínea.");
     }
        
   }
 private void modificarAerolinea() {
     Aerolinea seleccionada = tablaAerolineas.getSelectionModel().getSelectedItem();
     if (seleccionada == null) {
-        utilgeneral.mostrarAlertaSimple(Alert.AlertType.WARNING, "Sin selección", "Por favor, seleccione una aerolínea para modificar.");
+        UtilGeneral.mostrarAlertaSimple(Alert.AlertType.WARNING, "Sin selección", "Por favor, seleccione una aerolínea para modificar.");
         return;
     }
     try {
@@ -274,7 +274,7 @@ private void modificarAerolinea() {
         }
 
     } catch (IOException | ArchivoException ex) {
-        utilgeneral.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo abrir el formulario de modificación.");
+        UtilGeneral.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo abrir el formulario de modificación.");
     }
 }
 

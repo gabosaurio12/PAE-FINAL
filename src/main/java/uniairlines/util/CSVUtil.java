@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.util.List;
 
 public class CSVUtil {
-    private final utilgeneral util = new utilgeneral();
 
     public void generarCSVPilotos(String path, List<Piloto> pilotos) {
         try (CSVWriter writer = new CSVWriter(new FileWriter(path))) {
@@ -22,10 +21,10 @@ public class CSVUtil {
                 String[] pilotoCSV = piloto.formatoCSV();
                 writer.writeNext(pilotoCSV);
             }
-            util.createAlert("Éxito", "Se creó con éxito el CSV");
+            UtilGeneral.createAlert("Éxito", "Se creó con éxito el CSV");
 
         } catch (IOException e) {
-            util.createAlert("Error", "Error al crear CSV");
+            UtilGeneral.createAlert("Error", "Error al crear CSV");
 
             System.err.println("Error al crear CSV: " + e.getMessage());
         }
@@ -41,10 +40,10 @@ public class CSVUtil {
                 String[] asistenteCSV = asistente.formatoCSV();
                 writer.writeNext(asistenteCSV);
             }
-            util.createAlert("Éxito", "Se creó con éxito el CSV");
+            UtilGeneral.createAlert("Éxito", "Se creó con éxito el CSV");
 
         } catch (IOException e) {
-            util.createAlert("Error", "Error al crear CSV");
+            UtilGeneral.createAlert("Error", "Error al crear CSV");
             System.err.println("Error al crear CSV: " + e.getMessage());
         }
     }
@@ -56,9 +55,9 @@ public class CSVUtil {
                 String[] clienteCSV = cliente.formatoCSV();
                 writer.writeNext(clienteCSV);
             }
-            util.createAlert("Éxito", "Se creó con éxito el CSV");
+            UtilGeneral.createAlert("Éxito", "Se creó con éxito el CSV");
         } catch (IOException e) {
-            util.createAlert("Error", "Error al crear CSV");
+            UtilGeneral.createAlert("Error", "Error al crear CSV");
             System.err.println("Error al crear CSV: " + e.getMessage());
         }
     }

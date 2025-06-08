@@ -17,7 +17,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import uniairlines.modelo.Usuario;
-import uniairlines.util.utilgeneral;
+import uniairlines.util.UtilGeneral;
 
 /**
  * FXML Controller class
@@ -25,7 +25,7 @@ import uniairlines.util.utilgeneral;
  * @author cuent
  */
 public class FXMLPadminController implements Initializable {
-    private final utilgeneral util = new utilgeneral();
+    private final UtilGeneral util = new UtilGeneral();
 
     @FXML
     private Label lbAerolinea;

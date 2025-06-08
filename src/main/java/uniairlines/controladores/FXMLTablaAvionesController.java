@@ -27,7 +27,7 @@ import uniairlines.dao.AvionDAO;
 import uniairlines.excepcion.ArchivoException;
 import uniairlines.modelo.Asiento;
 import uniairlines.modelo.Avion;
-import uniairlines.util.utilgeneral;
+import uniairlines.util.UtilGeneral;
 
 public class FXMLTablaAvionesController implements Initializable {
 
@@ -124,7 +124,7 @@ public class FXMLTablaAvionesController implements Initializable {
     }
 
     private void mostrarAlerta(String mensaje) {
-        utilgeneral.mostrarAlertaSimple(AlertType.ERROR, "?", "llego aca");
+        UtilGeneral.mostrarAlertaSimple(AlertType.ERROR, "?", "llego aca");
         Alert alert = new Alert(Alert.AlertType.WARNING, mensaje, ButtonType.OK);
         alert.showAndWait();
     }

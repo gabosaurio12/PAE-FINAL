@@ -4,12 +4,11 @@ import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 import uniairlines.controladores.FXMLRegistrarAsistenteVueloController;
-import uniairlines.controladores.FXMLRegistrarPilotoController;
-import uniairlines.util.utilgeneral;
+import uniairlines.util.UtilGeneral;
 
 public class RegistrarAsistenteVueloFallido extends ApplicationTest {
 
-    private final utilgeneral util = new utilgeneral();
+    private final UtilGeneral util = new UtilGeneral();
 
     @Override
     public void start(Stage stage) {

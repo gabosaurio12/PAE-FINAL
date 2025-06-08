@@ -19,7 +19,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import javafx.scene.layout.GridPane;
-import uniairlines.util.utilgeneral;
+import uniairlines.util.UtilGeneral;
 
 public class TablaUsuariosController implements Initializable {
 
@@ -60,10 +60,10 @@ public class TablaUsuariosController implements Initializable {
             try {
                 usuarioDAO.guardar(usuario);
                
-                utilgeneral.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "Usuario agregado correctamente.");
+                UtilGeneral.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "Usuario agregado correctamente.");
                 cargarUsuarios();
             } catch (ArchivoException ex) {
-                utilgeneral.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo agregar el usuario: " + ex.getMessage());
+                UtilGeneral.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo agregar el usuario: " + ex.getMessage());
             }
         });
     }
@@ -72,7 +72,7 @@ public class TablaUsuariosController implements Initializable {
     private void modificarUsuario() {
         Usuario seleccionado = tablaUsuarios.getSelectionModel().getSelectedItem();
         if (seleccionado == null) {
-            utilgeneral.mostrarAlertaSimple(Alert.AlertType.WARNING, "Advertencia", "Seleccione un usuario para modificar.");
+            UtilGeneral.mostrarAlertaSimple(Alert.AlertType.WARNING, "Advertencia", "Seleccione un usuario para modificar.");
             return;
         }
 
@@ -82,9 +82,9 @@ public class TablaUsuariosController implements Initializable {
             try {
                 usuarioDAO.actualizar(usuarioModificado);
                 cargarUsuarios();
-                utilgeneral.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "Usuario modificado correctamente.");
+                UtilGeneral.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "Usuario modificado correctamente.");
             } catch (ArchivoException ex) {
-                utilgeneral.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo modificar el usuario: " + ex.getMessage());
+                UtilGeneral.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo modificar el usuario: " + ex.getMessage());
             }
         });
     }
@@ -93,20 +93,20 @@ public class TablaUsuariosController implements Initializable {
     private void eliminarUsuario() {
         Usuario seleccionado = tablaUsuarios.getSelectionModel().getSelectedItem();
         if (seleccionado == null) {
-            utilgeneral.mostrarAlertaSimple(Alert.AlertType.WARNING, "Advertencia", "Seleccione un usuario para eliminar.");
+            UtilGeneral.mostrarAlertaSimple(Alert.AlertType.WARNING, "Advertencia", "Seleccione un usuario para eliminar.");
             return;
         }
 
-        Optional<ButtonType> resultado = utilgeneral.mostrarAlertaSimple(Alert.AlertType.CONFIRMATION, "Confirmar eliminación",
+        Optional<ButtonType> resultado = UtilGeneral.mostrarAlertaSimple(Alert.AlertType.CONFIRMATION, "Confirmar eliminación",
                 "¿Está seguro que desea eliminar el usuario " + seleccionado.getUsuario() + "?");
 
         if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
             try {
                 usuarioDAO.eliminar(seleccionado);
                 cargarUsuarios();
-                utilgeneral.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "Usuario eliminado correctamente.");
+                UtilGeneral.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "Usuario eliminado correctamente.");
             } catch (ArchivoException ex) {
-                utilgeneral.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo eliminar el usuario: " + ex.getMessage());
+                UtilGeneral.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo eliminar el usuario: " + ex.getMessage());
             }
         }
     }
@@ -199,13 +199,13 @@ public class TablaUsuariosController implements Initializable {
 
                 // Validar campos
                 if (u.isEmpty() || c.isEmpty() || t == null || (!"master".equalsIgnoreCase(t) && (a == null || a.isEmpty()))) {
-                    utilgeneral.mostrarAlertaSimple(Alert.AlertType.WARNING, "Validación", "Complete todos los campos correctamente.");
+                    UtilGeneral.mostrarAlertaSimple(Alert.AlertType.WARNING, "Validación", "Complete todos los campos correctamente.");
                     return null;
                 }
 
                 // Validar tipo válido
                 if (!tiposValidos.contains(t.toLowerCase())) {
-                    utilgeneral.mostrarAlertaSimple(Alert.AlertType.WARNING, "Validación", "Tipo de usuario no válido.");
+                    UtilGeneral.mostrarAlertaSimple(Alert.AlertType.WARNING, "Validación", "Tipo de usuario no válido.");
                     return null;
                 }
 
@@ -250,7 +250,7 @@ public class TablaUsuariosController implements Initializable {
         tablaUsuarios.setItems(listaUsuarios);
 
     } catch (ArchivoException ex) {
-        utilgeneral.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo cargar la lista de usuarios: " + ex.getMessage());
+        UtilGeneral.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo cargar la lista de usuarios: " + ex.getMessage());
     } 
     }
     

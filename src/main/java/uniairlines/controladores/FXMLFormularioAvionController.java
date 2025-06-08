@@ -8,9 +8,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,7 +19,7 @@ import uniairlines.dao.AvionDAO;
 import uniairlines.excepcion.ArchivoException;
 import uniairlines.modelo.Asiento;
 import uniairlines.modelo.Avion;
-import uniairlines.util.utilgeneral;
+import uniairlines.util.UtilGeneral;
 
 /**
  * FXML Controller class
@@ -110,7 +108,7 @@ public class FXMLFormularioAvionController implements Initializable {
         try {
             
             a.agregar(avion, NombreAerolinea);
-            utilgeneral.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Exito", "Avion registrado en modo mantenimiento");
+            UtilGeneral.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Exito", "Avion registrado en modo mantenimiento");
         } catch (ArchivoException ex) {
             
         }
@@ -158,7 +156,7 @@ public class FXMLFormularioAvionController implements Initializable {
     AvionDAO a = new AvionDAO();
     
     a.modificar(aviona, NombreAerolinea);
-    utilgeneral.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Exito", "Avion modificado");
+    UtilGeneral.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Exito", "Avion modificado");
     }
 }
  
