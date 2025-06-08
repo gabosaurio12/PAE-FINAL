@@ -77,22 +77,6 @@
                </children>
             </VBox>
          </top>
-         <bottom>
-            <HBox alignment="BOTTOM_RIGHT" prefHeight="53.0" prefWidth="700.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button cancelButton="true" mnemonicParsing="false" onAction="#clicCancelar" text="Cancelar">
-                     <HBox.margin>
-                        <Insets bottom="10.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#clicGuardar" style="-fx-background-color: #000000;" text="Guardar" textFill="WHITE">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="15.0" right="10.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
-         </bottom>
          <center>
             <TableView fx:id="tablaVuelos" prefHeight="364.0" prefWidth="1128.0" BorderPane.alignment="CENTER">
               <columns>

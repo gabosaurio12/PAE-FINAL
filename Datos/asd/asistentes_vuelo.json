@@ -10,5 +10,17 @@
     "fechaNacimiento": "11/12/1960",
     "genero": "MASCULINO",
     "salario": 100000.0
+  },
+  {
+    "numIdiomas": 5,
+    "numHorasAsistidas": 10000,
+    "identificador": "asistenteVueloTest",
+    "nombre": "Mi ViCapi",
+    "direccion": "Tus ojos",
+    "telefono": "10293333334756",
+    "correo": "vicapi@gmail.com",
+    "fechaNacimiento": "01/02/1987",
+    "genero": "FEMENINO",
+    "salario": 150000.0
   }
 ]
