@@ -158,12 +158,11 @@ public class FXMLTablaAvionesController implements Initializable {
     private void mostrarVentanaAsientos(Avion avionSeleccionado) {
 
         try {
-            
             Avion hola = avionDAO.buscarPorId(aerolineaSeleccionada, avionSeleccionado.getId());
             List<Asiento> asientos = new ArrayList<>();
             int filas = hola.getFilas();
             int asientosPorFila = hola.getAsientosPorFila(); // fijo como dijiste
-            
+
             for (int fila = 1; fila <= filas; fila++) {
                 for (int col = 0; col < asientosPorFila; col++) {
                     String letraColumna = String.valueOf((char) ('A' + col));
@@ -171,20 +170,41 @@ public class FXMLTablaAvionesController implements Initializable {
                     asientos.add(asiento);
                 }
             }
-            
-            
-            
+
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLAsientosAvion.fxml"));
                 Scene scene = new Scene(loader.load());
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 stage.initModality(Modality.APPLICATION_MODAL); // Bloquea la ventana padre
-                
-                
+
                 FXMLAsientosAvionController controlador = loader.getController();
                 controlador.setAsientos(asientos);
                 stage.showAndWait();
+
+
+                List<Asiento> asientosActualizados = controlador.getAsientosActualizados();
+                hola.setAsientos(asientosActualizados);
+                hola.setEstado("Libre");
+
+                try {
+                    avionDAO.modificar(hola, asientosActualizados, aerolineaSeleccionada);
+                    mostrarAlerta("Avión actualizado correctamente.");
+                } catch (ArchivoException e) {
+                    mostrarAlerta("Error al actualizar avión: " + e.getMessage());
+                }
+
+                cargarAviones();
+
+
+
+
+                // Ejemplo: imprimir la lista
+                System.out.println("== Lista de asientos actualizados ==");
+                for (Asiento a : asientosActualizados) {
+                    System.out.println(a.getFila() + a.getColumna() + " Clase: " + a.getClase() + " Estado: " + a.getEstado() + " Precio: " + a.getPrecio());
+                }
+
             } catch (IOException e) {
                 e.printStackTrace();
                 mostrarAlerta("Error al abrir formulario: " + e.getMessage());
@@ -193,8 +213,8 @@ public class FXMLTablaAvionesController implements Initializable {
             Logger.getLogger(FXMLTablaAvionesController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-    
-    
+
+
+
+
 }

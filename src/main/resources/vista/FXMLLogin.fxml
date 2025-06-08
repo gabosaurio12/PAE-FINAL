@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -8,20 +13,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLLoginController">
+<AnchorPane id="AnchorPane" prefHeight="421.0" prefWidth="647.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLLoginController">
    <children>
-      <TextField fx:id="tfUsuario" layoutX="400.0" layoutY="164.0" />
-      <TextField fx:id="tfContraseña" layoutX="400.0" layoutY="207.0" />
-      <Button layoutX="435.0" layoutY="280.0" mnemonicParsing="false" onAction="#btnIniciarSesion" text="Iniciar Sesion" />
-      <ImageView fitHeight="400.0" layoutX="-47.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="480.0" fitWidth="444.0" layoutX="-75.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@imagenes/imagenLogin.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="377.0" layoutY="57.0" text="UNIAIRLINES">
+      <Label alignment="CENTER" layoutX="418.0" layoutY="71.0" prefHeight="53.0" prefWidth="186.0" text="UniAirlines">
          <font>
-            <Font name="DIN Alternate Bold" size="36.0" />
+            <Font name="System Italic" size="36.0" />
          </font>
       </Label>
+      <Pane layoutX="413.0" layoutY="147.0" prefHeight="200.0" prefWidth="201.0">
+         <children>
+            <TextField fx:id="tfContraseña" layoutX="7.0" layoutY="75.0" prefHeight="31.0" prefWidth="186.0" />
+            <TextField fx:id="tfUsuario" layoutX="7.0" layoutY="28.0" prefHeight="31.0" prefWidth="186.0" />
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="142.0" mnemonicParsing="false" onAction="#btnIniciarSesion" prefHeight="31.0" prefWidth="186.0" text="Iniciar Sesion" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
