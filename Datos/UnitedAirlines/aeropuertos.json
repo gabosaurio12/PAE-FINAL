@@ -1,0 +1,22 @@
+[
+  {
+    "pais" : "España",
+    "ciudad" : "Madrid",
+    "numPuertas" : 18
+  },
+  {
+    "pais" : "Mexico",
+    "ciudad" : "CDMX",
+    "numPuertas" : 14
+  },
+  {
+    "pais" : "Japon",
+    "ciudad" : "Tokyo",
+    "numPuertas" : 20
+  },
+  {
+    "pais" : "Marruecos",
+    "ciudad" : "Rabat",
+    "numPuertas" : 15
+  }
+]

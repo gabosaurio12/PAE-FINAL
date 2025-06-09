@@ -1,0 +1,17 @@
+[
+  {
+    "pais" : "Mexico",
+    "ciudad" : "Guadalajara",
+    "numPuertas" : 12
+  },
+  {
+    "pais" : "USA",
+    "ciudad" : "Houston",
+    "numPuertas" : 16
+  },
+  {
+    "pais" : "USA",
+    "ciudad" : "New York",
+    "numPuertas" : 24
+  }
+]
