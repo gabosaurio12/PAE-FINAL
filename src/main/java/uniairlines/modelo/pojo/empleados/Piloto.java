@@ -96,4 +96,9 @@ public class Piloto extends Empleado {
                 validarFecha() &&
                 numHorasVuelo !=  null;
     }
+
+    @Override
+    public String toString() {
+        return getNombre();
+    }
 }

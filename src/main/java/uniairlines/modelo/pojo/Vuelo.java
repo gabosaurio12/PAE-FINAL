@@ -171,4 +171,28 @@ public class Vuelo {
     public void setAsistentes(List<AsistenteVuelo> asistentes) {
         this.asistentes = asistentes;
     }
+
+    //TEST
+    @Override
+    public String toString() {
+        return "Vuelo{" +
+                "codigoVuelo='" + codigoVuelo + '\'' +
+                ", aerolinea='" + aerolinea + '\'' +
+                ", codigoAvion='" + codigoAvion + '\'' +
+                ", numPasajeros=" + numPasajeros +
+                ", salida=" + salida +
+                ", destino=" + destino +
+                ", fechaSalida='" + fechaSalida + '\'' +
+                ", fechaLlegada='" + fechaLlegada + '\'' +
+                ", minutosDeVueloEstimados=" + minutosDeVueloEstimados +
+                ", puertaSalida=" + puertaSalida +
+                ", puertaLlegada=" + puertaLlegada +
+                ", precioTurista=" + precioTurista +
+                ", precioNegocios=" + precioNegocios +
+                ", precioPrimeraClase=" + precioPrimeraClase +
+                ", piloto=" + piloto +
+                ", copiloto=" + copiloto +
+                ", asistentes=" + asistentes +
+                '}';
+    }
 }

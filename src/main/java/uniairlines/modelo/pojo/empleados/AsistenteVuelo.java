@@ -65,4 +65,9 @@ public class AsistenteVuelo extends Empleado {
                 numIdiomas != null &&
                 numHorasAsistidas != null;
     }
+
+    @Override
+    public String toString() {
+        return getNombre();
+    }
 }

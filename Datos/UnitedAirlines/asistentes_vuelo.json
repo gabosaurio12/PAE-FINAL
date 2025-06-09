@@ -22,5 +22,29 @@
     "fechaNacimiento": "01/02/1987",
     "genero": "FEMENINO",
     "salario": 150000.0
+  },
+  {
+    "numIdiomas": 2,
+    "numHorasAsistidas": 150000,
+    "identificador": "asis2",
+    "nombre": "Dormund Espergh",
+    "direccion": "Belgica",
+    "telefono": "30987890",
+    "correo": "espergh@gmail.com",
+    "fechaNacimiento": "07/10/1990",
+    "genero": "MASCULINO",
+    "salario": 90000.0
+  },
+  {
+    "numIdiomas": 3,
+    "numHorasAsistidas": 100000,
+    "identificador": "asis5",
+    "nombre": "Esperanza Salvatora",
+    "direccion": "Italia",
+    "telefono": "1122938761",
+    "correo": "salvatora@hotmail.com",
+    "fechaNacimiento": "11/09/2001",
+    "genero": "FEMENINO",
+    "salario": 120000.0
   }
 ]
