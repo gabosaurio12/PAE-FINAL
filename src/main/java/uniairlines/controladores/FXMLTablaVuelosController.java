@@ -97,20 +97,56 @@ public class FXMLTablaVuelosController implements Initializable {
     }
 
     public void clicActualizar(ActionEvent actionEvent) {
-        ResultadoFXML<FXMLAgendarVueloController> resultado = util.abrirFXMLModal(
-                "/vista/FMXLAgendarVuelo.fxml",
-                "Actualizar Vuelo",
-                FXMLAgendarVueloController.class,
-                tfBuscarPorCodigo.getScene().getWindow());
-        if(resultado != null) {
-            FXMLAgendarVueloController controlador = resultado.getControlador();
-            Stage stage = resultado.getStage();
-            controlador.cargarDatos(this,tablaVuelos.getSelectionModel().getSelectedItem());
-            stage.showAndWait();
+        if(tablaVuelos.getSelectionModel().getSelectedItem() != null) {
+            ResultadoFXML<FXMLAgendarVueloController> resultado = util.abrirFXMLModal(
+                    "/vista/FMXLAgendarVuelo.fxml",
+                    "Actualizar Vuelo",
+                    FXMLAgendarVueloController.class,
+                    tfBuscarPorCodigo.getScene().getWindow());
+            if(resultado != null) {
+                FXMLAgendarVueloController controlador = resultado.getControlador();
+                Stage stage = resultado.getStage();
+                controlador.cargarDatos(this, tablaVuelos.getSelectionModel().getSelectedItem());
+                stage.showAndWait();
+            }
+        } else {
+            UtilGeneral.mostrarAlerta(
+                    "Error",
+                    "Primero debe seleccionar un vuelo",
+                    Alert.AlertType.INFORMATION);
         }
+
     }
 
     public void clicEliminar(ActionEvent actionEvent) {
+        Vuelo aEliminar = tablaVuelos.getSelectionModel().getSelectedItem();
+        if(aEliminar != null) {
+            boolean confirmacion = UtilGeneral.mostrarAlertaConfirmacion(
+                    "Eliminacion", String.format(
+                            "¿Desea eliminar el vuelo %s? Esta acción no se puede deshacer", aEliminar.getCodigoVuelo()));
+            if(confirmacion) {
+                try {
+                    VueloDAO dao = new VueloDAO();
+                    dao.eliminar(aEliminar);
+                    cargarVuelos();
+                    UtilGeneral.mostrarAlerta(
+                            "Exito",
+                            "El vuelo fue eliminado correctamente",
+                            Alert.AlertType.INFORMATION);
+                } catch (ArchivoException aex) {
+                    UtilGeneral.mostrarAlerta(
+                            "Error",
+                            String.format("%s \n %s", aex.getMessage(), aex.getCause()),
+                            Alert.AlertType.ERROR);
+                }
+            }
+        } else {
+            UtilGeneral.mostrarAlerta(
+                    "Error",
+                    "Primero debe seleccionar un vuelo",
+                    Alert.AlertType.INFORMATION);
+        }
+
     }
 
     public void clicImprimir(ActionEvent actionEvent) {

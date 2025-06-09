@@ -40,4 +40,10 @@ public class VueloDAO {
         }
         ArchivoUtil.escribirJson(RUTA_ARCHIVO_VUELOS, vuelos);
     }
+
+    public void eliminar(Vuelo vueloEliminado) throws ArchivoException {
+        List<Vuelo> vuelos = recuperarVuelos();
+        vuelos.removeIf(vuelo -> vuelo.getCodigoVuelo().equals(vueloEliminado.getCodigoVuelo()));
+        ArchivoUtil.escribirJson(RUTA_ARCHIVO_VUELOS, vuelos);
+    }
 }
