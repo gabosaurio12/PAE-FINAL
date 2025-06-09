@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="278.0" prefWidth="242.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLInspeccionarVueloController">
+   <children>
+      <BorderPane prefHeight="334.0" prefWidth="421.0">
+         <top>
+            <Label text="Datos adicionales de Vuelo: " BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </Label>
+         </top>
+         <bottom>
+            <Button mnemonicParsing="false" onAction="#clicCerrar" style="-fx-background-color: #353535;" text="Cerrar" textFill="WHITE" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" />
+               </BorderPane.margin>
+            </Button>
+         </bottom>
+         <center>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="TOP_RIGHT" prefHeight="293.0" prefWidth="193.0">
+                     <children>
+                        <Label text="Tiempo de Vuelo Estimado: " />
+                        <Label text="Piloto: " />
+                        <Label text="Copiloto: " />
+                        <Label text="Asistente #1: " />
+                        <Label text="Asistente #2: " />
+                        <Label text="Asistente #3: " />
+                        <Label text="Asistente #4: " />
+                        <Label text="Puerta de Salida: " />
+                        <Label text="Puerta de Llegada: " />
+                        <Label text="Precio clase turista: " />
+                        <Label text="Preco clase Negocios: " />
+                        <Label text="Precio Primera Clase: " />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="293.0" prefWidth="230.0">
+                     <children>
+                        <Label fx:id="lbTiempoVuelo" prefHeight="21.0" prefWidth="220.0" text="Label" />
+                        <Label fx:id="lbPiloto" text="Label" />
+                        <Label fx:id="lbCopiloto" text="Label" />
+                        <Label fx:id="lbAsistenteUno" text="Label" />
+                        <Label fx:id="lbAsistenteDos" text="Label" />
+                        <Label fx:id="lbAsistenteTres" text="Label" />
+                        <Label fx:id="lbAsistenteCuatro" text="Label" />
+                        <Label fx:id="lbPuertaSalida" text="Label" />
+                        <Label fx:id="lbPuertaLlegada" text="Label" />
+                        <Label fx:id="lbPrecioTurista" text="Label" />
+                        <Label fx:id="lbPrecioNegocios" text="Label" />
+                        <Label fx:id="lbPrecioPrimeraClase" text="Label" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

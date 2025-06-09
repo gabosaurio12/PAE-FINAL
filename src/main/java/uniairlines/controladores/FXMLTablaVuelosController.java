@@ -79,7 +79,22 @@ public class FXMLTablaVuelosController implements Initializable {
     }
 
     public void clicInspeccionar(ActionEvent actionEvent) {
-
+        Vuelo vueloSeleccionado = tablaVuelos.getSelectionModel().getSelectedItem();
+        if(vueloSeleccionado != null) {
+            ResultadoFXML<FXMLInspeccionarVueloController> resultado = util.abrirFXMLModal(
+                    "/vista/FXMLInspeccionarVuelo.fxml",
+                    "Datos adicionales",
+                    FXMLInspeccionarVueloController.class,
+                    tfBuscarPorCodigo.getScene().getWindow());
+            if(resultado != null) {
+                FXMLInspeccionarVueloController controlador = resultado.getControlador();
+                Stage stage = resultado.getStage();
+                controlador.cargarDatos(vueloSeleccionado);
+                stage.showAndWait();
+            }
+        } else {
+            UtilGeneral.mostrarAlerta("Error", "Primero debera seleccionar un avion", Alert.AlertType.INFORMATION);
+        }
     }
 
     public void clicAgregar(ActionEvent actionEvent) {
