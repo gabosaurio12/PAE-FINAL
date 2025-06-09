@@ -12,7 +12,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import uniairlines.dao.ClienteDAO;
 import uniairlines.excepcion.ArchivoException;
-import uniairlines.modelo.Avion;
 import uniairlines.modelo.pojo.Vuelo;
 import uniairlines.modelo.pojo.boleto.Cliente;
 
@@ -33,9 +32,7 @@ public class FXMLTablaSeleccionarClienteController {
     private ObservableList<Cliente> listaClientes;
     private final ClienteDAO clienteDAO = new ClienteDAO();
 
-    private Vuelo vueloSeleccionado;  // NUEVO atributo para vuelo
-    private Avion avionSeleccionado;
-
+    private Vuelo vueloSeleccionado;
 
     @FXML
     public void initialize() {
@@ -50,12 +47,6 @@ public class FXMLTablaSeleccionarClienteController {
 
     public void setVueloSeleccionado(Vuelo vuelo) {
         this.vueloSeleccionado = vuelo;
-        // Puedes hacer algo con el vuelo si quieres
-    }
-
-    public void setAvionSeleccionado(Avion avion) {
-        this.avionSeleccionado = avion;
-        // Aquí puedes cargar o mostrar asientos si quieres
     }
 
     private void cargarClientes() {
@@ -97,27 +88,19 @@ public class FXMLTablaSeleccionarClienteController {
             return;
         }
 
-        if (avionSeleccionado == null) {
-            mostrarAlerta("Error", "No se ha cargado el avión correspondiente.", Alert.AlertType.ERROR);
-            return;
-        }
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLSeleccionarAsientosCliente.fxml"));
             Parent root = loader.load();
 
-            // Pasar el cliente, vuelo y avión seleccionado al controlador de selección de asientos
             FXMLSeleccionarAsientosClienteController controlador = loader.getController();
             controlador.setCliente(clienteSeleccionado);
             controlador.setVuelo(vueloSeleccionado);
-            controlador.setAvion(avionSeleccionado);  // <-- aquí el avión
 
             Stage stage = new Stage();
             stage.setTitle("Seleccionar Asientos para " + clienteSeleccionado.getNombre());
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Cerrar ventana actual
             ((Stage) tablaClientes.getScene().getWindow()).close();
 
         } catch (IOException ex) {

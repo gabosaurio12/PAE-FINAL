@@ -39,11 +39,6 @@
                                         <Insets left="10.0" right="10.0" />
                                     </HBox.margin>
                                 </TextField>
-                                <Button mnemonicParsing="false" onAction="#clicInspeccionar" text="Inspeccionar">
-                                    <HBox.margin>
-                                        <Insets right="10.0" />
-                                    </HBox.margin>
-                                </Button>
                                 <Button mnemonicParsing="false" onAction="#clicVenderBoleto" style="-fx-background-color: #5c7cfa;" text="Venta de boletos" textFill="WHITE">
                                     <HBox.margin>
                                         <Insets right="10.0" />

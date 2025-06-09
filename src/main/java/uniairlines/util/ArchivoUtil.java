@@ -12,11 +12,28 @@ import java.util.List;
 
 import com.google.gson.reflect.TypeToken;
 import uniairlines.excepcion.ArchivoException;
+import uniairlines.modelo.pojo.boleto.Boleto;
 
 public class ArchivoUtil {
 
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private static final String RUTA_BOLETOS = "Datos/boletos.json";
 
+    public static List<Boleto> leerBoletos() {
+        File archivo = new File(RUTA_BOLETOS);
+        if (!archivo.exists()) {
+            return new ArrayList<>();
+        }
+
+        try (FileReader reader = new FileReader(archivo)) {
+            Gson gson = new Gson();
+            Type listType = new TypeToken<List<Boleto>>() {}.getType();
+            return gson.fromJson(reader, listType);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
     // Leer archivo de texto completo como String
     public static String leerArchivo(String ruta) throws ArchivoException {
         try {
@@ -93,5 +110,26 @@ public class ArchivoUtil {
         }
     }
 
+    public static List<Boleto> cargarBoletos() {
+        try (Reader reader = new FileReader(RUTA_BOLETOS)) {
+            Type listType = new TypeToken<List<Boleto>>() {}.getType();
+            List<Boleto> lista = gson.fromJson(reader, listType);
+            return lista != null ? lista : new ArrayList<>();
+        } catch (FileNotFoundException e) {
+            // Si el archivo no existe, devolvemos una lista vacía
+            return new ArrayList<>();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    public static void guardarBoletos(List<Boleto> boletos) {
+        try (Writer writer = new FileWriter(RUTA_BOLETOS)) {
+            gson.toJson(boletos, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 

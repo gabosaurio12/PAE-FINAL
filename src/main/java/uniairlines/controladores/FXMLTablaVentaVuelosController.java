@@ -16,17 +16,23 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import uniairlines.dao.AvionDAO;
+import uniairlines.dao.BoletoDAO;
 import uniairlines.dao.VueloDAO;
 import uniairlines.excepcion.ArchivoException;
 import uniairlines.modelo.Avion;
 import uniairlines.modelo.pojo.Vuelo;
 import uniairlines.modelo.pojo.aerolinea.Aeropuerto;
+import uniairlines.modelo.pojo.boleto.Boleto;
+import uniairlines.util.CSVUtil;
 import uniairlines.util.UtilGeneral;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class FXMLTablaVentaVuelosController implements Initializable {
@@ -98,7 +104,28 @@ public class FXMLTablaVentaVuelosController implements Initializable {
     }
 
     public void exportarCSV(ActionEvent actionEvent) {
-        // TODO
+        Vuelo vueloSeleccionado = tablaVuelos.getSelectionModel().getSelectedItem();
+
+        if (vueloSeleccionado == null) {
+            util.mostrarAlerta("Sin selección", "Selecciona un vuelo para exportar sus boletos", Alert.AlertType.WARNING);
+            return;
+        }
+
+        try {
+            BoletoDAO boletoDAO = new BoletoDAO();
+            List<Boleto> boletos = boletoDAO.filtrarPorVuelo(vueloSeleccionado.getCodigoVuelo());
+
+            if (boletos.isEmpty()) {
+                util.mostrarAlerta("Sin datos", "No hay boletos registrados para este vuelo", Alert.AlertType.INFORMATION);
+                return;
+            }
+
+            String ruta = "Documentos/boletos" + vueloSeleccionado.getCodigoVuelo() + ".csv";
+            new CSVUtil().generarCSVBoletos(ruta, boletos);
+
+        } catch (ArchivoException e) {
+            util.mostrarAlerta("Error", "No se pudieron recuperar los boletos:\n" + e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 
     public void exportarXLSX(ActionEvent actionEvent) {
@@ -118,42 +145,35 @@ public class FXMLTablaVentaVuelosController implements Initializable {
         }
 
         try {
-            // Instancia DAO para avión
-            AvionDAO avionDAO = new AvionDAO();
-
-            // Recupera el avión usando aerolínea y código de avión del vuelo
-            Avion avionSeleccionado = avionDAO.buscarPorId(vueloSeleccionado.getAerolinea(), vueloSeleccionado.getCodigoAvion());
-
-            if (avionSeleccionado == null) {
-                util.mostrarAlerta("Error", "No se encontró el avión para el vuelo seleccionado.", Alert.AlertType.ERROR);
-                return;
-            }
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLTablaSeleccionarCliente.fxml"));
             Parent root = loader.load();
-
-            // Pasar vuelo y avión al controlador de selección de cliente
             FXMLTablaSeleccionarClienteController controller = loader.getController();
             controller.setVueloSeleccionado(vueloSeleccionado);
-            controller.setAvionSeleccionado(avionSeleccionado);
-
             Stage stage = new Stage();
             stage.setTitle("Seleccionar Cliente");
             stage.setScene(new Scene(root));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
-
-        } catch (IOException | ArchivoException e) {
+        } catch (IOException  e) {
             util.mostrarAlerta("Error al abrir la ventana", e.getMessage(), Alert.AlertType.ERROR);
             e.printStackTrace();
         }
     }
 
-    public void clicInspeccionar(ActionEvent actionEvent) {
-        // TODO
-    }
 
     public void clicRegresar(ActionEvent actionEvent) {
         // TODO
+    }
+    private List<Boleto> obtenerBoletosDeVuelo(Vuelo vuelo) throws ArchivoException {
+        BoletoDAO boletoDAO = new BoletoDAO(); // Asegúrate de tener esta clase
+        List<Boleto> todos = boletoDAO.recuperarBoletos(); // Esto debe cargar del JSON
+        List<Boleto> filtrados = new ArrayList<>();
+        for (Boleto b : todos) {
+            if (b.getVuelo().getCodigoVuelo().equals(vuelo.getCodigoVuelo())) {
+                filtrados.add(b);
+            }
+        }
+        return filtrados;
     }
 }

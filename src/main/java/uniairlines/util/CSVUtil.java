@@ -3,6 +3,7 @@ package uniairlines.util;
 import com.opencsv.CSVWriter;
 import uniairlines.modelo.Aerolinea;
 import uniairlines.modelo.Avion;
+import uniairlines.modelo.pojo.boleto.Boleto;
 import uniairlines.modelo.pojo.boleto.Cliente;
 import uniairlines.modelo.pojo.empleados.AsistenteVuelo;
 import uniairlines.modelo.pojo.empleados.Piloto;
@@ -118,5 +119,35 @@ public class CSVUtil {
             System.err.println("Error al crear CSV de aerolíneas: " + e.getMessage());
         }
     }
+    public void generarCSVBoletos(String path, List<Boleto> boletos) {
+        try (CSVWriter writer = new CSVWriter(new FileWriter(path))) {
+            String[] encabezado = {
+                    "Cliente",
+                    "Apellido Paterno",
+                    "Apellido Materno",
+                    "Código Vuelo",
+                    "Clase",
+                    "Cantidad"
+            };
+            writer.writeNext(encabezado);
 
+            for (Boleto boleto : boletos) {
+                String[] datos = {
+                        boleto.getCliente().getNombre(),
+                        boleto.getCliente().getApellidoP(),
+                        boleto.getCliente().getApellidoM(),
+                        boleto.getVuelo().getCodigoVuelo(),
+                        String.valueOf(boleto.getClase()),
+                        String.valueOf(boleto.getCantidad())
+                };
+                writer.writeNext(datos);
+            }
+
+            UtilGeneral.createAlert("Éxito", "Se creó con éxito el CSV de boletos");
+
+        } catch (IOException e) {
+            UtilGeneral.createAlert("Error", "Error al crear CSV de boletos");
+            System.err.println("Error al crear CSV de boletos: " + e.getMessage());
+        }
+    }
 }

@@ -6,21 +6,22 @@
 <VBox xmlns="http://javafx.com/javafx/8"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="uniairlines.controladores.FXMLSeleccionarAsientosClienteController"
-      spacing="10" alignment="CENTER" prefWidth="450" prefHeight="500" style="-fx-padding: 15;">
+      spacing="15" alignment="CENTER" prefWidth="400" prefHeight="250" style="-fx-padding: 20;">
 
-    <!-- Campo para mostrar el nombre del cliente -->
+    <!-- Nombre del cliente -->
     <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Cliente:"/>
-        <TextField fx:id="txtNombreCliente" editable="false" prefWidth="300"/>
+        <Label fx:id="lblNombreCliente" style="-fx-font-weight: bold;"/>
     </HBox>
 
-    <!-- Grid para mostrar los asientos -->
-    <GridPane fx:id="gridAsientos" gridLinesVisible="true" />
+    <!-- Selección de cantidad de boletos -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Cantidad de boletos:"/>
+        <Spinner fx:id="spCantidadBoletos" prefWidth="80"/>
+    </HBox>
 
-    <!-- Etiqueta para mostrar el total -->
-    <Label fx:id="lblTotal" text="Total: $0.00" />
+    <!-- Botón para confirmar venta -->
+    <Button fx:id="btnConfirmar" text="Confirmar Venta" prefWidth="200" onAction="#confirmarVenta"/>
 
-    <!-- Botón para confirmar selección -->
-    <Button fx:id="btnConfirmar" text="Confirmar Venta" prefWidth="200"/>
 
 </VBox>

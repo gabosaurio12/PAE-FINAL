@@ -16,14 +16,23 @@ public class Boleto {
     private Vuelo vuelo;
     private Cliente cliente;
     private ClaseBoleto clase;
-
+    private int cantidad;
     public Boleto() {
     }
 
-    public Boleto(Vuelo vuelo, Cliente cliente, ClaseBoleto clase) {
+    public Boleto(Vuelo vuelo, Cliente cliente, ClaseBoleto clase, int cantidad) {
         this.vuelo = vuelo;
         this.cliente = cliente;
         this.clase = clase;
+        this.cantidad = cantidad;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     public Vuelo getVuelo() {
