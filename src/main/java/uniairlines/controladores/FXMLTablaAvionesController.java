@@ -37,11 +37,16 @@ public class FXMLTablaAvionesController implements Initializable {
 
     private String aerolineaSeleccionada;
 
-    @FXML private TableView<Avion> tablaAviones;
-    @FXML private TableColumn<Avion, String> colId;
-    @FXML private TableColumn<Avion, String> colModelo;
-    @FXML private TableColumn<Avion, Integer> colCapacidad;
-    @FXML private TableColumn<Avion, String> colTipo;
+    @FXML
+    private TableView<Avion> tablaAviones;
+    @FXML
+    private TableColumn<Avion, String> colId;
+    @FXML
+    private TableColumn<Avion, String> colModelo;
+    @FXML
+    private TableColumn<Avion, Integer> colCapacidad;
+    @FXML
+    private TableColumn<Avion, String> colTipo;
     @FXML
     private TableColumn<Avion, String> colEstado;
     @FXML
@@ -93,10 +98,8 @@ public class FXMLTablaAvionesController implements Initializable {
     @FXML
     private void modificarAvion() throws ArchivoException {
         String id = obtenerIdAvionSeleccionado();
-        Avion completo = avionDAO.buscarPorId("asd",id);
+        Avion completo = avionDAO.buscarPorId(aerolineaSeleccionada, id);
         abrirFormularioAvion(completo,true);
-
-
     }
 
 
@@ -139,7 +142,7 @@ public class FXMLTablaAvionesController implements Initializable {
 
     String id = obtenerIdAvionSeleccionado();
         try {
-            avionDAO.eliminar("asd", id);
+            avionDAO.eliminar(aerolineaSeleccionada, id);
             cargarAviones();
         } catch (ArchivoException ex) {
             Logger.getLogger(FXMLTablaAvionesController.class.getName()).log(Level.SEVERE, null, ex);

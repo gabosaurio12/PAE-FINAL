@@ -129,7 +129,6 @@ public class FXMLFormularioAvionController implements Initializable {
         tfAsientosPorFila.setText("4");
         tfAsientosPorFila.setDisable(true);
         cargarAvion(avion);
-      
     }
     
     
@@ -149,14 +148,14 @@ public class FXMLFormularioAvionController implements Initializable {
     }
 
     private void modificar(Avion avion) throws ArchivoException {
-    Avion aviona = crearAvionTf();
-    String id = this.avion.getId();
-    aviona.setId(id);
-    
-    AvionDAO a = new AvionDAO();
-    
-    a.modificar(aviona, NombreAerolinea);
-    UtilGeneral.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Exito", "Avion modificado");
+        Avion aviona = crearAvionTf();
+        String id = this.avion.getId();
+        aviona.setId(id);
+
+        AvionDAO a = new AvionDAO();
+
+        a.modificar(aviona, NombreAerolinea);
+        UtilGeneral.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Exito", "Avion modificado");
     }
 }
  

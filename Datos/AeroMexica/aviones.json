@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "id": "CW7340",
+    "modelo": "Douglas DC-9",
+    "capacidadTotal": 320,
+    "filas": 80,
+    "asientosPorFila": 4,
+    "peso": 1200000,
+    "tipo": "Turista",
+    "asientos": [
+      {
+        "fila": 1,
+        "columna": "A",
+        "estado": "Ejecutivo",
+        "precio": 0.0
+      }
+    ],
+    "estado": "Mantenimiento"
+  },
+  {
+    "id": "MG2173",
+    "modelo": "Airbus A220",
+    "capacidadTotal": 280,
+    "filas": 70,
+    "asientosPorFila": 4,
+    "peso": 1100000,
+    "tipo": "Mixto",
+    "asientos": [
+      {
+        "fila": 1,
+        "columna": "A",
+        "estado": "Ejecutivo",
+        "precio": 0.0
+      }
+    ],
+    "estado": "Mantenimiento"
+  }
+]

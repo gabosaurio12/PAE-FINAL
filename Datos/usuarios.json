@@ -28,6 +28,13 @@
     "nombre": "QWE"
   },
   {
+    "usuario": "adminAeroMX",
+    "contrasena": "aeroMX",
+    "tipo": "admin",
+    "aerolinea": "AeroMexica",
+    "nombre": "Venevidez Salazar"
+  },
+  {
     "usuario": "piloto1",
     "contrasena": "pilo123",
     "tipo": "empleado",

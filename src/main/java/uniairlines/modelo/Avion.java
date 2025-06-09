@@ -1,6 +1,7 @@
 package uniairlines.modelo;
 
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 public class Avion {
@@ -16,11 +17,11 @@ public class Avion {
 
 
     public Avion() {
-        this.id = UUID.randomUUID().toString();
+        this.id = generarCodigo();
     }
 
     public Avion(String modelo,int Peso) {
-        this.id = UUID.randomUUID().toString();
+        this.id = generarCodigo();
         this.modelo = modelo;
         this.capacidadTotal = this.asientosPorFila * this.filas;
         this.filas = 1;
@@ -102,5 +103,26 @@ public class Avion {
     @Override
     public String toString() {
         return id;
+    }
+
+    //Para generar un ID de avion al azr
+    public String generarCodigo() {
+        Random random = new Random();
+        String letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        StringBuilder codigo = new StringBuilder();
+
+        // Agregar 2 letras al azar
+        for (int i = 0; i < 2; i++) {
+            char letra = letras.charAt(random.nextInt(letras.length()));
+            codigo.append(letra);
+        }
+
+        // Agregar 4 números al azar
+        for (int i = 0; i < 4; i++) {
+            int numero = random.nextInt(10); // Números del 0 al 9
+            codigo.append(numero);
+        }
+
+        return codigo.toString();
     }
 }
