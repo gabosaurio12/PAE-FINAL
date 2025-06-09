@@ -135,21 +135,8 @@ public class Aerolinea {
         };
     }
 
-
-
-
-
     @Override
     public String toString() {
-        return "Aerolinea{" +
-                "IATA='" + IATA + '\'' +
-                ", ICAO='" + ICAO + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", callsign='" + callsign + '\'' +
-                ", nacionalidad='" + nacionalidad + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", sitioOficial='" + sitioOficial + '\'' +
-                ", contacto=" + contacto +
-                '}';
+        return nombre;
     }
 }

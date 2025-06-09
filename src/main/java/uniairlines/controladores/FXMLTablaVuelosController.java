@@ -15,6 +15,7 @@ import uniairlines.dao.VueloDAO;
 import uniairlines.excepcion.ArchivoException;
 import uniairlines.modelo.pojo.Vuelo;
 import uniairlines.modelo.pojo.aerolinea.Aeropuerto;
+import uniairlines.util.ResultadoFXML;
 import uniairlines.util.UtilGeneral;
 
 import java.net.URL;
@@ -82,6 +83,18 @@ public class FXMLTablaVuelosController implements Initializable {
     }
 
     public void clicAgregar(ActionEvent actionEvent) {
+        ResultadoFXML<FXMLAgendarVueloController> resultado = util.abrirFXMLModal(
+                "/vista/FMXLAgendarVuelo.fxml",
+                "Registrar Vuelo",
+                FXMLAgendarVueloController.class,
+                tfBuscarPorCodigo.getScene().getWindow());
+        if(resultado != null) {
+            FXMLAgendarVueloController controlador = resultado.getControlador();
+            Stage stage = resultado.getStage();
+            controlador.cargarDatos(null);
+            stage.showAndWait();
+            //TODO refrescarTabla
+        }
     }
 
     public void clicActualizar(ActionEvent actionEvent) {

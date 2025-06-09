@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "pais" : "Mexico",
+    "ciudad" : "Guadalajara",
+    "numPuertas" : 12
+  },
+  {
+    "pais" : "USA",
+    "ciudad" : "Houston",
+    "numPuertas" : 16
+  }
+]

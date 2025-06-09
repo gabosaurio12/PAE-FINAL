@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="442.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FMXLAgendarVueloController">
+<AnchorPane prefHeight="442.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLAgendarVueloController">
    <children>
       <BorderPane prefHeight="442.0" prefWidth="656.0">
          <top>
@@ -102,24 +102,27 @@
                            <children>
                               <Label text="Puerta de Salida">
                                  <VBox.margin>
-                                    <Insets left="5.0" />
+                                    <Insets bottom="10.0" left="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <Slider fx:id="sliderPuertaSalida" maxWidth="-Infinity" prefHeight="18.0" prefWidth="400.0">
+                              <Slider fx:id="sliderPuertaSalida" blockIncrement="1.0" majorTickUnit="1.0" max="50.0" maxWidth="-Infinity" prefHeight="18.0" prefWidth="208.0" showTickLabels="true" snapToTicks="true">
                                  <VBox.margin>
                                     <Insets bottom="10.0" left="5.0" />
                                  </VBox.margin>
                               </Slider>
                            </children>
+                           <HBox.margin>
+                              <Insets bottom="5.0" />
+                           </HBox.margin>
                         </VBox>
-                        <VBox prefHeight="64.0" prefWidth="190.0">
+                        <VBox prefHeight="59.0" prefWidth="205.0">
                            <children>
                               <Label prefHeight="21.0" prefWidth="212.0" text="Puerta de Llegada">
                                  <VBox.margin>
-                                    <Insets left="5.0" />
+                                    <Insets bottom="10.0" left="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <Slider fx:id="sliderPuertaLlegada" maxWidth="-Infinity" prefHeight="18.0" prefWidth="303.0">
+                              <Slider fx:id="sliderPuertaLlegada" blockIncrement="1.0" majorTickUnit="1.0" max="50.0" maxWidth="-Infinity" prefHeight="18.0" prefWidth="201.0" showTickLabels="true" snapToTicks="true">
                                  <VBox.margin>
                                     <Insets bottom="10.0" left="5.0" />
                                  </VBox.margin>

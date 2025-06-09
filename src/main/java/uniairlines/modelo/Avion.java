@@ -99,6 +99,8 @@ public class Avion {
         };
     }
 
-
-
+    @Override
+    public String toString() {
+        return id;
+    }
 }
