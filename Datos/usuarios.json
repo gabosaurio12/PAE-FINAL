@@ -10,21 +10,21 @@
     "usuario": "asd",
     "contrasena": "asd",
     "tipo": "admin",
-    "aerolinea": "asd",
+    "aerolinea": "AeroBus",
     "nombre": "aasd"
   },
   {
     "usuario": "zxc",
     "contrasena": "zxc",
     "tipo": "empleado",
-    "aerolinea": "asd",
+    "aerolinea": "AeroBus",
     "nombre": "zxc"
   },
   {
     "usuario": "QWE",
     "contrasena": "QWE",
     "tipo": "admin",
-    "aerolinea": "ZXC",
+    "aerolinea": "UnitedAirlines",
     "nombre": "QWE"
   },
   {

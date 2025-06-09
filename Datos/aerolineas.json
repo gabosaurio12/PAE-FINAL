@@ -2,7 +2,7 @@
   {
     "IATA": "asd",
     "ICAO": "asd",
-    "nombre": "asd",
+    "nombre": "AeroBus",
     "callsign": "asd",
     "nacionalidad": "asd",
     "direccion": "asd",
@@ -15,7 +15,7 @@
   {
     "IATA": "ZXC",
     "ICAO": "ZXC",
-    "nombre": "ZXC",
+    "nombre": "UnitedAirlines",
     "callsign": "ZXC",
     "nacionalidad": "ZXC",
     "direccion": "ZXC",
