@@ -15,8 +15,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import uniairlines.dao.AvionDAO;
 import uniairlines.dao.VueloDAO;
 import uniairlines.excepcion.ArchivoException;
+import uniairlines.modelo.Avion;
 import uniairlines.modelo.pojo.Vuelo;
 import uniairlines.modelo.pojo.aerolinea.Aeropuerto;
 import uniairlines.util.UtilGeneral;
@@ -116,12 +118,24 @@ public class FXMLTablaVentaVuelosController implements Initializable {
         }
 
         try {
+            // Instancia DAO para avión
+            AvionDAO avionDAO = new AvionDAO();
+
+            // Recupera el avión usando aerolínea y código de avión del vuelo
+            Avion avionSeleccionado = avionDAO.buscarPorId(vueloSeleccionado.getAerolinea(), vueloSeleccionado.getCodigoAvion());
+
+            if (avionSeleccionado == null) {
+                util.mostrarAlerta("Error", "No se encontró el avión para el vuelo seleccionado.", Alert.AlertType.ERROR);
+                return;
+            }
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLTablaSeleccionarCliente.fxml"));
             Parent root = loader.load();
 
-            // Aquí pasamos el vuelo seleccionado al controlador de clientes
+            // Pasar vuelo y avión al controlador de selección de cliente
             FXMLTablaSeleccionarClienteController controller = loader.getController();
             controller.setVueloSeleccionado(vueloSeleccionado);
+            controller.setAvionSeleccionado(avionSeleccionado);
 
             Stage stage = new Stage();
             stage.setTitle("Seleccionar Cliente");
@@ -129,7 +143,7 @@ public class FXMLTablaVentaVuelosController implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
 
-        } catch (IOException e) {
+        } catch (IOException | ArchivoException e) {
             util.mostrarAlerta("Error al abrir la ventana", e.getMessage(), Alert.AlertType.ERROR);
             e.printStackTrace();
         }

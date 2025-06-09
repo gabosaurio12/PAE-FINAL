@@ -53,7 +53,7 @@
       {
         "fila": 2,
         "columna": "C",
-        "clase": "VIP",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
@@ -74,19 +74,19 @@
       {
         "fila": 3,
         "columna": "B",
-        "clase": "VIP",
-        "estado": "Libre",
-        "precio": 0.0
-      },
-      {
-        "fila": 3,
-        "columna": "C",
         "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 3,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 3,
         "columna": "D",
         "clase": "Turista",
         "estado": "Libre",
@@ -130,7 +130,7 @@
       {
         "fila": 5,
         "columna": "B",
-        "clase": "VIP",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
@@ -165,7 +165,7 @@
       {
         "fila": 6,
         "columna": "C",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
@@ -235,21 +235,21 @@
       {
         "fila": 9,
         "columna": "A",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 9,
         "columna": "B",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 9,
         "columna": "C",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
@@ -270,14 +270,14 @@
       {
         "fila": 10,
         "columna": "B",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
       {
         "fila": 10,
         "columna": "C",
-        "clase": "Ejecutivo",
+        "clase": "Turista",
         "estado": "Libre",
         "precio": 0.0
       },
@@ -350,6 +350,186 @@
   {
     "id": "WG9234",
     "modelo": "AAAAAA",
+    "capacidadTotal": 24,
+    "filas": 6,
+    "asientosPorFila": 4,
+    "peso": 200,
+    "tipo": "Turista",
+    "asientos": [
+      {
+        "fila": 1,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 1,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 1,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 1,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 2,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 2,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 2,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 2,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 3,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 3,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 3,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 3,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 4,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 4,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 4,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 4,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 5,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 5,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 5,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 5,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 6,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 6,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 6,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 6,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      }
+    ],
+    "estado": "Libre"
+  },
+  {
+    "id": "XR0074",
+    "modelo": "AYUDA",
     "capacidadTotal": 24,
     "filas": 6,
     "asientosPorFila": 4,

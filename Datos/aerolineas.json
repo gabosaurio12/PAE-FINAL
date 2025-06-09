@@ -37,5 +37,18 @@
       "nombre": "Manuel Máximo",
       "telefono": "2289364712"
     }
+  },
+  {
+    "IATA": "PRUEBA",
+    "ICAO": "PRUEBA",
+    "nombre": "fUNCIONA",
+    "callsign": "PORFA",
+    "nacionalidad": "AYUDA",
+    "direccion": "PORFA",
+    "sitioOficial": "ASKLDJLA",
+    "contacto": {
+      "nombre": "LEO",
+      "telefono": "AYUDA"
+    }
   }
 ]

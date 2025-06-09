@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import uniairlines.modelo.Asiento;
+import uniairlines.modelo.Avion;
 import uniairlines.modelo.pojo.Vuelo;
 import uniairlines.modelo.pojo.boleto.Boleto;
 import uniairlines.modelo.pojo.boleto.Cliente;
@@ -42,6 +43,13 @@ public class FXMLSeleccionarAsientosClienteController {
     // Nuevos atributos para guardar cliente y vuelo recibidos
     private Cliente cliente;
     private Vuelo vuelo;
+    private Avion avion;
+
+
+
+    public void setAvion(Avion avion) {
+        this.avion = avion;
+    }
 
     public void setAsientos(List<Asiento> asientos) {
         this.asientos = asientos;
