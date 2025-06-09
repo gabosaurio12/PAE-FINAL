@@ -73,6 +73,7 @@ public class FXMLAgendarVueloController implements Initializable {
     private ObservableList<Avion> aviones;
     private ObservableList<Aeropuerto> aeropuertos;
     private Tripulacion tripulacion;
+    private Vuelo vueloEdicion;
 
     public void initialize(URL url, ResourceBundle rb) {
         configurarCombos();
@@ -86,8 +87,30 @@ public class FXMLAgendarVueloController implements Initializable {
         if(vuelo == null) {
             this.tripulacion = null;
         } else {
-            //TODO -update
+            this.vueloEdicion = vuelo;
+            cargarEdicion(vuelo);
         }
+    }
+
+    private void cargarEdicion(Vuelo vuelo) {
+        tfCodigoVuelo.setText(vuelo.getCodigoVuelo());
+        tfCodigoVuelo.setDisable(true);
+        comboAerolinea.getSelectionModel().select(obtenerPosicionAerolinea(vuelo.getAerolinea()));
+        comboAvion.getSelectionModel().select(obtenerPosicionAvion(vuelo.getCodigoAvion()));
+        comboPuertoSalida.getSelectionModel().select(vuelo.getSalida());
+        comboPuertoLlegada.getSelectionModel().select(vuelo.getDestino());
+        comboPuertaSalida.getSelectionModel().select(vuelo.getPuertaSalida());
+        comboPuertaLlegada.getSelectionModel().select(vuelo.getPuertaLlegada());
+        tfFechaHoraSalida.setText(vuelo.getFechaSalida());
+        tfFechaHoraLlegada.setText(vuelo.getFechaLlegada());
+        tfMinutosEstimados.setText(String.valueOf(vuelo.getMinutosDeVueloEstimados()));
+        tfPrecioTurista.setText(String.valueOf(vuelo.getPrecioTurista()));
+        tfPrecioNegocios.setText(String.valueOf(vuelo.getPrecioNegocios()));
+        tfPrecioPrimeraClase.setText(String.valueOf(vuelo.getPrecioPrimeraClase()));
+        tripulacion = new Tripulacion();
+        tripulacion.setPiloto(vuelo.getPiloto());
+        tripulacion.setCopiloto(vuelo.getCopiloto());
+        tripulacion.setAsistentes(vuelo.getAsistentes());
     }
 
     public void configurarCombos() {
@@ -184,6 +207,28 @@ public class FXMLAgendarVueloController implements Initializable {
         }
     }
 
+    private int obtenerPosicionAerolinea(String nombreAerolinea) {
+        int contador = 0;
+        for (Aerolinea aerolinea : aerolineas) {
+            if (aerolinea.getNombre().equals(nombreAerolinea)) {
+                return contador;
+            }
+            contador++;
+        }
+        return 0;
+    }
+
+    private int obtenerPosicionAvion(String codigoAvion) {
+        int contador = 0;
+        for (Avion avion : aviones) {
+            if (avion.getId().equals(codigoAvion)) {
+                return contador;
+            }
+            contador++;
+        }
+        return 0;
+    }
+
     public void clicConfigurarTripulacion(ActionEvent actionEvent) {
         String nombreAerolinea = obtenerNombreAerolinea();
         if(nombreAerolinea != null) {
@@ -206,25 +251,47 @@ public class FXMLAgendarVueloController implements Initializable {
     }
 
     public void clicCancelar(ActionEvent actionEvent) {
+        Stage stage = (Stage) tfCodigoVuelo.getScene().getWindow();
+        stage.close();
     }
 
     public void clicGuardar(ActionEvent actionEvent) {
         if(validarCampos()) {
             Vuelo candidato = construirVueloCandidato();
             if(validarDatos(candidato)) {
-                tablaVuelosController.getVuelos().add(candidato);
-                try{
-                    VueloDAO dao = new VueloDAO();
-                    dao.agregar(candidato);
-                    UtilGeneral.mostrarAlerta(
-                            "Exito",
-                            "El vuelo se registro exitosamente",
-                            Alert.AlertType.INFORMATION);
-                } catch (ArchivoException aex) {
-                    UtilGeneral.mostrarAlerta(
-                            "Error",
-                            aex.getMessage(),
-                            Alert.AlertType.ERROR);
+                //Registrar nuevo
+                if(vueloEdicion == null) {
+                    tablaVuelosController.getVuelos().add(candidato);
+                    try{
+                        VueloDAO dao = new VueloDAO();
+                        dao.agregar(candidato);
+                        UtilGeneral.mostrarAlerta(
+                                "Exito",
+                                "El vuelo se registro exitosamente",
+                                Alert.AlertType.INFORMATION);
+                    } catch (ArchivoException aex) {
+                        UtilGeneral.mostrarAlerta(
+                                "Error",
+                                aex.getMessage(),
+                                Alert.AlertType.ERROR);
+                    }
+                //Actualizar
+                } else {
+                    int indiceActualizar = tablaVuelosController.getVuelos().indexOf(vueloEdicion);
+                    tablaVuelosController.getVuelos().set(indiceActualizar, candidato);
+                    try{
+                        VueloDAO dao = new VueloDAO();
+                        dao.actualizar(candidato);
+                        UtilGeneral.mostrarAlerta(
+                                "Exito",
+                                "El vuelo se actualizo exitosamente",
+                                Alert.AlertType.INFORMATION);
+                    } catch (ArchivoException aex) {
+                        UtilGeneral.mostrarAlerta(
+                                "Error",
+                                aex.getMessage(),
+                                Alert.AlertType.ERROR);
+                    }
                 }
             }
         }
@@ -338,6 +405,7 @@ public class FXMLAgendarVueloController implements Initializable {
         } catch (VueloException vex) {
             UtilGeneral.mostrarAlerta("Error", vex.getMessage(), Alert.AlertType.ERROR);
         } catch (DateTimeParseException dtpex) {
+            validos = false;
             UtilGeneral.mostrarAlerta(
                     "Error",
                     "La fecha de salida/llegada no tiene el formato esperado: yyyy-MM-dd HH:mm:ss",
@@ -352,7 +420,7 @@ public class FXMLAgendarVueloController implements Initializable {
         vueloCandidato.setCodigoVuelo(tfCodigoVuelo.getText());
         vueloCandidato.setAerolinea(comboAerolinea.getSelectionModel().getSelectedItem().toString());
         vueloCandidato.setCodigoAvion(comboAvion.getSelectionModel().getSelectedItem().toString());
-        vueloCandidato.setNumPasajeros(0);
+        vueloCandidato.setNumPasajeros(vueloEdicion == null ? 0 : vueloEdicion.getNumPasajeros());
         vueloCandidato.setSalida(comboPuertoSalida.getSelectionModel().getSelectedItem());
         vueloCandidato.setDestino(comboPuertoLlegada.getSelectionModel().getSelectedItem());
         vueloCandidato.setFechaSalida(tfFechaHoraSalida.getText());

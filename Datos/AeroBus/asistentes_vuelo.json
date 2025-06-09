@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "numIdiomas": 3,
+    "numHorasAsistidas": 400,
+    "identificador": "AS1",
+    "nombre": "Federico Andres",
+    "direccion": "Mexico Durango",
+    "telefono": "228391571",
+    "correo": "freda@uniar.com",
+    "fechaNacimiento": "20/06/2002",
+    "genero": "MASCULINO",
+    "salario": 23000.0
+  },
+  {
+    "numIdiomas": 4,
+    "numHorasAsistidas": 7000,
+    "identificador": "AS2",
+    "nombre": "Fernanda Zuñiga",
+    "direccion": "Toledo, España",
+    "telefono": "2238771023",
+    "correo": "arribaespaña@espania.es",
+    "fechaNacimiento": "20/04/1998",
+    "genero": "FEMENINO",
+    "salario": 25000.0
+  },
+  {
+    "numIdiomas": 5,
+    "numHorasAsistidas": 1400,
+    "identificador": "AS3",
+    "nombre": "Loid Venenevides",
+    "direccion": "Palasi, France",
+    "telefono": "2239019701",
+    "correo": "soulefranswa@frans.fr",
+    "fechaNacimiento": "07/04/1988",
+    "genero": "NO BINARIO",
+    "salario": 24000.0
+  },
+  {
+    "numIdiomas": 3,
+    "numHorasAsistidas": 500,
+    "identificador": "AS4",
+    "nombre": "Masahiro Karasawa",
+    "direccion": "Osaka, Japón",
+    "telefono": "760921001",
+    "correo": "mshksw@2chan.org",
+    "fechaNacimiento": "04/01/1982",
+    "genero": "MASCULINO",
+    "salario": 44400.0
+  }
+]

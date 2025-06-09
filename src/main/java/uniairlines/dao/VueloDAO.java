@@ -30,4 +30,14 @@ public class VueloDAO {
         vuelos.add(nuevoVuelo);
         ArchivoUtil.escribirJson(RUTA_ARCHIVO_VUELOS, vuelos);
     }
+
+    public void actualizar(Vuelo nuevoVuelo) throws ArchivoException {
+        List<Vuelo> vuelos = recuperarVuelos();
+        for(Vuelo vuelo : vuelos) {
+            if(vuelo.getCodigoVuelo().equals(nuevoVuelo.getCodigoVuelo())) {
+                vuelos.set(vuelos.indexOf(vuelo), nuevoVuelo);
+            }
+        }
+        ArchivoUtil.escribirJson(RUTA_ARCHIVO_VUELOS, vuelos);
+    }
 }

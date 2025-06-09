@@ -93,11 +93,21 @@ public class FXMLTablaVuelosController implements Initializable {
             Stage stage = resultado.getStage();
             controlador.cargarDatos(this,null);
             stage.showAndWait();
-            //TODO refrescarTabla
         }
     }
 
     public void clicActualizar(ActionEvent actionEvent) {
+        ResultadoFXML<FXMLAgendarVueloController> resultado = util.abrirFXMLModal(
+                "/vista/FMXLAgendarVuelo.fxml",
+                "Actualizar Vuelo",
+                FXMLAgendarVueloController.class,
+                tfBuscarPorCodigo.getScene().getWindow());
+        if(resultado != null) {
+            FXMLAgendarVueloController controlador = resultado.getControlador();
+            Stage stage = resultado.getStage();
+            controlador.cargarDatos(this,tablaVuelos.getSelectionModel().getSelectedItem());
+            stage.showAndWait();
+        }
     }
 
     public void clicEliminar(ActionEvent actionEvent) {

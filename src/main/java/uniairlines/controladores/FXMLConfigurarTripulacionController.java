@@ -52,10 +52,12 @@ public class FXMLConfigurarTripulacionController implements Initializable {
         if(tripulacion != null) {
             comboPiloto.getSelectionModel().select(tripulacion.getPiloto());
             comboCopiloto.getSelectionModel().select(tripulacion.getCopiloto());
-            comboAsistenteUno.getSelectionModel().select(tripulacion.getAsistentes().get(0));
-            comboAsistenteDos.getSelectionModel().select(tripulacion.getAsistentes().get(1));
-            comboAsistenteTres.getSelectionModel().select(tripulacion.getAsistentes().get(2));
-            comboAsistenteCuatro.getSelectionModel().select(tripulacion.getAsistentes().get(3));
+            if(controlador.getTripulacion().getAsistentes().size() == 4) {
+                comboAsistenteUno.getSelectionModel().select(tripulacion.getAsistentes().get(0));
+                comboAsistenteDos.getSelectionModel().select(tripulacion.getAsistentes().get(1));
+                comboAsistenteTres.getSelectionModel().select(tripulacion.getAsistentes().get(2));
+                comboAsistenteCuatro.getSelectionModel().select(tripulacion.getAsistentes().get(3));
+            }
         }
     }
 

@@ -1,8 +1,8 @@
 [
   {
     "codigoVuelo": "PRB001",
-    "aerolinea": "PRUEBA",
-    "codigoAvion": "XR0074",
+    "aerolinea": "AeroBus",
+    "codigoAvion": "WG9234",
     "numPasajeros": 24,
     "salida": {
       "pais": "México",
@@ -14,8 +14,8 @@
       "ciudad": "Toronto",
       "numPuertas": 8
     },
-    "fechaSalida": "2025-08-01 09:00",
-    "fechaLlegada": "2025-08-01 13:00",
+    "fechaSalida": "2025-08-01 09:00:00",
+    "fechaLlegada": "2025-08-01 13:00:00",
     "minutosDeVueloEstimados": 240,
     "puertaSalida": 2,
     "puertaLlegada": 3,
@@ -50,28 +50,52 @@
     },
     "asistentes": [
       {
-        "numIdiomas": 2,
-        "numHorasAsistidas": 5000,
-        "identificador": "asis01",
-        "nombre": "Ana Cruz",
-        "direccion": "México",
-        "telefono": "2281112222",
-        "correo": "ana@ayuda.com",
-        "fechaNacimiento": "01/01/1990",
+        "numIdiomas": 3,
+        "numHorasAsistidas": 400,
+        "identificador": "AS1",
+        "nombre": "Federico Andres",
+        "direccion": "Mexico Durango",
+        "telefono": "228391571",
+        "correo": "freda@uniar.com",
+        "fechaNacimiento": "20/06/2002",
+        "genero": "MASCULINO",
+        "salario": 23000.0
+      },
+      {
+        "numIdiomas": 4,
+        "numHorasAsistidas": 7000,
+        "identificador": "AS2",
+        "nombre": "Fernanda Zuñiga",
+        "direccion": "Toledo, España",
+        "telefono": "2238771023",
+        "correo": "arribaespaña@espania.es",
+        "fechaNacimiento": "20/04/1998",
         "genero": "FEMENINO",
-        "salario": 45000.0
+        "salario": 25000.0
+      },
+      {
+        "numIdiomas": 5,
+        "numHorasAsistidas": 1400,
+        "identificador": "AS3",
+        "nombre": "Loid Venenevides",
+        "direccion": "Palasi, France",
+        "telefono": "2239019701",
+        "correo": "soulefranswa@frans.fr",
+        "fechaNacimiento": "07/04/1988",
+        "genero": "NO BINARIO",
+        "salario": 24000.0
       },
       {
         "numIdiomas": 3,
-        "numHorasAsistidas": 8000,
-        "identificador": "asis02",
-        "nombre": "Luis Pérez",
-        "direccion": "México",
-        "telefono": "2282223333",
-        "correo": "luis@ayuda.com",
-        "fechaNacimiento": "12/12/1988",
+        "numHorasAsistidas": 500,
+        "identificador": "AS4",
+        "nombre": "Masahiro Karasawa",
+        "direccion": "Osaka, Japón",
+        "telefono": "760921001",
+        "correo": "mshksw@2chan.org",
+        "fechaNacimiento": "04/01/1982",
         "genero": "MASCULINO",
-        "salario": 47000.0
+        "salario": 44400.0
       }
     ]
   },
@@ -97,7 +121,7 @@
     "puertaLlegada": 19,
     "precioTurista": 4500.0,
     "precioNegocios": 6500.0,
-    "precioPrimeraClase": 9800.0,
+    "precioPrimeraClase": 9750.0,
     "piloto": {
       "tipoLicencia": "COMERCIAL",
       "fechaCertificacion": "10/03/1980",
