@@ -1,0 +1,113 @@
+[
+  {
+    "vuelo": {
+      "codigoVuelo": "PRB001",
+      "aerolinea": "AeroBus",
+      "codigoAvion": "WG9234",
+      "numPasajeros": 24,
+      "salida": {
+        "pais": "México",
+        "ciudad": "Veracruz",
+        "numPuertas": 5
+      },
+      "destino": {
+        "pais": "Canadá",
+        "ciudad": "Toronto",
+        "numPuertas": 8
+      },
+      "fechaSalida": "2025-08-01 09:00:00",
+      "fechaLlegada": "2025-08-01 13:00:00",
+      "minutosDeVueloEstimados": 240,
+      "puertaSalida": 2,
+      "puertaLlegada": 3,
+      "precioTurista": 3500.0,
+      "precioNegocios": 5200.0,
+      "precioPrimeraClase": 8000.0,
+      "piloto": {
+        "tipoLicencia": "CAPITAN_DE_AEROLINEA",
+        "fechaCertificacion": "15/06/2005",
+        "numHorasVuelo": 8500,
+        "identificador": "piloLeo",
+        "nombre": "Leonardo Ayudame",
+        "direccion": "México",
+        "telefono": "2280001111",
+        "correo": "leo@ayuda.com",
+        "fechaNacimiento": "10/10/1975",
+        "genero": "MASCULINO",
+        "salario": 95000.0
+      },
+      "copiloto": {
+        "tipoLicencia": "COMERCIAL",
+        "fechaCertificacion": "20/05/2010",
+        "numHorasVuelo": 6000,
+        "identificador": "piloCopi",
+        "nombre": "Carlos Backup",
+        "direccion": "México",
+        "telefono": "2298887777",
+        "correo": "cbackup@vuelo.com",
+        "fechaNacimiento": "05/07/1985",
+        "genero": "MASCULINO",
+        "salario": 70000.0
+      },
+      "asistentes": [
+        {
+          "numIdiomas": 3,
+          "numHorasAsistidas": 400,
+          "identificador": "AS1",
+          "nombre": "Federico Andres",
+          "direccion": "Mexico Durango",
+          "telefono": "228391571",
+          "correo": "freda@uniar.com",
+          "fechaNacimiento": "20/06/2002",
+          "genero": "MASCULINO",
+          "salario": 23000.0
+        },
+        {
+          "numIdiomas": 4,
+          "numHorasAsistidas": 7000,
+          "identificador": "AS2",
+          "nombre": "Fernanda Zuñiga",
+          "direccion": "Toledo, España",
+          "telefono": "2238771023",
+          "correo": "arribaespaña@espania.es",
+          "fechaNacimiento": "20/04/1998",
+          "genero": "FEMENINO",
+          "salario": 25000.0
+        },
+        {
+          "numIdiomas": 5,
+          "numHorasAsistidas": 1400,
+          "identificador": "AS3",
+          "nombre": "Loid Venenevides",
+          "direccion": "Palasi, France",
+          "telefono": "2239019701",
+          "correo": "soulefranswa@frans.fr",
+          "fechaNacimiento": "07/04/1988",
+          "genero": "NO BINARIO",
+          "salario": 24000.0
+        },
+        {
+          "numIdiomas": 3,
+          "numHorasAsistidas": 500,
+          "identificador": "AS4",
+          "nombre": "Masahiro Karasawa",
+          "direccion": "Osaka, Japón",
+          "telefono": "760921001",
+          "correo": "mshksw@2chan.org",
+          "fechaNacimiento": "04/01/1982",
+          "genero": "MASCULINO",
+          "salario": 44400.0
+        }
+      ]
+    },
+    "cliente": {
+      "nombre": "Gerardo",
+      "apellidoP": "Martínez",
+      "apellidoM": "Gutiérrez",
+      "nacionalidad": "Mexicano",
+      "fechaNacimiento": "05/06/1996"
+    },
+    "clase": "TURISTA",
+    "cantidad": 1
+  }
+]

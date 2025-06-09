@@ -69,7 +69,7 @@ public class FXMLTablaVentaVuelosController implements Initializable {
     private ObservableList<Vuelo> vuelos;
     private final VueloDAO vueloDAO = new VueloDAO();
     private final UtilGeneral util = new UtilGeneral();
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
