@@ -11,10 +11,520 @@
       {
         "fila": 1,
         "columna": "A",
-        "estado": "Ejecutivo",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 1,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 1,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 1,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 2,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 2,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 2,
+        "columna": "C",
+        "clase": "VIP",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 2,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 3,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 3,
+        "columna": "B",
+        "clase": "VIP",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 3,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 3,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 4,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 4,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 4,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 4,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 5,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 5,
+        "columna": "B",
+        "clase": "VIP",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 5,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 5,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 6,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 6,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 6,
+        "columna": "C",
+        "clase": "Ejecutivo",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 6,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 7,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 7,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 7,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 7,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 8,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 8,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 8,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 8,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 9,
+        "columna": "A",
+        "clase": "Ejecutivo",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 9,
+        "columna": "B",
+        "clase": "Ejecutivo",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 9,
+        "columna": "C",
+        "clase": "Ejecutivo",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 9,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 10,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 10,
+        "columna": "B",
+        "clase": "Ejecutivo",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 10,
+        "columna": "C",
+        "clase": "Ejecutivo",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 10,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 11,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 11,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 11,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 11,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 12,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 12,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 12,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 12,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
         "precio": 0.0
       }
     ],
-    "estado": "Mantenimiento"
+    "estado": "Libre"
+  },
+  {
+    "id": "WG9234",
+    "modelo": "AAAAAA",
+    "capacidadTotal": 24,
+    "filas": 6,
+    "asientosPorFila": 4,
+    "peso": 200,
+    "tipo": "Turista",
+    "asientos": [
+      {
+        "fila": 1,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 1,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 1,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 1,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 2,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 2,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 2,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 2,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 3,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 3,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 3,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 3,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 4,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 4,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 4,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 4,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 5,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 5,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 5,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 5,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 6,
+        "columna": "A",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 6,
+        "columna": "B",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 6,
+        "columna": "C",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      },
+      {
+        "fila": 6,
+        "columna": "D",
+        "clase": "Turista",
+        "estado": "Libre",
+        "precio": 0.0
+      }
+    ],
+    "estado": "Libre"
   }
 ]

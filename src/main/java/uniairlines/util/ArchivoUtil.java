@@ -7,6 +7,10 @@ import java.io.*;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.reflect.TypeToken;
 import uniairlines.excepcion.ArchivoException;
 
 public class ArchivoUtil {
@@ -71,5 +75,23 @@ public class ArchivoUtil {
             }
         }
     }
+
+    public static <T> List<T> leerLista(String ruta, Class<T> clazz) {
+        try (Reader reader = new FileReader(ruta)) {
+            Type tipoLista = TypeToken.getParameterized(List.class, clazz).getType();
+            return new Gson().fromJson(reader, tipoLista);
+        } catch (IOException e) {
+            return new ArrayList<>();
+        }
+    }
+
+    public static <T> void guardarLista(String ruta, List<T> lista) {
+        try (Writer writer = new FileWriter(ruta)) {
+            new GsonBuilder().setPrettyPrinting().create().toJson(lista, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 

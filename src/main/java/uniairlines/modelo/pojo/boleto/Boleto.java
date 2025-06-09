@@ -10,6 +10,7 @@ import uniairlines.modelo.pojo.Vuelo;
  *
  * @author abelh
  */
+
 public class Boleto {
     //Todos los datos del boleto pueden extraerse del vuelo y el cliente asociados
     private Vuelo vuelo;
@@ -44,6 +45,7 @@ public class Boleto {
     public ClaseBoleto getClase() {
         return clase;
     }
+
 
     public void setClase(String clase) {
         this.clase = ClaseBoleto.valueOf(clase);

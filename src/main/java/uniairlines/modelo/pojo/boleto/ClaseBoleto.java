@@ -11,5 +11,7 @@ package uniairlines.modelo.pojo.boleto;
 public enum ClaseBoleto {
     TURISTA,
     NEGOCIOS,
-    PRIMERA_CLASE;
+    PRIMERA_CLASE,
+    EJECUTIVO,
+    VIP;
 }

@@ -1,6 +1,8 @@
 package uniairlines.controladores;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -8,7 +10,9 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import uniairlines.modelo.Asiento;
 import uniairlines.modelo.pojo.Vuelo;
+import uniairlines.modelo.pojo.boleto.Boleto;
 import uniairlines.modelo.pojo.boleto.Cliente;
+import uniairlines.modelo.pojo.boleto.ClaseBoleto;
 import uniairlines.util.UtilGeneral;
 
 import java.util.ArrayList;
@@ -39,13 +43,11 @@ public class FXMLSeleccionarAsientosClienteController {
     private Cliente cliente;
     private Vuelo vuelo;
 
-    // Método para pasar la lista de asientos desde la ventana anterior
     public void setAsientos(List<Asiento> asientos) {
         this.asientos = asientos;
         mostrarAsientos();
     }
 
-    // Nuevo método para asignar el cliente
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
         if (cliente != null) {
@@ -53,10 +55,8 @@ public class FXMLSeleccionarAsientosClienteController {
         }
     }
 
-    // Nuevo método para asignar el vuelo
     public void setVuelo(Vuelo vuelo) {
         this.vuelo = vuelo;
-        // Puedes hacer algo con el vuelo si lo necesitas
     }
 
     private void mostrarAsientos() {
@@ -93,10 +93,14 @@ public class FXMLSeleccionarAsientosClienteController {
             return "darkred";
         } else {
             switch (asiento.getClase()) {
-                case "Turista": return "lightgreen";
-                case "Ejecutivo": return "lightblue";
-                case "VIP": return "yellow";
-                default: return "gray";
+                case "Turista":
+                    return "lightgreen";
+                case "Ejecutivo":
+                    return "lightblue";
+                case "VIP":
+                    return "yellow";
+                default:
+                    return "gray";
             }
         }
     }
@@ -111,18 +115,57 @@ public class FXMLSeleccionarAsientosClienteController {
 
     @FXML
     private void initialize() {
-        btnConfirmar.setOnAction(e -> {
-            if (asientosSeleccionados.isEmpty()) {
-                // Mostrar alerta que debe seleccionar al menos un asiento
-                UtilGeneral.mostrarAlerta("Sin selección", "Por favor selecciona al menos un asiento para continuar.", javafx.scene.control.Alert.AlertType.WARNING);
-                return;
-            }
-            // Aquí puedes agregar lógica para continuar con la venta, pasar los asientos seleccionados y datos del cliente y vuelo
+        // Aquí no asignamos btnConfirmar.setOnAction anónimo,
+        // porque vamos a usar el método confirmarVenta directamente ligado en el FXML.
+    }
 
-            // Cerrar ventana
-            Stage stage = (Stage) btnConfirmar.getScene().getWindow();
-            stage.close();
-        });
+    @FXML
+    private void confirmarVenta(ActionEvent event) {
+        if (asientosSeleccionados.isEmpty()) {
+            UtilGeneral.mostrarAlerta("Sin selección",
+                    "Por favor selecciona al menos un asiento para continuar.",
+                    Alert.AlertType.WARNING);
+            return;
+        }
+
+        // Crear boletos para cada asiento seleccionado
+        List<Boleto> boletosVenta = new ArrayList<>();
+        for (Asiento asiento : asientosSeleccionados) {
+            ClaseBoleto claseBoleto;
+            switch (asiento.getClase()) {
+                case "Turista":
+                    claseBoleto = ClaseBoleto.TURISTA;
+                    break;
+                case "Ejecutivo":
+                    claseBoleto = ClaseBoleto.EJECUTIVO;
+                    break;
+                case "VIP":
+                    claseBoleto = ClaseBoleto.VIP;
+                    break;
+                default:
+                    claseBoleto = ClaseBoleto.TURISTA; // Valor por defecto
+            }
+
+            Boleto boleto = new Boleto(vuelo, cliente, claseBoleto);
+            // Aquí podrías agregar datos del asiento si tu POJO lo permite
+            boletosVenta.add(boleto);
+
+            // Actualizar estado del asiento a ocupado
+            asiento.setEstado("Ocupado");
+        }
+
+        // Guardar boletosVenta en tu persistencia (archivo JSON, base de datos, etc)
+        // Aquí debes llamar a tu método DAO o servicio para guardar la venta:
+        // Ejemplo:
+        // VentaDAO.guardarVenta(vuelo, cliente, boletosVenta);
+
+        UtilGeneral.mostrarAlerta("Venta Confirmada",
+                "La venta de boletos se realizó correctamente.",
+                Alert.AlertType.INFORMATION);
+
+        // Cerrar ventana después de la venta
+        Stage stage = (Stage) btnConfirmar.getScene().getWindow();
+        stage.close();
     }
 
     public List<Asiento> getAsientosSeleccionados() {
