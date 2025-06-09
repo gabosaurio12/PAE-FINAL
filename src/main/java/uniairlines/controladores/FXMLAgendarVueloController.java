@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import uniairlines.dao.AerolineaDAO;
 import uniairlines.dao.AeropuertoDAO;
 import uniairlines.dao.AvionDAO;
+import uniairlines.dao.VueloDAO;
 import uniairlines.excepcion.ArchivoException;
 import uniairlines.excepcion.VueloException;
 import uniairlines.modelo.Aerolinea;
@@ -27,8 +28,13 @@ import uniairlines.util.ResultadoFXML;
 import uniairlines.util.UtilGeneral;
 
 import java.net.URL;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class FXMLAgendarVueloController implements Initializable {
@@ -60,14 +66,13 @@ public class FXMLAgendarVueloController implements Initializable {
     @FXML
     private TextField tfPrecioPrimeraClase;
 
+    private FXMLTablaVuelosController tablaVuelosController;
     private final UtilGeneral util = new UtilGeneral();
 
     private ObservableList<Aerolinea> aerolineas;
     private ObservableList<Avion> aviones;
     private ObservableList<Aeropuerto> aeropuertos;
-    private Piloto piloto;
-    private Piloto copiloto;
-    private List<AsistenteVuelo> asistentes;
+    private Tripulacion tripulacion;
 
     public void initialize(URL url, ResourceBundle rb) {
         configurarCombos();
@@ -76,8 +81,11 @@ public class FXMLAgendarVueloController implements Initializable {
         seleccionarAeropuertoSalida();
     }
 
-    public void cargarDatos(Vuelo vuelo) {
-        if(vuelo != null) {
+    public void cargarDatos(FXMLTablaVuelosController tablaVuelosController, Vuelo vuelo) {
+        this.tablaVuelosController = tablaVuelosController;
+        if(vuelo == null) {
+            this.tripulacion = null;
+        } else {
             //TODO -update
         }
     }
@@ -187,7 +195,7 @@ public class FXMLAgendarVueloController implements Initializable {
             if(resultado != null) {
                 FXMLConfigurarTripulacionController controlador = resultado.getControlador();
                 Stage stage = resultado.getStage();
-                controlador.cargarDatos(null, nombreAerolinea);
+                controlador.cargarDatos(this, tripulacion, nombreAerolinea);
                 stage.showAndWait();
             }
         } else {
@@ -203,91 +211,88 @@ public class FXMLAgendarVueloController implements Initializable {
     public void clicGuardar(ActionEvent actionEvent) {
         if(validarCampos()) {
             Vuelo candidato = construirVueloCandidato();
-
+            if(validarDatos(candidato)) {
+                tablaVuelosController.getVuelos().add(candidato);
+                try{
+                    VueloDAO dao = new VueloDAO();
+                    dao.agregar(candidato);
+                    UtilGeneral.mostrarAlerta(
+                            "Exito",
+                            "El vuelo se registro exitosamente",
+                            Alert.AlertType.INFORMATION);
+                } catch (ArchivoException aex) {
+                    UtilGeneral.mostrarAlerta(
+                            "Error",
+                            aex.getMessage(),
+                            Alert.AlertType.ERROR);
+                }
+            }
         }
     }
 
     private boolean validarCampos() {
         boolean validos = true;
         try {
-            String codigoVuelo;
-            String aerolinea;
-            String codigoAvion;
-            Aeropuerto salida;
-            Aeropuerto destino;
-            String fechaSalida;
-            String fechaLlegada;
-            Integer minutosDeVueloEstimados;
-            Integer puertaSalida;
-            Integer puertaLlegada;
-            Double precioTurista;
-            Double precioNegocios;
-            Double precioPrimeraClase;
-            codigoVuelo = tfCodigoVuelo.getText();
-            if(codigoVuelo.isEmpty()) {
+            if(tfCodigoVuelo.getText().isEmpty()) {
                validos = false;
             }
-            aerolinea = comboAerolinea.getSelectionModel().getSelectedItem().toString();
-            if(aerolinea.isEmpty()) {
+            if(comboAerolinea.getSelectionModel().getSelectedItem() == null) {
                 validos = false;
             }
-            codigoAvion = comboAvion.getSelectionModel().getSelectedItem().toString();
-            if(codigoAvion.isEmpty()) {
+            if(comboAvion.getSelectionModel().getSelectedItem() == null) {
                 validos = false;
             }
-            salida = comboPuertoSalida.getSelectionModel().getSelectedItem();
-            if(salida == null) {
+            if(comboPuertoSalida.getSelectionModel().getSelectedItem() == null) {
                 validos = false;
             }
-            destino = comboPuertoLlegada.getSelectionModel().getSelectedItem();
-            if(destino == null) {
+            if(comboPuertoLlegada.getSelectionModel().getSelectedItem() == null) {
                 validos = false;
             }
-            fechaSalida = tfFechaHoraSalida.getText();
-            if(fechaSalida.isEmpty()) {
+            if(tfFechaHoraSalida.getText().isEmpty()) {
                 validos = false;
             }
-            fechaLlegada = tfFechaHoraLlegada.getText();
-            if(fechaLlegada.isEmpty()) {
+            if(tfFechaHoraLlegada.getText().isEmpty()) {
                 validos = false;
             }
-            minutosDeVueloEstimados = Integer.parseInt(tfMinutosEstimados.getText());
+            Integer minutosDeVueloEstimados = Integer.parseInt(tfMinutosEstimados.getText());
             if(minutosDeVueloEstimados <= 0) {
                 validos = false;
                 throw new VueloException("Los minutos del vuelo no pueden ser iguales o menores a cero");
             }
-            puertaSalida = comboPuertaSalida.getSelectionModel().getSelectedItem();
-            if(puertaSalida == null) {
+            if(comboPuertaSalida.getSelectionModel().getSelectedItem() == null) {
                 validos = false;
             }
-            puertaLlegada = comboPuertaLlegada.getSelectionModel().getSelectedItem();
-            if(puertaLlegada == null) {
+            if(comboPuertaLlegada.getSelectionModel().getSelectedItem() == null) {
                 validos = false;
             }
-            precioTurista = Double.parseDouble(tfPrecioTurista.getText());
+            Double precioTurista = Double.parseDouble(tfPrecioTurista.getText());
             if(precioTurista <= 0) {
                 validos = false;
                 throw new VueloException("El precio de un boleto no puede ser igual o menor a cero");
             }
-            precioNegocios = Double.parseDouble(tfPrecioNegocios.getText());
+            Double precioNegocios = Double.parseDouble(tfPrecioNegocios.getText());
             if(precioNegocios <= 0) {
                 validos = false;
                 throw new VueloException("El precio de un boleto no puede ser igual o menor a cero");
             }
-            precioPrimeraClase = Double.parseDouble(tfPrecioPrimeraClase.getText());
+            Double precioPrimeraClase = Double.parseDouble(tfPrecioPrimeraClase.getText());
             if(precioPrimeraClase <= 0) {
                 validos = false;
                 throw new VueloException("El precio de un boleto no puede ser igual o menor a cero");
             }
-            if(piloto == null) {
+            if(this.tripulacion == null) {
+                validos = false;
+                throw new VueloException("No hay una tripulacion registrada para este vuelo");
+            }
+            if(tripulacion.getPiloto() == null) {
                 validos = false;
                 throw new VueloException("Se requiere un piloto");
             }
-            if(copiloto == null) {
+            if(tripulacion.getCopiloto() == null) {
                 validos = false;
                 throw new VueloException("Se requiere un copiloto");
             }
-            if(asistentes == null || asistentes.size() < 4) {
+            if(tripulacion.getAsistentes() == null || tripulacion.getAsistentes().size() < 4) {
                 validos = false;
                 throw new VueloException("No hay suficientes asistentes registrados para este vuelo");
             }
@@ -305,9 +310,40 @@ public class FXMLAgendarVueloController implements Initializable {
         return validos;
     }
 
-    private boolean validarDatos() {
-        //TODO
-        return false;
+    private boolean validarDatos(Vuelo vueloCandidato) {
+        boolean validos = true;
+        try{
+            if(Objects.equals(vueloCandidato.getSalida().toString(), vueloCandidato.getDestino().toString())) {
+                validos = false;
+                throw new VueloException("Un vuelo no puede salir y llegar al mismo aeropuerto");
+            }
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime fechaSalida = LocalDateTime.parse(vueloCandidato.getFechaSalida(), formatter);
+            LocalDateTime fechaLlegada = LocalDateTime.parse(vueloCandidato.getFechaLlegada(), formatter);
+            if(fechaLlegada.isBefore(fechaSalida)) {
+                validos = false;
+                throw new VueloException("No es posible que el avion llegue a su destino antes de partir");
+            }
+            if(vueloCandidato.getMinutosDeVueloEstimados() <= 0) {
+                validos = false;
+                throw new VueloException("El tiempo de viaje estimado no puede ser menor o igual a cero");
+            }
+            Long minutosMinimos = Duration.between(fechaSalida, fechaLlegada).toMinutes();
+            if(vueloCandidato.getMinutosDeVueloEstimados() < minutosMinimos) {
+                validos = false;
+                throw new VueloException(
+                        "La cantidad de minutos estimados es menor al tiempo minimo de viaje: "
+                        +minutosMinimos+ ". Por favor verifique los datos");
+            }
+        } catch (VueloException vex) {
+            UtilGeneral.mostrarAlerta("Error", vex.getMessage(), Alert.AlertType.ERROR);
+        } catch (DateTimeParseException dtpex) {
+            UtilGeneral.mostrarAlerta(
+                    "Error",
+                    "La fecha de salida/llegada no tiene el formato esperado: yyyy-MM-dd HH:mm:ss",
+                    Alert.AlertType.WARNING);
+        }
+        return validos;
     }
 
     //Depende de una validacion previa de los campos
@@ -340,15 +376,45 @@ public class FXMLAgendarVueloController implements Initializable {
         }
     }
 
-    public void setPiloto(Piloto piloto) {
-        this.piloto = piloto;
+    public void instanciarTripulacion() {
+        this.tripulacion = new Tripulacion();
     }
 
-    public void setCopiloto(Piloto copiloto) {
-        this.copiloto = copiloto;
+    public class Tripulacion {
+        private Piloto piloto;
+        private Piloto copiloto;
+        List<AsistenteVuelo> asistentes;
+
+        public Tripulacion() {
+
+        }
+
+        public Piloto getPiloto() {
+            return piloto;
+        }
+
+        public void setPiloto(Piloto piloto) {
+            this.piloto = piloto;
+        }
+
+        public Piloto getCopiloto() {
+            return copiloto;
+        }
+
+        public void setCopiloto(Piloto copiloto) {
+            this.copiloto = copiloto;
+        }
+
+        public List<AsistenteVuelo> getAsistentes() {
+            return asistentes;
+        }
+
+        public void setAsistentes(List<AsistenteVuelo> asistentes) {
+            this.asistentes = asistentes;
+        }
     }
 
-    public void setAsistentes(List<AsistenteVuelo> asistentes) {
-        this.asistentes = asistentes;
+    public Tripulacion getTripulacion() {
+        return tripulacion;
     }
 }

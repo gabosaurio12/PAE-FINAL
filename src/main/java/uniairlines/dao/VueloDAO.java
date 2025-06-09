@@ -24,4 +24,10 @@ public class VueloDAO {
         }
         return ArchivoUtil.leerJson(RUTA_ARCHIVO_VUELOS, new TypeToken<List<Vuelo>>() {}.getType());
     }
+
+    public void agregar(Vuelo nuevoVuelo) throws ArchivoException {
+        List<Vuelo> vuelos = recuperarVuelos();
+        vuelos.add(nuevoVuelo);
+        ArchivoUtil.escribirJson(RUTA_ARCHIVO_VUELOS, vuelos);
+    }
 }

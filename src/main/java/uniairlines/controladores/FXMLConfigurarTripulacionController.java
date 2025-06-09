@@ -16,6 +16,7 @@ import uniairlines.modelo.pojo.empleados.Piloto;
 import uniairlines.util.UtilGeneral;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -25,27 +26,36 @@ public class FXMLConfigurarTripulacionController implements Initializable {
     @FXML
     public ComboBox<Piloto> comboCopiloto;
     @FXML
-    public ComboBox comboAsistenteUno;
+    public ComboBox<AsistenteVuelo> comboAsistenteUno;
     @FXML
-    public ComboBox comboAsistenteDos;
+    public ComboBox<AsistenteVuelo> comboAsistenteDos;
     @FXML
-    public ComboBox comboAsistenteTres;
+    public ComboBox<AsistenteVuelo> comboAsistenteTres;
     @FXML
-    public ComboBox comboAsistenteCuatro;
+    public ComboBox<AsistenteVuelo> comboAsistenteCuatro;
 
     private String nombreAerolinea;
     private List<Piloto> pilotos;
     private List<AsistenteVuelo> asistentes;
+    private FXMLAgendarVueloController agendarVueloController;
+    private FXMLAgendarVueloController.Tripulacion tripulacion;
 
     public void initialize(URL url, ResourceBundle rb) {
 
     }
 
-    public void cargarDatos(Vuelo vuelo, String nombreAerolinea) {
+    public void cargarDatos(FXMLAgendarVueloController controlador, FXMLAgendarVueloController.Tripulacion tripulacion, String nombreAerolinea) {
+        this.agendarVueloController = controlador;
         this.nombreAerolinea = nombreAerolinea;
+        this.tripulacion = tripulacion;
         configurarCombos();
-        if(vuelo != null) {
-            //TODO -update
+        if(tripulacion != null) {
+            comboPiloto.getSelectionModel().select(tripulacion.getPiloto());
+            comboCopiloto.getSelectionModel().select(tripulacion.getCopiloto());
+            comboAsistenteUno.getSelectionModel().select(tripulacion.getAsistentes().get(0));
+            comboAsistenteDos.getSelectionModel().select(tripulacion.getAsistentes().get(1));
+            comboAsistenteTres.getSelectionModel().select(tripulacion.getAsistentes().get(2));
+            comboAsistenteCuatro.getSelectionModel().select(tripulacion.getAsistentes().get(3));
         }
     }
 
@@ -55,7 +65,36 @@ public class FXMLConfigurarTripulacionController implements Initializable {
     }
 
     public void clicGuardar(ActionEvent actionEvent) {
-
+        Piloto piloto = comboPiloto.getSelectionModel().getSelectedItem();
+        Piloto copiloto = comboCopiloto.getSelectionModel().getSelectedItem();
+        AsistenteVuelo asistenteUno = comboAsistenteUno.getSelectionModel().getSelectedItem();
+        AsistenteVuelo asistenteDos = comboAsistenteDos.getSelectionModel().getSelectedItem();
+        AsistenteVuelo asistenteTres = comboAsistenteTres.getSelectionModel().getSelectedItem();
+        AsistenteVuelo asistenteCuatro = comboAsistenteCuatro.getSelectionModel().getSelectedItem();
+        if(validarSeleccion(piloto, copiloto, asistenteUno, asistenteDos, asistenteTres, asistenteCuatro)) {
+            //
+            if(tripulacion == null) {
+                agendarVueloController.instanciarTripulacion();
+            }
+            agendarVueloController.getTripulacion().setPiloto(piloto);
+            agendarVueloController.getTripulacion().setCopiloto(copiloto);
+            List<AsistenteVuelo> asistentesAsignados = new ArrayList<>();
+            asistentesAsignados.add(asistenteUno);
+            asistentesAsignados.add(asistenteDos);
+            asistentesAsignados.add(asistenteTres);
+            asistentesAsignados.add(asistenteCuatro);
+            agendarVueloController.getTripulacion().setAsistentes(asistentesAsignados);
+            UtilGeneral.mostrarAlerta("Exito",
+                    "La tripulacion se asigno exitosamente",
+                    Alert.AlertType.INFORMATION);
+            Stage stage = (Stage) comboPiloto.getScene().getWindow();
+            stage.close();
+        } else {
+            UtilGeneral.mostrarAlerta(
+                    "Error",
+                    "Por favor llene todos los campos",
+                    Alert.AlertType.ERROR);
+        }
     }
 
     private void configurarCombos() {
@@ -95,5 +134,29 @@ public class FXMLConfigurarTripulacionController implements Initializable {
                     String.format("%s \n %s", aex.getMessage(), aex.getCause()),
                     Alert.AlertType.ERROR);
         }
+    }
+
+    private boolean validarSeleccion(
+            Piloto piloto, Piloto copiloto, AsistenteVuelo a, AsistenteVuelo b, AsistenteVuelo c, AsistenteVuelo d) {
+        boolean valido = true;
+        if(piloto == null) {
+            valido = false;
+        }
+        if(copiloto == null) {
+            valido = false;
+        }
+        if(a == null) {
+            valido = false;
+        }
+        if(b == null) {
+            valido = false;
+        }
+        if(c == null) {
+            valido = false;
+        }
+        if(d == null) {
+            valido = false;
+        }
+        return valido;
     }
 }

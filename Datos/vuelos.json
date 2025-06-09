@@ -1,77 +1,102 @@
-[{
-  "codigoVuelo": "PRB001",
-  "aerolinea": "PRUEBA",
-  "codigoAvion": "XR0074",
-  "numPasajeros": 24,
-  "salida": {
-    "pais": "México",
-    "ciudad": "Veracruz",
-    "numPuertas": 5
-  },
-  "destino": {
-    "pais": "Canadá",
-    "ciudad": "Toronto",
-    "numPuertas": 8
-  },
-  "fechaSalida": "2025-08-01 09:00",
-  "fechaLlegada": "2025-08-01 13:00",
-  "minutosDeVueloEstimados": 240,
-  "puertaSalida": 2,
-  "puertaLlegada": 3,
-  "precioTurista": 3500,
-  "precioNegocios": 5200,
-  "precioPrimeraClase": 8000,
-  "piloto": {
-    "tipoLicencia": "CAPITAN_DE_AEROLINEA",
-    "fechaCertificacion": "15/06/2005",
-    "numHorasVuelo": 8500,
-    "identificador": "piloLeo",
-    "nombre": "Leonardo Ayudame",
-    "direccion": "México",
-    "telefono": "2280001111",
-    "correo": "leo@ayuda.com",
-    "fechaNacimiento": "10/10/1975",
-    "genero": "MASCULINO",
-    "salario": 95000.0
-  },
-  "copiloto": {
-    "tipoLicencia": "COMERCIAL",
-    "fechaCertificacion": "20/05/2010",
-    "numHorasVuelo": 6000,
-    "identificador": "piloCopi",
-    "nombre": "Carlos Backup",
-    "direccion": "México",
-    "telefono": "2298887777",
-    "correo": "cbackup@vuelo.com",
-    "fechaNacimiento": "05/07/1985",
-    "genero": "MASCULINO",
-    "salario": 70000.0
-  },
-  "asistentes": [
-    {
-      "numIdiomas": 2,
-      "numHorasAsistidas": 5000,
-      "identificador": "asis01",
-      "nombre": "Ana Cruz",
-      "direccion": "México",
-      "telefono": "2281112222",
-      "correo": "ana@ayuda.com",
-      "fechaNacimiento": "01/01/1990",
-      "genero": "FEMENINO",
-      "salario": 45000.0
+[
+  {
+    "codigoVuelo": "PRB001",
+    "aerolinea": "PRUEBA",
+    "codigoAvion": "XR0074",
+    "numPasajeros": 24,
+    "salida": {
+      "pais": "México",
+      "ciudad": "Veracruz",
+      "numPuertas": 5
     },
-    {
-      "numIdiomas": 3,
-      "numHorasAsistidas": 8000,
-      "identificador": "asis02",
-      "nombre": "Luis Pérez",
+    "destino": {
+      "pais": "Canadá",
+      "ciudad": "Toronto",
+      "numPuertas": 8
+    },
+    "fechaSalida": "2025-08-01 09:00",
+    "fechaLlegada": "2025-08-01 13:00",
+    "minutosDeVueloEstimados": 240,
+    "puertaSalida": 2,
+    "puertaLlegada": 3,
+    "precioTurista": 3500.0,
+    "precioNegocios": 5200.0,
+    "precioPrimeraClase": 8000.0,
+    "piloto": {
+      "tipoLicencia": "CAPITAN_DE_AEROLINEA",
+      "fechaCertificacion": "15/06/2005",
+      "numHorasVuelo": 8500,
+      "identificador": "piloLeo",
+      "nombre": "Leonardo Ayudame",
       "direccion": "México",
-      "telefono": "2282223333",
-      "correo": "luis@ayuda.com",
-      "fechaNacimiento": "12/12/1988",
+      "telefono": "2280001111",
+      "correo": "leo@ayuda.com",
+      "fechaNacimiento": "10/10/1975",
       "genero": "MASCULINO",
-      "salario": 47000.0
-    }
-  ]
+      "salario": 95000.0
+    },
+    "copiloto": {
+      "tipoLicencia": "COMERCIAL",
+      "fechaCertificacion": "20/05/2010",
+      "numHorasVuelo": 6000,
+      "identificador": "piloCopi",
+      "nombre": "Carlos Backup",
+      "direccion": "México",
+      "telefono": "2298887777",
+      "correo": "cbackup@vuelo.com",
+      "fechaNacimiento": "05/07/1985",
+      "genero": "MASCULINO",
+      "salario": 70000.0
+    },
+    "asistentes": [
+      {
+        "numIdiomas": 2,
+        "numHorasAsistidas": 5000,
+        "identificador": "asis01",
+        "nombre": "Ana Cruz",
+        "direccion": "México",
+        "telefono": "2281112222",
+        "correo": "ana@ayuda.com",
+        "fechaNacimiento": "01/01/1990",
+        "genero": "FEMENINO",
+        "salario": 45000.0
+      },
+      {
+        "numIdiomas": 3,
+        "numHorasAsistidas": 8000,
+        "identificador": "asis02",
+        "nombre": "Luis Pérez",
+        "direccion": "México",
+        "telefono": "2282223333",
+        "correo": "luis@ayuda.com",
+        "fechaNacimiento": "12/12/1988",
+        "genero": "MASCULINO",
+        "salario": 47000.0
+      }
+    ]
+  },
+  {
+    "codigoVuelo": "AD8902",
+    "aerolinea": "UnitedAirlines",
+    "codigoAvion": "AB2890",
+    "numPasajeros": 0,
+    "salida": {
+      "pais": "Mexico",
+      "ciudad": "CDMX",
+      "numPuertas": 14
+    },
+    "destino": {
+      "pais": "Japon",
+      "ciudad": "Tokyo",
+      "numPuertas": 20
+    },
+    "fechaSalida": "2025-10-11 18:00:00",
+    "fechaLlegada": "2025-10-11 23:00:00",
+    "minutosDeVueloEstimados": 400,
+    "puertaSalida": 2,
+    "puertaLlegada": 4,
+    "precioTurista": 4500.0,
+    "precioNegocios": 7500.0,
+    "precioPrimeraClase": 10000.0
   }
 ]

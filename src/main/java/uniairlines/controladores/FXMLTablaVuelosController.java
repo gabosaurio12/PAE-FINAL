@@ -91,7 +91,7 @@ public class FXMLTablaVuelosController implements Initializable {
         if(resultado != null) {
             FXMLAgendarVueloController controlador = resultado.getControlador();
             Stage stage = resultado.getStage();
-            controlador.cargarDatos(null);
+            controlador.cargarDatos(this,null);
             stage.showAndWait();
             //TODO refrescarTabla
         }
@@ -105,5 +105,9 @@ public class FXMLTablaVuelosController implements Initializable {
 
     public void clicImprimir(ActionEvent actionEvent) {
 
+    }
+
+    public ObservableList<Vuelo> getVuelos() {
+        return this.vuelos;
     }
 }
