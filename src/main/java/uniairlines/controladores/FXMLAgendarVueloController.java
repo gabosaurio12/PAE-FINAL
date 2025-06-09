@@ -365,6 +365,9 @@ public class FXMLAgendarVueloController implements Initializable {
         vueloCandidato.setPrecioTurista(Double.parseDouble(tfPrecioTurista.getText()));
         vueloCandidato.setPrecioNegocios(Double.parseDouble(tfPrecioNegocios.getText()));
         vueloCandidato.setPrecioPrimeraClase(Double.parseDouble(tfPrecioPrimeraClase.getText()));
+        vueloCandidato.setPiloto(tripulacion.getPiloto());
+        vueloCandidato.setCopiloto(tripulacion.getCopiloto());
+        vueloCandidato.setAsistentes(tripulacion.getAsistentes());
         return vueloCandidato;
     }
 
