@@ -4,8 +4,10 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
+import javafx.scene.control.Alert;
 import uniairlines.modelo.Aerolinea;
 import uniairlines.modelo.Avion;
+import uniairlines.modelo.pojo.Vuelo;
 import uniairlines.modelo.pojo.boleto.Boleto;
 import uniairlines.modelo.pojo.boleto.Cliente;
 import uniairlines.modelo.pojo.empleados.AsistenteVuelo;
@@ -125,6 +127,33 @@ public class PDFUtil {
         } catch (Exception e) {
             UtilGeneral.createAlert("Error", "Error al crear PDF de boletos");
             System.err.println("Error al crear PDF de boletos: " + e.getMessage());
+        }
+    }
+
+    public void generarPDFVuelos(String path, List<Vuelo> vuelos) {
+        try {
+            PdfWriter writer = new PdfWriter(path);
+            PdfDocument pdf = new PdfDocument(writer);
+            Document document = new Document(pdf);
+
+            for (Vuelo vuelo : vuelos) {
+                String parrafo = String.format(
+                        "Código de Vuelo: %s\nAerolinea: %s\nAvion: %s\nNum. Pasajeros: %s\nDestino: %s\nTiempo de Llegada: %s\nOrigen: %s\nTiempo de Partida: %s\n\n",
+                        vuelo.getCodigoVuelo(),
+                        vuelo.getAerolinea(),
+                        vuelo.getCodigoAvion(),
+                        vuelo.getNumPasajeros(),
+                        vuelo.getDestino().toString(),
+                        vuelo.getFechaLlegada(),
+                        vuelo.getSalida().toString(),
+                        vuelo.getFechaSalida()
+                );
+                document.add(new Paragraph(parrafo));
+            }
+            document.close();
+            UtilGeneral.mostrarAlerta("Creación de PDF", "Se creó con éxito el PDF de vuelos", Alert.AlertType.INFORMATION);
+        } catch (Exception ioex) {
+            UtilGeneral.mostrarAlerta("Error", String.format("%s\n%s", ioex.getMessage(), ioex.getCause()), Alert.AlertType.ERROR);
         }
     }
 }

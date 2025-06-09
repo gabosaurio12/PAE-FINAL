@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="153.0" prefWidth="373.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLImprimirVuelosController">
+   <children>
+      <BorderPane prefHeight="181.0" prefWidth="399.0">
+         <top>
+            <Label fx:id="lbTitulo" text="Imprimir vuelos" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </BorderPane.margin>
+            </Label>
+         </top>
+         <bottom>
+            <HBox alignment="CENTER" prefHeight="24.0" prefWidth="399.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#clicRegresar" text="Regresar">
+                     <HBox.margin>
+                        <Insets bottom="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <HBox prefHeight="126.0" prefWidth="399.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="253.0" prefWidth="130.0">
+                     <children>
+                        <Label text="CSV" />
+                        <Button mnemonicParsing="false" onAction="#clicCSV" style="-fx-background-color: #4d4d4d;" text="Imprimir" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="123.0" prefWidth="138.0">
+                     <children>
+                        <Label text="Excel" />
+                        <Button mnemonicParsing="false" onAction="#clicExcel" style="-fx-background-color: #4fe07a;" text="Imprimir" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="253.0" prefWidth="100.0">
+                     <children>
+                        <Label text="PDF" />
+                        <Button mnemonicParsing="false" onAction="#clicPDF" style="-fx-background-color: #f42b2b;" text="Imprimir" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

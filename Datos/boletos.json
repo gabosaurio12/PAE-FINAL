@@ -109,5 +109,116 @@
     },
     "clase": "TURISTA",
     "cantidad": 1
+  },
+  {
+    "vuelo": {
+      "codigoVuelo": "JA8972",
+      "aerolinea": "UnitedAirlines",
+      "codigoAvion": "AB2890",
+      "numPasajeros": 0,
+      "salida": {
+        "pais": "España",
+        "ciudad": "Madrid",
+        "numPuertas": 18
+      },
+      "destino": {
+        "pais": "Japon",
+        "ciudad": "Tokyo",
+        "numPuertas": 20
+      },
+      "fechaSalida": "2025-10-11 18:00:00",
+      "fechaLlegada": "2025-10-11 23:00:00",
+      "minutosDeVueloEstimados": 400,
+      "puertaSalida": 4,
+      "puertaLlegada": 19,
+      "precioTurista": 4500.0,
+      "precioNegocios": 6500.0,
+      "precioPrimeraClase": 9750.0,
+      "piloto": {
+        "tipoLicencia": "COMERCIAL",
+        "fechaCertificacion": "10/03/1980",
+        "numHorasVuelo": 10000,
+        "identificador": "pilo5",
+        "nombre": "Maverick",
+        "direccion": "Estados Unidos",
+        "telefono": "2288937649",
+        "correo": "maverick@gmail.com",
+        "fechaNacimiento": "14/07/1962",
+        "genero": "MASCULINO",
+        "salario": 120000.0
+      },
+      "copiloto": {
+        "tipoLicencia": "PRIVATA",
+        "fechaCertificacion": "20/12/1983",
+        "numHorasVuelo": 8000,
+        "identificador": "pilo6",
+        "nombre": "Iceman",
+        "direccion": "Estados Unidos",
+        "telefono": "2287634518",
+        "correo": "iceman@gmail.com",
+        "fechaNacimiento": "18/11/1960",
+        "genero": "MASCULINO",
+        "salario": 78000.0
+      },
+      "asistentes": [
+        {
+          "numIdiomas": 6,
+          "numHorasAsistidas": 200000,
+          "identificador": "asis1",
+          "nombre": "Benito Bodoque",
+          "direccion": "Estados Unidos",
+          "telefono": "2287761908",
+          "correo": "benito@gmail.com",
+          "fechaNacimiento": "11/12/1960",
+          "genero": "MASCULINO",
+          "salario": 100000.0
+        },
+        {
+          "numIdiomas": 5,
+          "numHorasAsistidas": 10000,
+          "identificador": "asistenteVueloTest",
+          "nombre": "Mi ViCapi",
+          "direccion": "Tus ojos",
+          "telefono": "10293333334756",
+          "correo": "vicapi@gmail.com",
+          "fechaNacimiento": "01/02/1987",
+          "genero": "FEMENINO",
+          "salario": 150000.0
+        },
+        {
+          "numIdiomas": 2,
+          "numHorasAsistidas": 150000,
+          "identificador": "asis2",
+          "nombre": "Dormund Espergh",
+          "direccion": "Belgica",
+          "telefono": "30987890",
+          "correo": "espergh@gmail.com",
+          "fechaNacimiento": "07/10/1990",
+          "genero": "MASCULINO",
+          "salario": 90000.0
+        },
+        {
+          "numIdiomas": 3,
+          "numHorasAsistidas": 100000,
+          "identificador": "asis5",
+          "nombre": "Esperanza Salvatora",
+          "direccion": "Italia",
+          "telefono": "1122938761",
+          "correo": "salvatora@hotmail.com",
+          "fechaNacimiento": "11/09/2001",
+          "genero": "FEMENINO",
+          "salario": 120000.0
+        }
+      ]
+    },
+    "cliente": {
+      "nombre": "Joaquín",
+      "apellidoP": "Vélez",
+      "apellidoM": "Segovia",
+      "nacionalidad": "Mexicano",
+      "fechaNacimiento": "02/11/2004"
+    },
+    "clase": "TURISTA",
+    "cantidad": 1
   }
 ]

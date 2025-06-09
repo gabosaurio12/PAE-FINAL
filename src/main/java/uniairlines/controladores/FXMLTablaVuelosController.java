@@ -150,7 +150,17 @@ public class FXMLTablaVuelosController implements Initializable {
     }
 
     public void clicImprimir(ActionEvent actionEvent) {
-
+        ResultadoFXML<FXMLImprimirVuelosController> resultado = util.abrirFXMLModal(
+                "/vista/FXMLImprimirVuelo.fxml",
+                "Impresora",
+                FXMLImprimirVuelosController.class,
+                tfBuscarPorCodigo.getScene().getWindow());
+        if(resultado != null) {
+            FXMLImprimirVuelosController controlador = resultado.getControlador();
+            Stage stage = resultado.getStage();
+            controlador.cargarDatos(vuelos);
+            stage.showAndWait();
+        }
     }
 
     public ObservableList<Vuelo> getVuelos() {

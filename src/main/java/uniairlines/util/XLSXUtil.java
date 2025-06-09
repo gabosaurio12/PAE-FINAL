@@ -1,10 +1,12 @@
 package uniairlines.util;
 
+import javafx.scene.control.Alert;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import uniairlines.excepcion.ArchivoException;
 import uniairlines.modelo.Aerolinea;
 import uniairlines.modelo.Avion;
+import uniairlines.modelo.pojo.Vuelo;
 import uniairlines.modelo.pojo.boleto.Boleto;
 import uniairlines.modelo.pojo.boleto.Cliente;
 import uniairlines.modelo.pojo.empleados.AsistenteVuelo;
@@ -294,6 +296,55 @@ public class XLSXUtil {
         } catch (IOException e) {
             UtilGeneral.createAlert("Error", "Hubo un error al crear el XLSX de boletos");
             System.err.println("Error al crear XLSX de boletos: " + e.getMessage());
+        }
+    }
+
+    public void generarXLSXVuelos(String path, List<Vuelo> vuelos) {
+        try (Workbook workbook = new XSSFWorkbook()) {
+            Sheet sheet = workbook.createSheet("Vuelos");
+
+            Row filaEncabezado = sheet.createRow(0);
+            String[] encabezados = {
+                    "Código Vuelo",
+                    "Aerolinea",
+                    "Avión",
+                    "Num Pasajeros",
+                    "Destino",
+                    "Tiempo de Llegada",
+                    "Origen",
+                    "Tiempo de Salida"
+            };
+
+            for (int i = 0; i < encabezados.length; i++) {
+                Cell celda = filaEncabezado.createCell(i);
+                celda.setCellValue(encabezados[i]);
+                CellStyle estilo = workbook.createCellStyle();
+                Font font = workbook.createFont();
+                font.setBold(true);
+                estilo.setFont(font);
+                celda.setCellStyle(estilo);
+            }
+
+            int filaIndex = 1;
+            for (Vuelo vuelo : vuelos) {
+                Row fila = sheet.createRow(filaIndex++);
+                String[] datos = vuelo.formatoXLSX();
+                for (int i = 0; i < datos.length; i++) {
+                    fila.createCell(i).setCellValue(datos[i]);
+                }
+            }
+
+            for (int i = 0; i < encabezados.length; i++) {
+                sheet.autoSizeColumn(i);
+            }
+
+            try (FileOutputStream fos = new FileOutputStream(path)) {
+                workbook.write(fos);
+            }
+
+            UtilGeneral.mostrarAlerta("Éxito", "Se creo el archivo Excel exitosamente", Alert.AlertType.INFORMATION);
+        } catch (IOException ioex) {
+            UtilGeneral.mostrarAlerta("Error", String.format("%s\n%s", ioex.getMessage(), ioex.getCause()), Alert.AlertType.ERROR);
         }
     }
 

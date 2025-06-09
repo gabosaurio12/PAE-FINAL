@@ -1,8 +1,10 @@
 package uniairlines.util;
 
 import com.opencsv.CSVWriter;
+import javafx.scene.control.Alert;
 import uniairlines.modelo.Aerolinea;
 import uniairlines.modelo.Avion;
+import uniairlines.modelo.pojo.Vuelo;
 import uniairlines.modelo.pojo.boleto.Boleto;
 import uniairlines.modelo.pojo.boleto.Cliente;
 import uniairlines.modelo.pojo.empleados.AsistenteVuelo;
@@ -148,6 +150,38 @@ public class CSVUtil {
         } catch (IOException e) {
             UtilGeneral.createAlert("Error", "Error al crear CSV de boletos");
             System.err.println("Error al crear CSV de boletos: " + e.getMessage());
+        }
+    }
+
+    public void generarCSVVuelos(String path, List<Vuelo> vuelos) {
+        try(CSVWriter writer = new CSVWriter(new FileWriter(path))) {
+            String[] encabezado = {
+                    "Codigo de Vuelo",
+                    "Aerolinea",
+                    "Avion",
+                    "Num. Pasajeros",
+                    "Destino",
+                    "Tiempo de Llegada",
+                    "Origen",
+                    "Tiempo de Partida"
+            };
+            writer.writeNext(encabezado);
+            for (Vuelo vuelo : vuelos) {
+                String[] datos = {
+                        vuelo.getCodigoVuelo(),
+                        vuelo.getAerolinea(),
+                        vuelo.getCodigoAvion(),
+                        String.valueOf(vuelo.getNumPasajeros()),
+                        vuelo.getDestino().toString(),
+                        vuelo.getFechaLlegada(),
+                        vuelo.getSalida().toString(),
+                        vuelo.getFechaSalida()
+                };
+                writer.writeNext(datos);
+            }
+            UtilGeneral.mostrarAlerta("Exito", "Archivo CSV generado exitosamente", Alert.AlertType.INFORMATION);
+        } catch (IOException ioex) {
+            UtilGeneral.mostrarAlerta("Error", String.format("%s \n %s", ioex.getMessage(), ioex.getCause()), Alert.AlertType.ERROR);
         }
     }
 }
