@@ -1,8 +1,4 @@
 package uniairlines.modelo;
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
 /**
  *
@@ -12,16 +8,18 @@ public class Asiento {
     private int fila;            // Número de fila
     private String columna;      // Letra de asiento (ej. A, B, C)
     private String clase;        // Turista, Ejecutivo, VIP
-    private String estado;       // Libre, Ocupado (como String)
+    private String estado;       // Libre, Ocupado, Seleccionado
     private double precio;       // Precio del asiento
+    private String nombreCliente; // Nombre del cliente asignado al asiento
 
     public Asiento() {}
-    
+
     public Asiento(String prueba){
-    this.fila = 1;
-    this.columna = "A";
-    this.estado = "Ejecutivo";
-    this.precio = 0;       
+        this.fila = 1;
+        this.columna = "A";
+        this.estado = "Ejecutivo";
+        this.precio = 0;
+        this.nombreCliente = null;
     }
 
     public Asiento(int fila, String columna, String clase, String estado, double precio) {
@@ -30,6 +28,7 @@ public class Asiento {
         this.clase = clase;
         this.estado = estado;
         this.precio = precio;
+        this.nombreCliente = null;
     }
 
     public int getFila() { return fila; }
@@ -46,4 +45,7 @@ public class Asiento {
 
     public double getPrecio() { return precio; }
     public void setPrecio(double precio) { this.precio = precio; }
+
+    public String getNombreCliente() { return nombreCliente; }
+    public void setNombreCliente(String nombreCliente) { this.nombreCliente = nombreCliente; }
 }

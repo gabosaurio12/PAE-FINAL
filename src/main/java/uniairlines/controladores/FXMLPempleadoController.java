@@ -84,6 +84,27 @@ public class FXMLPempleadoController implements Initializable {
     }
 
     public void gestionarVentasBoletos(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/FXMLTablaVentaVuelos.fxml"));
+            Parent vista = loader.load();
+
+
+            FXMLTablaVentaVuelosController controlador = loader.getController();
+
+
+            Stage escenarioAdmin = new Stage();
+            Scene escena = new Scene(vista);
+
+            escenarioAdmin.setScene(escena);
+            escenarioAdmin.setTitle("ADMINISTRACIÓN DE Ventas  ");
+            escenarioAdmin.initModality(Modality.APPLICATION_MODAL);
+            escenarioAdmin.centerOnScreen();
+            escenarioAdmin.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     public void cerrarSesion(ActionEvent actionEvent) {

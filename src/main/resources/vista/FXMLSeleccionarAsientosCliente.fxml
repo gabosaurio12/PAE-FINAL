@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="uniairlines.controladores.FXMLSeleccionarAsientosClienteController"
+      spacing="15" alignment="CENTER" prefWidth="600" prefHeight="500">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+
+    <!-- Campo para ingresar nombre del cliente -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Nombre del Cliente:"/>
+        <TextField fx:id="txtNombreCliente" promptText="Ej. Joaquín Vélez" prefWidth="300"/>
+    </HBox>
+
+    <!-- Grid de selección de asientos -->
+    <GridPane fx:id="gridAsientos" hgap="10" vgap="10" gridLinesVisible="true" />
+
+    <!-- Total y botón -->
+    <HBox spacing="20" alignment="CENTER_RIGHT">
+        <Label fx:id="lblTotal" text="Total: $0.00" style="-fx-font-weight: bold; -fx-font-size: 14;" />
+        <Button fx:id="btnConfirmar" text="Confirmar" />
+    </HBox>
+
+</VBox>
+

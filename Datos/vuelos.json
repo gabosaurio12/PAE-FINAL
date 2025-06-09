@@ -14,8 +14,8 @@
                 "ciudad" : "Houston",
                 "numPuertas" : 14
         },
-        "fechaSalida" : "2025-05-11 14:30",
-        "fechaLlegada" : "2025-05-11 16:45",
+        "fechaSalida" : "2025-07-11 14:30",
+        "fechaLlegada" : "2025-08-11 16:45",
         "minutosDeVueloEstimados" : 135,
         "puertaSalida": 7,
         "puertaLlegada" : 11,

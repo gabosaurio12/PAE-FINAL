@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="480.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLTablaSeleccionarClienteController">
+    <children>
+        <Label layoutX="10" layoutY="10" prefHeight="30.0" prefWidth="384.0" style="-fx-font-size: 20px;" text="Seleccionar Cliente para Venta de Boleto">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+
+        <!-- Campo de búsqueda -->
+        <HBox layoutX="23.0" layoutY="45.0" spacing="10">
+            <children>
+                <TextField fx:id="tfBuscarNombre" prefWidth="300" promptText="Buscar por nombre..." />
+                <Button onAction="#clicBuscarNombre" text="Buscar" />
+            </children>
+        </HBox>
+
+        <TableView fx:id="tablaClientes" layoutX="23.0" layoutY="85.0" prefHeight="345" prefWidth="670.0">
+            <columns>
+                <TableColumn fx:id="nombre" prefWidth="100" text="Nombre" />
+                <TableColumn fx:id="apellidoP" prefWidth="150" text="Apellido Paterno" />
+                <TableColumn fx:id="apellidoM" prefWidth="126.0" text="Apellido Materno" />
+                <TableColumn fx:id="nacionalidad" prefWidth="105.0" text="Nacionalidad" />
+                <TableColumn fx:id="fechaNacimiento" prefWidth="125.0" text="Fecha Nacimiento" />
+            </columns>
+        </TableView>
+
+        <HBox layoutX="180" layoutY="440" prefHeight="40" prefWidth="400" spacing="10" style="-fx-padding: 5;">
+            <children>
+                <Button onAction="#clicVender" prefHeight="31.0" prefWidth="120.0" style="-fx-background-color: #4CAF50;" text="Vender" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Button>
+                <Button onAction="#clicRegresar" prefHeight="31.0" prefWidth="120.0" style="-fx-background-color: #B22222;" text="Regresar" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Button>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
