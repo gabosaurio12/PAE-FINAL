@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
@@ -8,26 +13,26 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="uniairlines.controladores.FXMLFormularioAvionController">
+<AnchorPane prefHeight="396.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLFormularioAvionController">
     <children>
         <Label layoutX="30" layoutY="30" text="Modelo:" />
-        <TextField fx:id="tfModelo" layoutX="150" layoutY="25" prefWidth="200" />
+        <TextField fx:id="tfModelo" layoutX="168.0" layoutY="25.0" prefWidth="200" />
 
         <Label layoutX="30" layoutY="70" text="Capacidad Total:" />
-        <TextField fx:id="tfCapacidadTtotal" layoutX="150" layoutY="65" prefWidth="200" />
+        <TextField fx:id="tfCapacidadTtotal" layoutX="168.0" layoutY="65.0" prefWidth="200" />
 
         <Label layoutX="30" layoutY="110" text="Filas:" />
-        <TextField fx:id="tfFilas" layoutX="150" layoutY="105" prefWidth="200" />
+        <TextField fx:id="tfFilas" layoutX="168.0" layoutY="105.0" prefWidth="200" />
 
         <Label layoutX="30" layoutY="150" text="Asientos/Fila:" />
-        <TextField fx:id="tfAsientosPorFila" layoutX="150" layoutY="145" prefWidth="200" />
+        <TextField fx:id="tfAsientosPorFila" layoutX="168.0" layoutY="145.0" prefWidth="200" />
         
         <Label layoutX="30" layoutY="270" text="Peso (kg):" />
-        <TextField fx:id="tfPeso" layoutX="150" layoutY="265" prefWidth="200" />
+        <TextField fx:id="tfPeso" layoutX="168.0" layoutY="265.0" prefWidth="200" />
 
 
         <Label layoutX="30" layoutY="190" text="Tipo:" />
-        <ComboBox fx:id="cbTipo" layoutX="150" layoutY="185" prefWidth="200">
+        <ComboBox fx:id="cbTipo" layoutX="168.0" layoutY="185.0" prefWidth="200">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="Turista" />
@@ -38,7 +43,7 @@
         </ComboBox>
 
         <Label layoutX="30" layoutY="230" text="Estado:" />
-        <ComboBox fx:id="cbEstado" layoutX="150" layoutY="225" prefWidth="200">
+        <ComboBox fx:id="cbEstado" layoutX="168.0" layoutY="225.0" prefWidth="200">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="Libre" />
@@ -47,7 +52,10 @@
             </items>
         </ComboBox>
 
-       <Button layoutX="150" layoutY="320" onAction="#btnGuardar" prefWidth="100" text="Guardar" />
+       <Button layoutX="168.0" layoutY="335.0" onAction="#btnGuardar" prefHeight="31.0" prefWidth="200.0" style="-fx-background-color: #4CAF50FF;" text="Guardar" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font></Button>
 
     </children>
 </AnchorPane>
