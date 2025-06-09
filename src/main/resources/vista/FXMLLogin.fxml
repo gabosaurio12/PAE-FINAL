@@ -15,7 +15,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="421.0" prefWidth="647.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uniairlines.controladores.FXMLLoginController">
    <children>
-      <ImageView fitHeight="480.0" fitWidth="444.0" layoutX="-75.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="466.0" fitWidth="452.0" layoutX="-83.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@imagenes/imagenLogin.jpg" />
          </image>
