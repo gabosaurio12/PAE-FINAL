@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Window;
+import uniairlines.UNIAIRLINES;
 
 /**
  *
@@ -29,9 +30,6 @@ public class UtilGeneral {
         alerta.setContentText(contenido);
         return alerta.showAndWait();
     }
-        
-        
-
 
     public static boolean mostrarAlertaConfirmacion(String titulo,String contenido){
         Alert alertaConfirmacion = new Alert(Alert.AlertType.CONFIRMATION);
@@ -113,5 +111,19 @@ public class UtilGeneral {
             System.err.println("Error al abrir " + titulo + e.getMessage());
             return null;
         }   
+    }
+
+    public static void crearEscenarioSimple(String URL, String tituloEscenario) {
+        try {
+            Stage nuevoEscenario = new Stage();
+            Parent vista = FXMLLoader.load(UNIAIRLINES.class.getResource(URL));
+            Scene nuevaEscena = new Scene(vista);
+            nuevoEscenario.setScene(nuevaEscena);
+            nuevoEscenario.setTitle(tituloEscenario);
+            nuevoEscenario.initModality(Modality.APPLICATION_MODAL);
+            nuevoEscenario.showAndWait();
+        } catch (IOException e) {
+            e.getMessage();
+        }
     }
 }
