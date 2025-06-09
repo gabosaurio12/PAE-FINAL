@@ -6,6 +6,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import uniairlines.modelo.Aerolinea;
 import uniairlines.modelo.Avion;
+import uniairlines.modelo.pojo.boleto.Boleto;
 import uniairlines.modelo.pojo.boleto.Cliente;
 import uniairlines.modelo.pojo.empleados.AsistenteVuelo;
 import uniairlines.modelo.pojo.empleados.Piloto;
@@ -97,6 +98,33 @@ public class PDFUtil {
         } catch (Exception e) {
             UtilGeneral.createAlert("Error", "Error al crear PDF");
             System.err.println("Error al crear PDF: " + e.getMessage());
+        }
+    }
+
+    public void generarPDFBoletos(String path, List<Boleto> boletos) {
+        try {
+            PdfWriter writer = new PdfWriter(path);
+            PdfDocument pdf = new PdfDocument(writer);
+            Document document = new Document(pdf);
+
+            for (Boleto boleto : boletos) {
+                String parrafo = String.format(
+                        "Cliente: %s %s %s\nCódigo de vuelo: %s\nClase: %s\nCantidad: %d\n\n",
+                        boleto.getCliente().getNombre(),
+                        boleto.getCliente().getApellidoP(),
+                        boleto.getCliente().getApellidoM(),
+                        boleto.getVuelo().getCodigoVuelo(),
+                        boleto.getClase(),
+                        boleto.getCantidad()
+                );
+                document.add(new Paragraph(parrafo));
+            }
+
+            document.close();
+            UtilGeneral.createAlert("Creación de PDF", "Se creó con éxito el PDF de boletos");
+        } catch (Exception e) {
+            UtilGeneral.createAlert("Error", "Error al crear PDF de boletos");
+            System.err.println("Error al crear PDF de boletos: " + e.getMessage());
         }
     }
 }

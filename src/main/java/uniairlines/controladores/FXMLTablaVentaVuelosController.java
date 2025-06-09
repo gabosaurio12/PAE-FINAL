@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -13,8 +14,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import uniairlines.dao.AvionDAO;
 import uniairlines.dao.BoletoDAO;
 import uniairlines.dao.VueloDAO;
@@ -24,8 +29,12 @@ import uniairlines.modelo.pojo.Vuelo;
 import uniairlines.modelo.pojo.aerolinea.Aeropuerto;
 import uniairlines.modelo.pojo.boleto.Boleto;
 import uniairlines.util.CSVUtil;
+import uniairlines.util.PDFUtil;
 import uniairlines.util.UtilGeneral;
+import uniairlines.util.XLSXUtil;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
@@ -128,12 +137,39 @@ public class FXMLTablaVentaVuelosController implements Initializable {
         }
     }
 
+
     public void exportarXLSX(ActionEvent actionEvent) {
-        // TODO
+
     }
 
     public void exportarPDF(ActionEvent actionEvent) {
-        // TODO
+        Vuelo vueloSeleccionado = tablaVuelos.getSelectionModel().getSelectedItem();
+
+        if (vueloSeleccionado == null) {
+            util.mostrarAlerta("Sin selección", "Selecciona un vuelo para exportar sus boletos", Alert.AlertType.WARNING);
+            return;
+        }
+
+        try {
+            BoletoDAO boletoDAO = new BoletoDAO();
+            List<Boleto> boletos = boletoDAO.filtrarPorVuelo(vueloSeleccionado.getCodigoVuelo());
+
+            if (boletos.isEmpty()) {
+                util.mostrarAlerta("Sin datos", "No hay boletos registrados para este vuelo", Alert.AlertType.INFORMATION);
+                return;
+            }
+
+            File directorio = new File("Exportaciones");
+            if (!directorio.exists()) {
+                directorio.mkdirs();
+            }
+
+            String ruta = "Documentos/boletos" + vueloSeleccionado.getCodigoVuelo() + ".pdf";
+            new PDFUtil().generarPDFBoletos(ruta, boletos);
+
+        } catch (ArchivoException e) {
+            util.mostrarAlerta("Error", "No se pudieron recuperar los boletos:\n" + e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 
     public void clicVenderBoleto(ActionEvent actionEvent) {

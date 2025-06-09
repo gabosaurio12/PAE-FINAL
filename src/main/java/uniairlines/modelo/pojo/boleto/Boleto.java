@@ -1,22 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package uniairlines.modelo.pojo.boleto;
 
 import uniairlines.modelo.pojo.Vuelo;
-
-/**
- *
- * @author abelh
- */
+import uniairlines.modelo.pojo.boleto.Cliente;  // Importa tu clase Cliente
+import uniairlines.modelo.pojo.boleto.ClaseBoleto; // Importa tu enum ClaseBoleto
 
 public class Boleto {
-    //Todos los datos del boleto pueden extraerse del vuelo y el cliente asociados
+    // Todos los datos del boleto pueden extraerse del vuelo y el cliente asociados
     private Vuelo vuelo;
     private Cliente cliente;
     private ClaseBoleto clase;
     private int cantidad;
+
     public Boleto() {
     }
 
@@ -55,8 +49,24 @@ public class Boleto {
         return clase;
     }
 
+    // Sobrecarga para aceptar tanto String como enum directamente
+    public void setClase(ClaseBoleto clase) {
+        this.clase = clase;
+    }
 
     public void setClase(String clase) {
         this.clase = ClaseBoleto.valueOf(clase);
+    }
+
+    /**
+     * Método que regresa los datos del boleto como arreglo de Strings para exportar a CSV o XLSX.
+     */
+    public String[] formatoCSV() {
+        return new String[] {
+                vuelo != null ? vuelo.getCodigoVuelo() : "",
+                cliente != null ? cliente.getNombre() : "",
+                clase != null ? clase.name() : "",
+                String.valueOf(cantidad)
+        };
     }
 }

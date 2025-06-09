@@ -5,6 +5,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import uniairlines.excepcion.ArchivoException;
 import uniairlines.modelo.Aerolinea;
 import uniairlines.modelo.Avion;
+import uniairlines.modelo.pojo.boleto.Boleto;
 import uniairlines.modelo.pojo.boleto.Cliente;
 import uniairlines.modelo.pojo.empleados.AsistenteVuelo;
 import uniairlines.modelo.pojo.empleados.Piloto;
@@ -247,5 +248,53 @@ public class XLSXUtil {
         }
     }
 
+    public void generarXLSXBoletos(String path, List<Boleto> boletos) {
+        try (Workbook workbook = new XSSFWorkbook()) {
+            Sheet sheet = workbook.createSheet("Boletos");
+
+            Row filaEncabezado = sheet.createRow(0);
+            String[] encabezados = {
+                    "Código Vuelo",
+                    "Asiento",
+                    "Nombre Cliente",
+                    "Clase",
+                    "Precio"
+                    // agrega aquí más columnas si tus boletos tienen más datos
+            };
+
+            for (int i = 0; i < encabezados.length; i++) {
+                Cell celda = filaEncabezado.createCell(i);
+                celda.setCellValue(encabezados[i]);
+                CellStyle estilo = workbook.createCellStyle();
+                Font font = workbook.createFont();
+                font.setBold(true);
+                estilo.setFont(font);
+                celda.setCellStyle(estilo);
+            }
+
+            int filaIndex = 1;
+            for (Boleto boleto : boletos) {
+                Row fila = sheet.createRow(filaIndex++);
+                String[] datos = boleto.formatoCSV();
+                for (int i = 0; i < datos.length; i++) {
+                    fila.createCell(i).setCellValue(datos[i]);
+                }
+            }
+
+            for (int i = 0; i < encabezados.length; i++) {
+                sheet.autoSizeColumn(i);
+            }
+
+            try (FileOutputStream fos = new FileOutputStream(path)) {
+                workbook.write(fos);
+            }
+
+            UtilGeneral.createAlert("Éxito", "Se creó con éxito el XLSX de boletos");
+
+        } catch (IOException e) {
+            UtilGeneral.createAlert("Error", "Hubo un error al crear el XLSX de boletos");
+            System.err.println("Error al crear XLSX de boletos: " + e.getMessage());
+        }
+    }
 
 }
